@@ -1,0 +1,23 @@
+title: Possible UNK DeadDrop Editor Extension Artifact
+id: 14e3ceec-abf0-41ca-9a24-9e670186dd99
+status: experimental
+description: Detects key files created under the installed extension identifier recovered from the UNK DeadDrop VSIX.
+author: UNK_DeadDrop research contributors
+date: 2026-10-25
+tags:
+  - attack.persistence
+logsource:
+  product: windows
+  category: file_event
+detection:
+  selection_path:
+    TargetFilename|contains:
+      - '\.vscode\extensions\google-dev-tools.google-update-support-'
+      - '\.cursor\extensions\google-dev-tools.google-update-support-'
+    TargetFilename|endswith:
+      - '\package.json'
+      - '\extension.js'
+  condition: selection_path
+falsepositives:
+  - Deliberate installation of the held extension in an isolated research environment
+level: high

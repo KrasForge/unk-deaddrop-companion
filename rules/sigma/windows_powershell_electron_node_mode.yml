@@ -1,0 +1,27 @@
+title: Possible UNK DeadDrop PowerShell Configures Electron Node Mode
+id: f24aa88c-0468-43c1-aba6-c3dfa256ca23
+status: experimental
+description: Detects PowerShell script content that enables Electron Node mode with an argument from either recovered Windows collection branch.
+author: UNK_DeadDrop research contributors
+date: 2026-10-25
+references:
+  - 'https://attack.mitre.org/techniques/T1218/015/'
+tags:
+  - attack.execution
+  - attack.defense-evasion
+  - attack.t1059.001
+  - attack.t1218.015
+logsource:
+  product: windows
+  category: ps_script
+detection:
+  selection_mode:
+    ScriptBlockText|contains: 'ELECTRON_RUN_AS_NODE'
+  selection_argument:
+    ScriptBlockText|contains:
+      - '--company-wallet-job'
+      - '--win-build-ep-only'
+  condition: selection_mode and selection_argument
+falsepositives:
+  - Authorized research or simulations that reproduce both strings
+level: high

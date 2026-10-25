@@ -10,7 +10,7 @@ import or execute the input. A finding is a lead for review, not a verdict.
 ## Contents
 
 - `src/inspect-js.mjs`: bounded, parse-only AST scanner using Acorn.
-- `rules/`: one experimental YARA rule and two experimental Sigma rules.
+- `rules/`: four experimental YARA rules and six experimental Sigma rules.
 - `test/` and `tests/`: synthetic JavaScript, YARA and event fixtures.
 - `docs/tool-design.md`: scanner behavior and limits.
 - `docs/detection-notes.md`: required telemetry, false positives and tuning.

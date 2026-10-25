@@ -1,0 +1,28 @@
+title: Possible UNK DeadDrop Editor Runtime Used as Node Collector
+id: d8e6a892-db53-45fd-8d78-8354738b2d2e
+status: experimental
+description: Detects Code or Cursor executing with collection arguments recovered from the UNK DeadDrop Windows pipelines.
+author: UNK_DeadDrop research contributors
+date: 2026-10-25
+references:
+  - 'https://attack.mitre.org/techniques/T1218/015/'
+tags:
+  - attack.execution
+  - attack.defense-evasion
+  - attack.t1218.015
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_image:
+    Image|endswith:
+      - '\Code.exe'
+      - '\Cursor.exe'
+  selection_argument:
+    CommandLine|contains:
+      - '--company-wallet-job'
+      - '--win-build-ep-only'
+  condition: selection_image and selection_argument
+falsepositives:
+  - Authorized research or simulations that reproduce the exact collection arguments
+level: high
