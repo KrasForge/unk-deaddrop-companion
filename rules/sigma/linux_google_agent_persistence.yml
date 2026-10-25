@@ -1,0 +1,23 @@
+title: Possible UNK DeadDrop Google Agent Systemd Persistence
+id: 6f5af9b1-cb84-4594-942c-b7be87ba0741
+status: experimental
+description: Detects creation or modification of the systemd unit path recorded in the July 2026 case. Requires file-event collection for these paths.
+author: UNK_DeadDrop research contributors
+date: 2026-10-21
+references:
+  - 'https://attack.mitre.org/techniques/T1543/002/'
+tags:
+  - attack.persistence
+  - attack.t1543.002
+logsource:
+  product: linux
+  category: file_event
+detection:
+  selection_system:
+    TargetFilename: '/etc/systemd/system/google-agent.service'
+  selection_user:
+    TargetFilename|endswith: '/.config/systemd/user/google-agent.service'
+  condition: selection_system or selection_user
+falsepositives:
+  - Internal services or security simulations using the same name
+level: medium

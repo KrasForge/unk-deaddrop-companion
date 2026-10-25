@@ -1,0 +1,24 @@
+title: Possible UNK DeadDrop Capture Agent Scheduled Task Creation
+id: 954827a6-d41a-4f57-b09d-f1490fd886cd
+status: experimental
+description: Detects schtasks command lines creating the task name recorded in the held Windows installer. Does not cover task registration through COM or other APIs.
+author: UNK_DeadDrop research contributors
+date: 2026-10-21
+references:
+  - 'https://attack.mitre.org/techniques/T1053/005/'
+tags:
+  - attack.persistence
+  - attack.t1053.005
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|contains|all:
+      - '/create'
+      - 'GoogleUpdateSupporterNode'
+  condition: selection
+falsepositives:
+  - Security exercises or test installations recreating the artifact
+level: medium
