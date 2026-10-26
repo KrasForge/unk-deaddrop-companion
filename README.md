@@ -10,8 +10,8 @@ The defensive purpose is to inspect JavaScript without executing it and to exerc
 
 | Path | Purpose |
 | --- | --- |
-| `rules/yara/` | Four experimental YARA rules, including a conjunction-based wallet-agent selector |
-| `rules/sigma/` | Six experimental host-behavior Sigma rules |
+| `rules/yara/` | Four experimental YARA rules for wallet-agent markers, capture symbols, extracted extension manifests and stage-three source |
+| `rules/sigma/` | Six experimental rules for Linux persistence and Windows collection, task, elevation and extension artifacts |
 | `src/inspect-js.mjs` | Acorn-based, parse-only AST scanner |
 | `test/` and `tests/` | Inert JavaScript buffers and boundary/event fixtures |
 | `docs/` | Scanner design, detection conditions, telemetry needs and limitations |
@@ -41,7 +41,7 @@ python -m venv .venv
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
-Fixtures check rule parsing and a limited set of Sigma matching behavior. They do not measure production precision or recall, validate a particular SIEM backend, or show that an alert was delivered. Review the [detection notes](docs/detection-notes.md) before using the rules.
+Fixtures check rule parsing and selected matching behavior. The wallet YARA rule has one historical positive against a held Linux sample; the other YARA rules have synthetic fixtures only. No rule has production precision or recall estimates, a validated SIEM query, or confirmed alert-delivery results. Review the [detection notes](docs/detection-notes.md) for each rule's input, match conditions and blind spots before use.
 
 ## Scope and license
 

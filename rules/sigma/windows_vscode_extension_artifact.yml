@@ -1,11 +1,16 @@
 title: Possible UNK DeadDrop Editor Extension Artifact
 id: 14e3ceec-abf0-41ca-9a24-9e670186dd99
 status: experimental
-description: Detects key files created under the installed extension identifier recovered from the UNK DeadDrop VSIX.
+description: Matches file-event paths for package.json or extension.js beneath the VS Code or Cursor extension identifier recovered from the VSIX. A path event alone does not establish installation or activation.
 author: UNK_DeadDrop research contributors
 date: 2026-10-25
+modified: 2026-10-26
+references:
+  - 'https://attack.mitre.org/techniques/T1176/002/'
+  - 'https://krasforge.github.io/UNK_DeadDrop/articles/02-vsix-editor-execution/'
 tags:
   - attack.persistence
+  - attack.t1176.002
 logsource:
   product: windows
   category: file_event

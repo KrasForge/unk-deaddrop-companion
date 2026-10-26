@@ -3,10 +3,12 @@ rule UNK_DeadDrop_Overlord_Wallet_Agent_Experimental
     meta:
         description = "Overlord framework plus wallet-collection markers; static hunting only"
         author = "UNK_DeadDrop research contributors"
-        date = "2026-10-21"
+        date = "2026-10-26"
         evidence_cutoff = "2026-07-24"
-        reference = "docs/detection-notes.md"
+        reference = "https://krasforge.github.io/UNK_DeadDrop/articles/12-framework-and-collection-boundary/"
+        source_note = "docs/detection-notes.md"
         status = "experimental"
+        scope = "marker conjunction; not campaign attribution"
     strings:
         $framework = "overlord-client/cmd/agent" ascii wide
         $env = "OVERLORD_SERVER_RAW" ascii wide

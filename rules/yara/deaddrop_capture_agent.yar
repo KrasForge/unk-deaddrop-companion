@@ -3,9 +3,10 @@ rule Overlord_Capture_Capability_Experimental
     meta:
         description = "Overlord framework agent with multiple capture and frame-difference symbols"
         author = "UNK_DeadDrop research contributors"
-        date = "2026-10-25"
+        date = "2026-10-26"
         evidence_cutoff = "2026-07-24"
-        reference = "docs/detection-notes.md"
+        reference = "https://krasforge.github.io/UNK_DeadDrop/articles/05-screen-capture-analysis/"
+        source_note = "docs/detection-notes.md"
         status = "experimental"
         scope = "capability and lineage; not campaign attribution"
     strings:
