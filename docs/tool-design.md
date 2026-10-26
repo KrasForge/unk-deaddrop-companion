@@ -9,11 +9,13 @@ Input bytes → UTF-8 validation → Acorn AST → iterative tree traversal → 
 folding / member-call recognition → JSON findings with locations and hash.
 
 The scanner accepts JavaScript module syntax, falling back to script syntax. It
-recognises `navigator.clipboard.writeText(...)` and
-`event.clipboardData.setData(...)`, including literal computed names and optional
-member access. Receiver names are syntactic: an object named `clipboard` might
-be unrelated to a browser. A finding does not prove command execution, clipboard
-deception or malicious intent.
+recognises clipboard writes through `navigator.clipboard.writeText(...)`-shaped
+and `event.clipboardData.setData(...)`-shaped calls, including literal computed
+names and optional member access. It also searches folded string literals for
+specific markers from the clipboard lure, Windows collection branches, COM
+elevation builder, stage-three configuration and Overlord agent. Receiver names
+are syntactic: an object named `clipboard` might be unrelated to a browser. A
+finding does not prove command execution, clipboard deception or malicious intent.
 
 Only string literals, interpolation-free template literals and string-literal
 addition are folded. Variables, getters, calls and mixed-type coercion are not
