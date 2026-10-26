@@ -6,7 +6,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 export const MAX_BYTES = 8 * 1024 * 1024;
-const MARKERS = /OVERLORD_COMPANY_WALLET_EP|OVERLORD_SERVER_RAW|OVERLORD_KEEP_AGENT_STATE|X-Company-Wallet-Client-Id|\/api\/company-wallet\/upload|GoogleUpdateSupporterNode|GUS_UPLOAD_CHUNK_SIZE|DEFAULT_PHASE3_MAX_MS|WIN_NODE_AGENT_BUNDLE_B64|DEFAULT_WALK_MAX_DIRS|ELECTRON_RUN_AS_NODE|--company-wallet-phase1-local|--company-wallet-job|--win-build-ep-only|cmdline_copied|3E5FC7F9-9A51-4367-9063-A120244FBEC7|gus-phase2-|sa-elev-done-|app_bound_encrypted_key/g;
+const MARKERS = /OVERLORD_COMPANY_WALLET_EP|OVERLORD_SERVER_RAW|OVERLORD_KEEP_AGENT_STATE|X-Company-Wallet-Client-Id|\/api\/company-wallet\/upload|GoogleUpdateSupporterNode|GUS_UPLOAD_CHUNK_SIZE|DEFAULT_PHASE3_MAX_MS|DEFAULT_PHASE3_ROOT_MAX_MS|WIN_NODE_AGENT_BUNDLE_B64|DEFAULT_WALK_MAX_DIRS|CREDENTIAL_NAME_RE|macTccReadableCache|CloudStorage|ELECTRON_RUN_AS_NODE|--company-wallet-phase1-local|--company-wallet-job|--win-build-ep-only|cmdline_copied|perl -MPOSIX|POSIX::setsid|curl -ks|start -WindowStyle Hidden cmd|VERIFY-|IElevator|detect_malware\.py|3E5FC7F9-9A51-4367-9063-A120244FBEC7|gus-phase2-|sa-elev-done-|app_bound_encrypted_key/g;
 
 // Only literal syntax is folded. No variable resolution, calls or coercion.
 export function literalString(node, depth = 0) {

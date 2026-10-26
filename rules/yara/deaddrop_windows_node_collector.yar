@@ -19,5 +19,5 @@ rule UNK_DeadDrop_Windows_Node_Collector_Source_Experimental
     condition:
         filesize < 1MB and $phase1 and $phase2 and
         1 of ($login_data, $local_extension_data) and
-        1 of ($phase*_archive)
+        1 of ($phase1_archive, $phase2_archive)
 }

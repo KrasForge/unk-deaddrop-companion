@@ -12,10 +12,11 @@ The scanner accepts JavaScript module syntax, falling back to script syntax. It
 recognises clipboard writes through `navigator.clipboard.writeText(...)`-shaped
 and `event.clipboardData.setData(...)`-shaped calls, including literal computed
 names and optional member access. It also searches folded string literals for
-specific markers from the clipboard lure, Windows collection branches, COM
-elevation builder, stage-three configuration and Overlord agent. Receiver names
-are syntactic: an object named `clipboard` might be unrelated to a browser. A
-finding does not prove command execution, clipboard deception or malicious intent.
+specific markers from the clipboard lure, phase-three home sweep, browser
+App-Bound decryption path, Windows collection branches, COM elevation builder,
+and Overlord agent. Receiver names are syntactic: an object named `clipboard`
+might be unrelated to a browser. A finding does not prove command execution,
+clipboard deception or malicious intent.
 
 Only string literals, interpolation-free template literals and string-literal
 addition are folded. Variables, getters, calls and mixed-type coercion are not
@@ -27,11 +28,3 @@ The CLI limits input to 8 MiB, validates a regular file, hashes original bytes,
 and rejects malformed UTF-8. Parsing is in-process and can still consume substantial
 CPU/memory on adversarial syntax; use OS resource controls and isolation for
 untrusted samples. No input is imported, installed, fetched or executed.
-
-Exit codes: 0 for a completed scan (including findings), 2 for usage, read,
-encoding or parse errors. Locations use one-based lines and columns; columns
-follow JavaScript UTF-16 offsets. Hashes from the exported `inspect(string)`
-function cover the UTF-8 encoding of that string. The CLI hashes original bytes.
-
-Tests cover computed calls, optional access, source locations, syntax errors,
-non-execution, known blind spots, oversized inputs and benign lookalikes.
