@@ -16,6 +16,6 @@ rule UNK_DeadDrop_ClickFix_Lure_Source_Experimental
         $clipboard_set = "setData" ascii
         $clipboard_write = "writeText" ascii
     condition:
-        filesize < 2MB and all of ($telemetry, $mime, $verify) and
+        filesize > 16KB and filesize < 2MB and all of ($telemetry, $mime, $verify) and
         1 of ($clipboard_*)
 }

@@ -8,7 +8,7 @@ rule UNK_DeadDrop_VSIX_Manifest_Experimental
         reference = "https://krasforge.github.io/UNK_DeadDrop/articles/02-vsix-editor-execution/"
         source_note = "docs/detection-notes.md"
         status = "experimental"
-        scope = "extracted VSIX members; does not decompress archives"
+        scope = "small extracted VSIX manifest members; does not decompress archives"
     strings:
         $identity1 = "google-update-support" ascii
         $identity2 = "google-dev-tools" ascii
@@ -18,5 +18,5 @@ rule UNK_DeadDrop_VSIX_Manifest_Experimental
         $config3 = "googleUpdateSupport.companyWalletAgentToken" ascii
         $config4 = "googleUpdateSupport.windowsActivationMode" ascii
     condition:
-        filesize < 512KB and all of ($identity*) and 2 of ($config*)
+        filesize < 4KB and all of ($identity*) and 2 of ($config*)
 }

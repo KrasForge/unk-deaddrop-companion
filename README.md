@@ -10,7 +10,8 @@ The defensive purpose is to inspect JavaScript without executing it and to exerc
 
 | Path | Purpose |
 | --- | --- |
-| `rules/yara/` | Seventeen experimental file-content rules, each matched against at least one retained investigation artifact |
+| `rules/yara/` | 33 experimental file-content rules in 28 files, each matched against at least one retained investigation artifact |
+| `tools/replay_yara.py` | Read-only replay over selected files and supported archive members, without extracting or executing content |
 | `src/inspect-js.mjs` | Acorn-based, parse-only JavaScript AST scanner |
 | `test/` and `tests/` | Inert JavaScript buffers and YARA boundary fixtures |
 | `docs/` | Scanner design, rule conditions, limitations, evidence coverage, and actual-artifact and benign-corpus validation results |
@@ -38,9 +39,14 @@ Requires Python 3.11 or later.
 python -m venv .venv
 .venv/bin/pip install -r requirements-dev.txt
 .venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python tools/replay_yara.py --root /path/to/case /path/to/case/selected-artifacts
 ```
 
-All seventeen retained YARA rules compile, pass inert positive and near-miss fixtures, and matched at least one retained investigation artifact in a read-only scan. A separate local baseline scan of 1,914 standard-library and installed-package files produced no YARA hits. The wallet-agent rule now requires ELF magic at byte zero; its marker-rich prose boundary fixture stays negative. These checks do not provide production precision or recall estimates. See the [validation report](docs/actual-artifact-validation.md) for corpus scope and limitations. Authentic endpoint event logs are not available, so this repository contains no Sigma rules. Review the [detection notes](docs/detection-notes.md) and [evidence coverage map](docs/coverage-map.md) for match conditions, boundaries, and exclusions before use.
+The replay command prints aggregate counts as JSON and includes skipped-object
+labels when a limit is reached. `--details` adds labels for matched objects.
+Keep output local when those paths are sensitive.
+
+All 33 YARA rules compile, and every rule matched at least one retained investigation artifact in a read-only replay. The content rules also have inert positive and near-miss fixtures; exact-hash positives are verified against retained files, not synthetic samples. The replay covered 192 selected files and 395 raw or archive-member views; it read ZIP, VSIX, TAR, gzip and nested ZIP content in memory. Five RAR containers were not decoded: four ECHOES archives require passwords, and the sealed environment archive was excluded from member inspection. Four ECHOES archive hashes matched exactly. Of 192 inputs, 90 had at least one hit and 102 had none; many unmatched files are generic interface assets or research context with no reliable content signature. A separate archive-aware baseline scan of 1,914 standard-library and installed-package files produced no hits. The wallet-agent rule requires ELF magic at byte zero; its marker-rich prose boundary fixture stays negative. Exact-hash rules identify only listed bytes. These checks do not provide production precision or recall estimates. See the [validation report](docs/actual-artifact-validation.md) for corpus scope and limitations. Authentic endpoint event logs are not available, so this repository contains no Sigma rules. Review the [detection notes](docs/detection-notes.md) and [evidence coverage map](docs/coverage-map.md) for match conditions, boundaries, and exclusions before use.
 
 ## Scope and license
 

