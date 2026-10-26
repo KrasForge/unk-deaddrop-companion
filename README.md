@@ -15,6 +15,7 @@ The defensive purpose is to inspect JavaScript without executing it and to exerc
 | `src/inspect-js.mjs` | Acorn-based, parse-only AST scanner |
 | `test/` and `tests/` | Inert JavaScript buffers and boundary/event fixtures |
 | `docs/` | Scanner design, detection conditions, telemetry needs and limitations |
+| `CITATION.cff` | Citation metadata for the software and its related preprint |
 
 This public repository contains zero live malware payloads or active credentials. It also excludes victim data, private case records, and raw investigation databases. The tests use synthetic inert fixtures.
 
