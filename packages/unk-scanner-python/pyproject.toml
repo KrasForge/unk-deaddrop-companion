@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unk-scanner"
+version = "0.1.0"
+description = "Python CLI and API for static UNK_DeadDrop JavaScript triage (requires Node.js 22+)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Ilja Krasnjanski"}]
+keywords = ["security", "static-analysis", "javascript", "unk-deaddrop"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Topic :: Security",
+]
+
+[project.urls]
+Homepage = "https://krasforge.github.io/UNK_DeadDrop/"
+Repository = "https://github.com/KrasForge/unk-deaddrop-companion"
+Research = "https://doi.org/10.5281/zenodo.23652298"
+
+[project.scripts]
+unk-scanner = "unk_scanner:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+unk_scanner = ["_engine/**/*"]

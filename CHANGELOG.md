@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased
+
+- Add separate exact-source identity records for the retained login interface, shared module-preload polyfill, and obfuscated extension. Keep contextual identity out of behavioral findings.
+
+- Recognize the retained AES-GCM loader structure through linked top-level const bindings, with five source evidence locations and no decryption or execution.
+
+- Bound CLI parsing with a worker deadline and heap limits; reject excessive findings without a partial report.
+- Support explicit bounded gzip decoding with original and decoded hashes. Preserve BOM columns and reject named pipes without blocking.
+- Recognize specific marker identifiers and parenthesized optional clipboard owners. Add packed-install tests and a Node 22/24 Linux, Windows, and macOS CI matrix.
+
+- Package the existing static scanner as npm and Python CLI/API distributions named `unk-scanner` 0.1.0. The Python distribution bundles the JavaScript engine and Acorn 8.17.0 with their licenses.
+- Preserve the original scanner entry point and findings schema. Keep registry publication pending.
+
 ## 2.0.0 - 2026-10-27
 
 This release replaces the initial mixed prototype with detections validated against retained case artifacts.

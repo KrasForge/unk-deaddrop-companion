@@ -9,9 +9,10 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "test:package": "node scripts/verify-package.mjs"
   },
-  "dependencies": {
-    "acorn": "8.17.0"
-  }
+  "workspaces": [
+    "packages/unk-scanner"
+  ]
 }

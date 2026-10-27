@@ -14,7 +14,7 @@ The defensive purpose is to inspect JavaScript without executing it and to exerc
 | --- | --- |
 | `rules/yara/` | 33 experimental file-content rules in 28 files, each matched against at least one retained investigation artifact |
 | `tools/replay_yara.py` | Read-only replay over selected files and supported archive members, without extracting or executing content |
-| `src/inspect-js.mjs` | Acorn-based, parse-only JavaScript AST scanner |
+| `packages/unk-scanner/` and `packages/unk-scanner-python/` | npm and Python CLI/API packages; Python bundles the JavaScript engine and Acorn with their licenses |
 | `test/` and `tests/` | Inert JavaScript buffers and YARA boundary fixtures |
 | `docs/` | Scanner design, rule conditions, limitations, evidence coverage, and actual-artifact and benign-corpus validation results |
 | `CITATION.cff` | Citation metadata for the software and its related preprint |
@@ -23,7 +23,7 @@ This public repository contains zero live malware payloads or active credentials
 
 ## Use the scanner
 
-Requires Node.js 22 or later.
+Requires Node.js 22 or later. The `unk-scanner` 0.1.0 npm and Python distributions are prepared locally; registry publication is pending. Python also requires Python 3.10 or later. See the [npm package README](packages/unk-scanner/README.md) and [Python package README](packages/unk-scanner-python/README.md) for installation, JSON output, exit codes, and limitations.
 
 ```sh
 npm ci --ignore-scripts
@@ -32,6 +32,8 @@ node src/inspect-js.mjs /path/to/held/source.js > analysis-output.json
 ```
 
 The scanner is local and static: it does not execute, import, fetch nor install project content. Its output can include literal strings from the input. Handle it with the same care as the source file. The 8 MiB source limit and parse-only behavior do not make an untrusted file safe to process; use isolation and operating-system resource limits.
+
+See the [scanner validation](docs/scanner-validation.md) for actual-artifact results, benign clipboard findings, and known coverage gaps.
 
 ## Review the detection content
 

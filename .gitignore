@@ -4,3 +4,9 @@ __pycache__/
 *.pyc
 *.log
 analysis-output/
+*.tgz
+.venv-python-release/
+dist/
+build/
+*.egg-info/
+packages/unk-scanner-python/src/unk_scanner/_engine/
