@@ -1,0 +1,36 @@
+{
+  "name": "unk-scanner",
+  "version": "0.1.0",
+  "description": "Static JavaScript triage for UNK_DeadDrop campaign markers and clipboard writes",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "unk-scanner": "bin/unk-scanner.mjs"
+  },
+  "exports": "./src/inspect.mjs",
+  "files": [
+    "bin/",
+    "src/",
+    "LICENSE",
+    "README.md"
+  ],
+  "dependencies": {
+    "acorn": "8.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrasForge/unk-deaddrop-companion.git",
+    "directory": "packages/unk-scanner"
+  },
+  "homepage": "https://krasforge.github.io/UNK_DeadDrop/",
+  "keywords": [
+    "security",
+    "static-analysis",
+    "javascript",
+    "acorn",
+    "unk-deaddrop"
+  ]
+}

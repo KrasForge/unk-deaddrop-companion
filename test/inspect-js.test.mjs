@@ -33,3 +33,9 @@ test('module and script syntax supported; malformed syntax rejected', () => {
 test('oversized input rejected before parsing', () => {
   assert.throws(() => inspect(' '.repeat(MAX_BYTES + 1)), /limit/);
 });
+
+test('parenthesized optional clipboard owner retains the syntactic write', () => {
+  const result = inspect('(navigator?.clipboard).writeText("example");');
+  assert.equal(result.findings[0].kind, 'clipboard-write');
+  assert.equal(result.findings[0].detail, 'example');
+});
