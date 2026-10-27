@@ -8,7 +8,7 @@ authors:
     affiliation: Independent researcher
     orcid: "https://orcid.org/0009-0007-1039-5930"
 version: 2.0.0
-date-released: 2026-10-26
+date-released: 2026-10-27
 license: MIT
 repository-code: "https://github.com/KrasForge/unk-deaddrop-companion"
 abstract: "Parse-only JavaScript AST scanning and 33 experimental YARA rules in 28 files for defensive analysis of developer-targeting lures. Every rule matched retained case artifacts in a read-only replay; a small local software baseline produced no hits. Sigma event rules are omitted because authentic endpoint logs were unavailable for replay. Includes inert boundary tests and documents operational limits."

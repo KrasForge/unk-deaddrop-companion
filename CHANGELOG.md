@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0 - 2026-10-26
+## 2.0.0 - 2026-10-27
 
 This release replaces the initial mixed prototype with detections validated against retained case artifacts.
 
