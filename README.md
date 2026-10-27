@@ -1,8 +1,10 @@
 # UNK_DeadDrop Companion
 
-Parse-only JavaScript AST scanning and experimental YARA detections for defensive analysis of developer-targeting lures. The investigation discusses behaviors reported in the wider Contagious Interview cluster tracked by MITRE ATT&CK as [G1052](https://attack.mitre.org/groups/G1052/). Similarities do not establish that UNK_DeadDrop and G1052 share an operator or identity.
+Parse-only JavaScript AST scanning and 33 experimental YARA detections for defensive analysis of developer-targeting lures. The investigation discusses behaviors reported in the wider Contagious Interview cluster tracked by MITRE ATT&CK as [G1052](https://attack.mitre.org/groups/G1052/). Similarities do not establish that UNK_DeadDrop and G1052 share an operator or identity.
 
-Start with the [twelve-part research series](https://krasforge.github.io/UNK_DeadDrop/) and its [preprint PDF](https://krasforge.github.io/UNK_DeadDrop/downloads/UNK_DeadDrop-Preprint.pdf). The preprint is published on Zenodo under CC BY 4.0: [version 1.0 DOI](https://doi.org/10.5281/zenodo.23652298) · [latest-version DOI](https://doi.org/10.5281/zenodo.23652297).
+Start with the [twelve-part research series](https://krasforge.github.io/UNK_DeadDrop/) and its [preprint PDF](https://krasforge.github.io/UNK_DeadDrop/downloads/UNK_DeadDrop-Preprint.pdf). Version 1.2 of the preprint is published on Zenodo under CC BY 4.0: [version DOI](https://doi.org/10.5281/zenodo.23696198) · [concept DOI](https://doi.org/10.5281/zenodo.23652297).
+
+The v1.2 paper also reports later local YARA refinements and a separate `unk-scanner` 0.1.0 evaluation. Those changes are not included in this repository's 2.0.0 release.
 
 The defensive purpose is to inspect JavaScript without executing it and to exercise detection logic against inert fixtures. A finding is a lead for review, not a verdict.
 
