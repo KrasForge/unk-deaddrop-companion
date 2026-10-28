@@ -6,8 +6,6 @@ Requires Python 3.10+ and **Node.js 22+ on PATH**. The wheel bundles the same Ja
 
 ## Installation and usage
 
-Once published:
-
 ```sh
 pip install unk-scanner
 python -m unk_scanner suspect.js > findings.json
