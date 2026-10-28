@@ -4,7 +4,7 @@ Parse-only JavaScript AST scanning and 33 experimental YARA detections for defen
 
 Start with the [twelve-part research series](https://krasforge.github.io/UNK_DeadDrop/) and its [preprint PDF](https://krasforge.github.io/UNK_DeadDrop/downloads/UNK_DeadDrop-Preprint.pdf). The preprint is published on Zenodo under CC BY 4.0: [record DOI](https://doi.org/10.5281/zenodo.23696198) · [concept DOI](https://doi.org/10.5281/zenodo.23652297).
 
-The paper also reports later local YARA refinements and a separate `unk-scanner` 0.1.0 evaluation. Those changes are not included in this repository's 2.0.0 release.
+The paper also reports later local YARA refinements and a separate `unk-scanner` evaluation. Those changes are not included in this repository's 2.0.0 release.
 
 The defensive purpose is to inspect JavaScript without executing it and to exercise detection logic against inert fixtures. A finding is a lead for review, not a verdict.
 
@@ -23,7 +23,7 @@ This public repository contains zero live malware payloads or active credentials
 
 ## Use the scanner
 
-The Python `unk-scanner` 0.1.0 distribution is available on [PyPI](https://pypi.org/project/unk-scanner/0.1.0/) and requires Python 3.10+ and Node.js 22+. The npm distribution is prepared locally; its registry publication is pending npm two-factor authentication. See the [npm package README](packages/unk-scanner/README.md) and [Python package README](packages/unk-scanner-python/README.md) for installation, JSON output, exit codes, and limitations.
+The Python `unk-scanner` 0.1.1 distribution is available on [PyPI](https://pypi.org/project/unk-scanner/0.1.1/), and the Node.js `unk-scanner` 0.1.0 distribution is available on [npm](https://www.npmjs.com/package/unk-scanner). Python requires 3.10+ and Node.js 22+; the npm package requires Node.js 22+. See the [npm package README](packages/unk-scanner/README.md) and [Python package README](packages/unk-scanner-python/README.md) for installation, JSON output, exit codes, and limitations.
 
 Install the published Python package with:
 

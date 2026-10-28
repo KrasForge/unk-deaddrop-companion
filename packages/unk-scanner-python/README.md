@@ -34,4 +34,4 @@ Input and decompressed sizes are limited to 8 MiB. Parsing uses a worker with a 
 
 The CLI returns 0 for completed analysis, including findings, and 2 for errors. The Python API raises `ScannerError` when analysis fails.
 
-Original code is MIT licensed. Bundled Acorn includes its MIT license. No malware samples or active credentials are distributed. See the [companion repository](https://github.com/KrasForge/unk-deaddrop-companion) and [preprint](https://doi.org/10.5281/zenodo.23652298).
+Original code is MIT licensed. Bundled Acorn includes its MIT license. No malware samples or active credentials are distributed. See the [companion repository](https://github.com/KrasForge/unk-deaddrop-companion) and [preprint](https://doi.org/10.5281/zenodo.23652297).
