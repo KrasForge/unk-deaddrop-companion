@@ -4,10 +4,10 @@ Local, static JavaScript triage based on the [UNK_DeadDrop investigation](https:
 
 ## Install and run
 
-Requires Node.js 22 or later. Install version 0.1.0 from npm:
+Requires Node.js 22 or later. Install version 0.1.1 from npm:
 
 ```sh
-npm install --global unk-scanner@0.1.0 --ignore-scripts
+npm install --global unk-scanner@0.1.1 --ignore-scripts
 unk-scanner suspect.js > findings.json
 unk-scanner --help
 unk-scanner --version
