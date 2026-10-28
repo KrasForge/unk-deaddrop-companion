@@ -11,7 +11,7 @@
 - Recognize specific marker identifiers and parenthesized optional clipboard owners. Add packed-install tests and a Node 22/24 Linux, Windows, and macOS CI matrix.
 
 - Package the existing static scanner as npm and Python CLI/API distributions named `unk-scanner` 0.1.0. The Python distribution bundles the JavaScript engine and Acorn 8.17.0 with their licenses.
-- Preserve the original scanner entry point and findings schema. Keep registry publication pending.
+- Preserve the original scanner entry point and findings schema. The Python distribution is published on PyPI; npm publication remains pending a write-time one-time password.
 
 ## 2.0.0 - 2026-10-27
 
