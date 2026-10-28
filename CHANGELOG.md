@@ -2,17 +2,16 @@
 
 ## Unreleased
 
+## 2.1.0 - 2026-10-28
+
+This release adds installable scanner packages and records the current tool and detection scope.
+
+- Publish `unk-scanner` 0.1.0 on npm and 0.1.1 on PyPI. The Python package bundles the JavaScript engine and Acorn 8.17.0 with their licenses.
+- Add bounded worker parsing, heap and finding limits, explicit bounded gzip decoding, preserved BOM columns, and nonblocking rejection of named pipes.
+- Recognize retained AES-GCM loader structure through linked top-level bindings without decrypting or executing the source.
 - Add separate exact-source identity records for the retained login interface, shared module-preload polyfill, and obfuscated extension. Keep contextual identity out of behavioral findings.
-
-- Recognize the retained AES-GCM loader structure through linked top-level const bindings, with five source evidence locations and no decryption or execution.
-
-- Bound CLI parsing with a worker deadline and heap limits; reject excessive findings without a partial report.
-- Support explicit bounded gzip decoding with original and decoded hashes. Preserve BOM columns and reject named pipes without blocking.
-- Recognize specific marker identifiers and parenthesized optional clipboard owners. Add packed-install tests and a Node 22/24 Linux, Windows, and macOS CI matrix.
-
-- Package the existing static scanner as npm and Python CLI/API distributions named `unk-scanner` 0.1.0. The Python distribution bundles the JavaScript engine and Acorn 8.17.0 with their licenses.
-- Publish the npm `unk-scanner` 0.1.0 package and document registry installation.
-- Publish Python `unk-scanner` 0.1.1 with the Research URL corrected to the current Zenodo concept DOI, `10.5281/zenodo.23652297`.
+- Add marker-identifier and parenthesized optional clipboard-owner recognition, packed-install checks, and a Node 22/24 Linux, Windows, and macOS CI matrix.
+- Retain 33 experimental YARA rules in 28 files, replayed against retained investigation artifacts. Keep the scope and limitations documented; no Sigma event rules are included because authentic endpoint logs were unavailable for replay.
 
 ## 2.0.0 - 2026-10-27
 
