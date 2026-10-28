@@ -4,7 +4,7 @@ Parse-only JavaScript AST scanning and 33 experimental YARA detections for defen
 
 Start with the [twelve-part research series](https://krasforge.github.io/UNK_DeadDrop/) and its [preprint PDF](https://krasforge.github.io/UNK_DeadDrop/downloads/UNK_DeadDrop-Preprint.pdf). The preprint is published on Zenodo under CC BY 4.0: [record DOI](https://doi.org/10.5281/zenodo.23696198) · [concept DOI](https://doi.org/10.5281/zenodo.23652297).
 
-The paper also reports later local YARA refinements and a separate `unk-scanner` evaluation. Those changes are not included in this repository's 2.0.0 release.
+This repository is the versioned source for the experimental YARA suite and the parse-only scanner. The scanner's package versions, evaluation scope, and known limits are documented below. Findings and infrastructure status remain bounded by the investigation evidence and dates described in the preprint.
 
 The defensive purpose is to inspect JavaScript without executing it and to exercise detection logic against inert fixtures. A finding is a lead for review, not a verdict.
 
@@ -17,7 +17,7 @@ The defensive purpose is to inspect JavaScript without executing it and to exerc
 | `packages/unk-scanner/` and `packages/unk-scanner-python/` | npm and Python CLI/API packages; Python bundles the JavaScript engine and Acorn with their licenses |
 | `test/` and `tests/` | Inert JavaScript buffers and YARA boundary fixtures |
 | `docs/` | Scanner design, rule conditions, limitations, evidence coverage, and actual-artifact and benign-corpus validation results |
-| `CITATION.cff` | Citation metadata for the software and its related preprint |
+| `CITATION.cff` and `.zenodo.json` | Citation and archive metadata for the software and its related preprint |
 
 This public repository contains zero live malware payloads or active credentials. It also excludes victim data, private case records, and raw investigation databases. The tests use synthetic inert fixtures.
 
