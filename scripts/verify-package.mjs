@@ -1,10 +1,11 @@
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import assert from 'node:assert/strict';
 
 const temp = mkdtempSync(join(tmpdir(), 'unk-package-'));
+const packageVersion = JSON.parse(readFileSync(new URL('../packages/unk-scanner/package.json', import.meta.url), 'utf8')).version;
 // npm supplies its CLI path on all platforms; avoid a Windows shell command.
 const npm = (...args) => execFileSync(process.execPath, [process.env.npm_execpath, ...args], {
   encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'],
@@ -17,7 +18,7 @@ try {
   ]);
   npm('install', '--prefix', temp, '--ignore-scripts', '--no-audit', '--no-fund', join(temp, pack.filename));
   const bin = resolve(temp, 'node_modules/unk-scanner/bin/unk-scanner.mjs');
-  assert.equal(execFileSync(process.execPath, [bin, '--version'], { encoding: 'utf8' }).trim(), '0.1.0');
+  assert.equal(execFileSync(process.execPath, [bin, '--version'], { encoding: 'utf8' }).trim(), packageVersion);
   const sample = join(temp, 'fixture.js');
   writeFileSync(sample, 'navigator.clipboard.writeText("inert"); (navigator?.clipboard).writeText("inert"); throw new Error("must not execute");');
   const output = JSON.parse(execFileSync(process.execPath, [bin, sample], { encoding: 'utf8' }));

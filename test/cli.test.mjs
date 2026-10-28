@@ -1,18 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 const bin = fileURLToPath(new URL('../packages/unk-scanner/bin/unk-scanner.mjs', import.meta.url));
 const legacy = fileURLToPath(new URL('../src/inspect-js.mjs', import.meta.url));
+const packageVersion = JSON.parse(readFileSync(new URL('../packages/unk-scanner/package.json', import.meta.url), 'utf8')).version;
 const run = (args, entry = bin) => spawnSync(process.execPath, [entry, ...args], { encoding: 'utf8', timeout: 10000 });
 
 test('CLI help, version and argument errors', () => {
   assert.match(run(['--help']).stdout, /Usage: unk-scanner/);
-  assert.equal(run(['--version']).stdout, '0.1.0\n');
+  assert.equal(run(['--version']).stdout, `${packageVersion}\n`);
   for (const args of [[], ['--unknown'], ['a', 'b'], ['--']]) {
     const result = run(args);
     assert.equal(result.status, 2);

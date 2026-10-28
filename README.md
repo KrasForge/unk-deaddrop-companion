@@ -23,7 +23,7 @@ This public repository contains zero live malware payloads or active credentials
 
 ## Use the scanner
 
-The Python `unk-scanner` 0.1.1 distribution is available on [PyPI](https://pypi.org/project/unk-scanner/0.1.1/), and the Node.js `unk-scanner` 0.1.0 distribution is available on [npm](https://www.npmjs.com/package/unk-scanner). Python requires 3.10+ and Node.js 22+; the npm package requires Node.js 22+. See the [npm package README](packages/unk-scanner/README.md) and [Python package README](packages/unk-scanner-python/README.md) for installation, JSON output, exit codes, and limitations.
+The Python `unk-scanner` 0.1.1 distribution is available on [PyPI](https://pypi.org/project/unk-scanner/0.1.1/), and the Node.js `unk-scanner` 0.1.1 distribution is available on [npm](https://www.npmjs.com/package/unk-scanner). Python requires 3.10+ and Node.js 22+; the npm package requires Node.js 22+. See the [npm package README](packages/unk-scanner/README.md) and [Python package README](packages/unk-scanner-python/README.md) for installation, JSON output, exit codes, and limitations.
 
 Install the published Python package with:
 

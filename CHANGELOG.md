@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Prepare npm `unk-scanner` 0.1.1 with the corrected registry installation instructions in the packaged README.
+
 ## 2.1.0 - 2026-10-28
 
 This release adds installable scanner packages and records the current tool and detection scope.
