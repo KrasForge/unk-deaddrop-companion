@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased: scanner 0.2.0
+## Scanner 0.2.0 - 2026-10-29
 
-Scanner 0.2.0 (JSON schema version 2). Not yet published to npm or PyPI.
+Scanner 0.2.0 (JSON schema version 2), published on [npm](https://www.npmjs.com/package/unk-scanner/v/0.2.0) and [PyPI](https://pypi.org/project/unk-scanner/0.2.0/). Fresh installs from both registries report 0.2.0, and the registry artifacts match the reviewed local builds (npm shasum `ad805cfd8f615cdceb20744c2599245a1733df02`; PyPI wheel and sdist SHA-256 identical to `dist/python-0.2.0`).
 
 - **String arrays:** recover obfuscator.io-style string arrays statically. The scanner identifies plain, base64 and RC4 decoders and their offsets, and reimplements the decoding. It solves the rotation from the obfuscator's own checksum loop, including several decoders sharing one array, and otherwise uses guarded printable consensus. Recovered strings feed every rule. Nothing from the input is executed.
 - **Pure evaluator:** add a pure partial evaluator for constants, literal objects, string operations and single-return helpers, with step and depth caps.

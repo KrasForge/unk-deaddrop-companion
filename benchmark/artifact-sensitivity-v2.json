@@ -1,5 +1,5 @@
 {
-  "scanner": "unk-scanner 0.2.0 (unreleased)",
+  "scanner": "unk-scanner 0.2.0",
   "date": "2026-10-29",
   "note": "Static analysis of retained investigation artifacts in isolated processes; nothing was executed. Paths omitted.",
   "files": [
