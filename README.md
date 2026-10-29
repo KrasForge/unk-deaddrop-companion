@@ -16,6 +16,7 @@ The defensive purpose is to inspect JavaScript without executing it and to exerc
 | `tools/replay_yara.py` | Read-only replay over selected files and supported archive members, without extracting or executing content |
 | `packages/unk-scanner/` and `packages/unk-scanner-python/` | npm and Python CLI/API packages; Python bundles the JavaScript engine and Acorn with their licenses |
 | `test/` and `tests/` | Inert JavaScript buffers, a generated obfuscation fixture, isolation probes and YARA boundary fixtures |
+| `examples/arsenal/` | Inert demonstration inputs for the scanner |
 | `benchmark/` | Corpus acquisition, benchmark harness and review data (source code of the corpus is not redistributed) |
 | `docs/` | Scanner design, rule reference, CI integration, limitations, evidence coverage, and validation results |
 | `CITATION.cff` and `.zenodo.json` | Citation and archive metadata for the software and its related preprint |
@@ -24,7 +25,7 @@ This public repository contains zero live malware payloads or active credentials
 
 ## Use the scanner
 
-`unk-scanner` 0.2.0 is published on [npm](https://www.npmjs.com/package/unk-scanner) and [PyPI](https://pypi.org/project/unk-scanner/0.2.0/) (`npm install -g unk-scanner --ignore-scripts` or `python -m pip install unk-scanner`; both need Node.js 22+). It recovers obfuscator.io string arrays and reports ClickFix clipboard command substitution and Electron `ELECTRON_RUN_AS_NODE` launches with context-dependent severity. It also writes SARIF for code scanning and parses each file in an isolated process. See the [npm package README](packages/unk-scanner/README.md), the [rule reference](docs/rules.md), the [CI guide](docs/ci.md) and the [design notes](docs/tool-design.md).
+`unk-scanner` 0.2.0 is published on [npm](https://www.npmjs.com/package/unk-scanner) and [PyPI](https://pypi.org/project/unk-scanner/0.2.0/) (`npm install -g unk-scanner --ignore-scripts` or `python -m pip install unk-scanner`; both need Node.js 22+). It recovers obfuscator.io string arrays and reports ClickFix clipboard command substitution and Electron `ELECTRON_RUN_AS_NODE` launches with context-dependent severity. It also writes SARIF for code scanning and parses each file in an isolated process. Start with the [user guide](docs/unk-scanner.md); see also the [npm package README](packages/unk-scanner/README.md), the [rule reference](docs/rules.md), the [CI guide](docs/ci.md) and the [design notes](docs/tool-design.md).
 
 From a checkout:
 
