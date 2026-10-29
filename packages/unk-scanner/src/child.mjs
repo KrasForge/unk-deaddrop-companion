@@ -21,7 +21,7 @@ process.stdin.on('data', chunk => {
     let request;
     try {
       request = JSON.parse(line);
-      const result = inspect(request.source, { rules });
+      const result = inspect(request.source, { rules, filename: request.filename });
       process.stdout.write(JSON.stringify({ id: request.id, result }) + '\n');
     } catch (error) {
       process.stdout.write(JSON.stringify({

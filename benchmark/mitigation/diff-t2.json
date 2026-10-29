@@ -1,0 +1,76 @@
+{
+ "files": 2403437,
+ "changes": {
+  "up": 3
+ },
+ "addedAlerts": {
+  "clickfix-clipboard-command:warning": 1,
+  "string-array-obfuscation:warning": 2
+ },
+ "packagesRaisedTo": {
+  "warning": 2
+ },
+ "samples": [
+  {
+   "direction": "up",
+   "package": "@sinatechs/9router",
+   "member": "package/app/.next-cli-build/server/chunks/9860.js",
+   "sha256": "af4d636887e19ba06b69c9d098af568c5ae236927c05621f26330109db24be4f",
+   "before": [],
+   "after": [
+    [
+     "clickfix-clipboard-command",
+     "warning"
+    ]
+   ],
+   "details": [
+    "clickfix-clipboard-command:warning:15: pipe-to-shell, download-cradle (text passed by callers): curl -fsSL https://raw.githubusercontent.com/1jehuang/jcode/master/scripts/install.sh | bash"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "@lingjingai/scriptctl",
+   "member": "package/dist/chunk-T7IEGJGQ.js",
+   "sha256": "e7fa70243e2ecf2e2e1d426a735a4f9b1e5c86eb6001641ad8c514c89a515d61",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:245: string array Hp resolved: 113/113 call sites decoded (base64, offset 0, rotation 0 by unrotated)",
+    "string-array-obfuscation:warning:245: string array Fp (7 entries, base64 decoder): rotation not recovered; 7 call sites unresolved",
+    "string-array-obfuscation:warning:247: string array Zp (7 entries, base64 decoder): rotation not recovered; 7 call sites unresolved",
+    "string-array-obfuscation:warning:250: string array Xp resolved: 173/173 call sites decoded (base64, offset 0, rotation 0 by unrotated)",
+    "string-array-obfuscation:warning:253: string array tl (34 entries, base64 decoder): rotation not recovered; 41 call sites unresolved",
+    "string-array-obfuscation:warning:260: string array sl resolved: 179/179 call sites decoded (base64, offset 0, rotation 0 by unrotated)",
+    "string-array-obfuscation:warning:269: string array yl resolved: 65/65 call sites decoded (base64, offset 0, rotation 0 by unrotated)",
+    "string-array-obfuscation:warning:312: string array Rl resolved: 330/331 call sites decoded (base64, offset 0, rotation 0 by unrotated)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "@lingjingai/scriptctl",
+   "member": "package/dist/review-agent.js",
+   "sha256": "e72b9506587375024ff27562eb90a5703f544b24fed96eccebe29457907f9444",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:87: string array Nc (30 entries, base64 decoder): rotation not recovered; 31 call sites unresolved",
+    "string-array-obfuscation:warning:87: string array Rc (6 entries, base64 decoder): rotation not recovered; 6 call sites unresolved",
+    "string-array-obfuscation:warning:89: string array xc (70 entries, base64 decoder): rotation not recovered; 141 call sites unresolved",
+    "string-array-obfuscation:warning:352: string array nl (11 entries, base64 decoder): rotation not recovered; 12 call sites unresolved",
+    "string-array-obfuscation:warning:360: string array ll (20 entries, base64 decoder): rotation not recovered; 22 call sites unresolved",
+    "string-array-obfuscation:warning:366: string array ul (27 entries, base64 decoder): rotation not recovered; 39 call sites unresolved",
+    "string-array-obfuscation:warning:498: string array _l (176 entries, base64 decoder): rotation not recovered; 275 call sites unresolved"
+   ]
+  }
+ ]
+}

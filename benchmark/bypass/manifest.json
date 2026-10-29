@@ -1,0 +1,4 @@
+{
+ "note": "Inert bypass variants of the Arsenal fixtures and the loader test fixture. *0-baseline is the unmodified technique; each other file changes one thing.",
+ "techniques": {"c": "clickfix-clipboard-command", "e": "electron-run-as-node", "s": "string-array-obfuscation", "l": "encrypted-loader"}
+}

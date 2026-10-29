@@ -1,6 +1,6 @@
 # unk-scanner
 
-Static JavaScript triage from the [UNK_DeadDrop investigation](https://krasforge.github.io/UNK_DeadDrop/). It finds ClickFix clipboard command substitution, Electron `ELECTRON_RUN_AS_NODE` launches, obfuscator.io string arrays (and recovers their strings), encrypted `_compile` loaders and campaign markers. Input is parsed and partially evaluated in isolated processes and never executed.
+Static JavaScript triage from the [UNK_DeadDrop investigation](https://krasforge.github.io/UNK_DeadDrop/). It finds ClickFix clipboard command substitution, Electron `ELECTRON_RUN_AS_NODE` launches, obfuscator.io string arrays (and recovers their strings), encrypted loaders and campaign markers. Input is parsed and partially evaluated in isolated processes and never executed.
 
 ## Install and run
 
@@ -13,7 +13,7 @@ unk-scanner --format sarif --fail-on error src/ > results.sarif
 unk-scanner --help
 ```
 
-Arguments are files or directories; directories are searched for `.js`, `.mjs` and `.cjs`, skipping `node_modules` unless `--include-node-modules` is given. Use `--` before option-like paths. One file with JSON output prints a single report. Several files print `{ schemaVersion, tool, isolation, files }`.
+Arguments are files or directories; directories are searched for `.js`, `.mjs`, `.cjs`, `.jsx`, `.ts`, `.mts`, `.cts` and `.tsx` (not `.d.ts`), skipping `node_modules` unless `--include-node-modules` is given. Use `--` before option-like paths. One file with JSON output prints a single report. Several files print `{ schemaVersion, tool, isolation, files }`.
 
 | Option | Effect |
 | --- | --- |
@@ -58,7 +58,7 @@ const custom = inspect(source, { rules: [myRule] });
 
 ## Encrypted loaders and artifact identity
 
-An `encrypted-loader` finding links embedded base64, AES-256-GCM decryption with tag authentication, and the decoded text passed to `_compile`, through top-level `const` bindings. Nothing is decrypted. `artifactMatches` identifies three exact retained source hashes and is separate from findings: login code and a shared polyfill are context only.
+An `encrypted-loader` finding links an embedded base64 or hex payload, its decryption with a recognised cipher, and a code-compiling sink (`Module._compile`, `vm`, `eval`, `Function`) through bindings in any scope. Nothing is decrypted. `artifactMatches` identifies three exact retained source hashes and is separate from findings: login code and a shared polyfill are context only.
 
 ## Development
 

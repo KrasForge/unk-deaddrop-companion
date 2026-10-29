@@ -98,6 +98,32 @@ Static analysis of the investigation's retained JavaScript, in isolated processe
 
 These files informed the rules, so they show that the rules fire on their targets, not how well the rules generalise to unseen variants.
 
+## Three-tier evaluation and hardening (unreleased 0.3.0)
+
+After 0.2.0, the scanner was evaluated on three further corpora on one server (8 vCPU, 15 GiB). The companion scanner paper gives the full analysis; the records are here.
+
+| Tier | Corpus | Frozen engine (`caf3f552…`) |
+| --- | --- | --- |
+| 1 | top 5,000 npm and top 1,000 VS Code Marketplace extensions plus the Open VSX set; 332,054 unique files, 188,901 outside the calibration set | 0 errors and 12 reviewed benign warnings in the additional files (`tiers/review-t1-heldout.csv`) |
+| 2 | 20,000 most recently changed npm packages (19,976 acquired); 2,403,437 unique files | 2 errors, both false positives; warnings reviewed (`tiers/review-t2.csv`) |
+| 3 | Datadog malicious-packages dataset `438afad`: 122 IDE extensions and 2,000 seeded npm samples; 41,359 files | 62 of 2,122 samples at warning, none at error |
+
+Manifests are in `tiers/`, run summaries in `summary-*.json`. A bypass test (`bypass/`, 23 inert fixtures) found that 18 of 19 single-change variants evaded a rule, lowered its severity or defeated recovery; one produced incorrect strings.
+
+The hardened engine (`202f56f2…`, see `CHANGELOG.md`) was then rescanned against everything, diffed file by file against the frozen results (`mitigation/`, script `mitigation/mitdiff.py`):
+
+| Check | Hardened engine |
+| --- | --- |
+| Bypass variants | 18 of 19 at baseline severity and full recovery (the exception fetches its command at run time); `test/bypass.test.mjs` |
+| Retained artifacts | 14 of 14 expected outputs |
+| Calibration (143,153 files) | 0 new errors; 2 files (1 package) newly warning on genuine obfuscation; all 96 arrays solved by checksum |
+| Tier 1 (332,054) | 0 new errors; the same package; none in the additional files |
+| Tier 2 (2,403,437) | 0 new errors; 3 files (2 packages) newly warning; unresolved arrays from 1,387 to 16 |
+| Tier 3 (41,359) | 0 new errors; detected samples from 62 to 64 |
+| Throughput, calibration, 4 in-process workers | 281 files/s (frozen: 264) |
+
+A first version of the hardening raised an error on a benign extension that relaunches its own runtime as a detached helper server; the rule was narrowed before these runs (see `docs/rules.md`). The fixtures were written together with the fixes, so these results record regression coverage, not robustness against an adaptive adversary.
+
 ## Limitations
 
 - The corpus is popular, published code. It does not represent private repositories, malware-adjacent code or a team's own codebase, and popularity is not proof of benignness.

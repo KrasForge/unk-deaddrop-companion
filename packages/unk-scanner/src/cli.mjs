@@ -14,7 +14,9 @@ const USAGE = `Usage: unk-scanner [options] [--] PATH...
        unk-scanner --help | --version
 
 Static JavaScript triage. Files are parsed in isolated processes and never
-executed. Directories are searched for .js, .mjs and .cjs files.
+executed. Directories are searched for .js, .mjs, .cjs, .jsx, .ts, .mts, .cts
+and .tsx files (not .d.ts); TypeScript and JSX are parsed with Babel in
+AST-only mode when Acorn rejects them.
 
 Options:
   --format json|sarif      Output format (default json)
@@ -32,7 +34,9 @@ Findings are review leads, not verdicts.
 `;
 const LEVELS = { none: Infinity, error: 3, warning: 2, note: 1 };
 const RANK = { error: 3, warning: 2, note: 1 };
-const EXTENSIONS = /\.(?:js|mjs|cjs)$/i;
+const EXTENSIONS = /\.(?:js|mjs|cjs|jsx|ts|mts|cts|tsx)$/i;
+// Type declaration files carry no runtime code.
+const DECLARATION = /\.d\.[cm]?ts$/i;
 const MAX_FILES = 100000;
 
 function parseArgs(args) {
@@ -117,7 +121,7 @@ async function collect(paths, includeNodeModules) {
         if (entry.isDirectory()) {
           if (entry.name === '.git' || (!includeNodeModules && entry.name === 'node_modules')) continue;
           await visit(join(path, entry.name), false);
-        } else if (entry.isFile() && EXTENSIONS.test(entry.name)) files.push({ path: join(path, entry.name) });
+        } else if (entry.isFile() && EXTENSIONS.test(entry.name) && !DECLARATION.test(entry.name)) files.push({ path: join(path, entry.name) });
       }
     } else if (top) files.push({ path });
   };
@@ -138,7 +142,7 @@ async function analyse(file, pool, gzip) {
     }
     const decoded = gzip ? gunzipSync(bytes, { maxOutputLength: MAX_BYTES }) : bytes;
     const source = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(decoded);
-    const result = await pool.scan(source);
+    const result = await pool.scan(source, file.path);
     if (gzip) {
       result.decoded = { encoding: 'gzip', bytes: decoded.length, sha256: createHash('sha256').update(decoded).digest('hex') };
     }

@@ -15,7 +15,10 @@ const here = dirname(fileURLToPath(import.meta.url));
 // Real paths: the permission model compares resolved paths, and temporary or
 // package directories are often reached through symlinks (macOS /var).
 const packageRoot = realpathSync(resolve(here, '..'));
-const acornRoot = realpathSync(dirname(createRequire(import.meta.url).resolve('acorn/package.json')));
+const require = createRequire(import.meta.url);
+const acornRoot = realpathSync(dirname(require.resolve('acorn/package.json')));
+// @babel/parser and its dependencies live in one scope directory.
+const babelRoot = realpathSync(dirname(dirname(require.resolve('@babel/parser/package.json'))));
 const MAX_RESPONSE = 64 * 1024 * 1024;
 
 let probed;
@@ -55,7 +58,7 @@ function command({ heapMb, ruleFiles }) {
   const node = [process.execPath,
     `--max-old-space-size=${heapMb}`, '--max-semi-space-size=16',
     '--disallow-code-generation-from-strings',
-    '--permission', `--allow-fs-read=${packageRoot}`, `--allow-fs-read=${acornRoot}`,
+    '--permission', `--allow-fs-read=${packageRoot}`, `--allow-fs-read=${acornRoot}`, `--allow-fs-read=${babelRoot}`,
     ...ruleFiles.map(file => `--allow-fs-read=${file}`),
     resolve(packageRoot, 'src', 'child.mjs'), ...ruleFiles];
   const limits = prlimit ? ['prlimit', '--cpu=600', '--fsize=0', '--nofile=128', '--core=0', '--'] : [];
@@ -76,10 +79,10 @@ export class ScannerPool {
     this.closed = false;
   }
 
-  scan(source) {
+  scan(source, filename) {
     if (this.closed) return Promise.reject(new Error('Scanner pool closed'));
     return new Promise((resolve, reject) => {
-      this.queue.push({ id: this.nextId++, source, resolve, reject });
+      this.queue.push({ id: this.nextId++, source, filename, resolve, reject });
       this.#pump();
     });
   }
@@ -127,7 +130,7 @@ export class ScannerPool {
       worker.job = null;
       if (!this.closed) this.#pump();
     }, this.options.timeoutMs);
-    worker.child.stdin.write(JSON.stringify({ id: job.id, source: job.source }) + '\n');
+    worker.child.stdin.write(JSON.stringify({ id: job.id, source: job.source, filename: job.filename }) + '\n');
   }
 
   #data(worker, chunk) {

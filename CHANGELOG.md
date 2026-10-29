@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased: scanner 0.3.0
+
+- Parse TypeScript and JSX: when Acorn rejects a file, `@babel/parser` 8.0.8 (pinned) parses it in AST-only mode with the TypeScript and/or JSX plugin chosen by file extension and emits ESTree, so all rules apply unchanged. Reports carry a `parser` field. TypeScript-only wrapper nodes (`as`, `satisfies`, non-null) are transparent to evaluation and member resolution.
+- Directory scans include `.jsx`, `.ts`, `.mts`, `.cts` and `.tsx`, skipping `.d.ts` declarations.
+- The isolated analysis process may read the pinned Babel packages; the Python wheel bundles them with their licenses.
+- **Bypass hardening** (the one-change variants in `benchmark/bypass`, 22 of 23 now detected, up from 5; test `test/bypass.test.mjs`):
+  - Evaluator: `let` and `var` bindings that no assignment resolves to are constants; `atob`, `Buffer.from(...).toString(...)`, spread arguments of known arrays and `eval` of a constant identifier name are evaluated. Other `eval` text is still not interpreted.
+  - ClickFix: text stored into a mutable variable is harvested, copy handlers registered as object methods are recognised, and `document.execCommand('copy')` is a clipboard sink whose value is the field filled before it. Command text fetched at run time remains out of scope.
+  - Electron: script text whose variable name is assembled or decoded is resolved; an encoded PowerShell command counts as hidden execution; a detached, windowless child of a binary other than `process.execPath` escalates (extensions relaunch their own runtime detached for helper servers, so that case stays a warning); script text bound to a variable escalates where the variable is used.
+  - Encrypted loader: links an embedded base64 or hex payload, a recognised cipher (any mode; an authentication tag is evidence, not a requirement) and a code-compiling sink (`Module._compile`, `vm`, `eval`, `Function`) through bindings in any scope, instead of one top-level `const` pattern. Evidence roles are now `embedded-payload`, `cipher`, `authentication-tag`, `decrypted-text`, `code-sink`.
+  - String arrays: rotation steps written with `splice`, `pop` or `unshift` are recognised; any other reordering of the array counts as rotation code; an array is taken as unrotated only when its decoded call sites read as text (previously a `splice` rotation decoded wrongly as unrotated); call sites reached through an alias or an object member are decoded.
+
 ## Scanner 0.2.0 - 2026-10-29
 
 Scanner 0.2.0 (JSON schema version 2), published on [npm](https://www.npmjs.com/package/unk-scanner/v/0.2.0) and [PyPI](https://pypi.org/project/unk-scanner/0.2.0/). Fresh installs from both registries report 0.2.0, and the registry artifacts match the reviewed local builds (npm shasum `ad805cfd8f615cdceb20744c2599245a1733df02`; PyPI wheel and sdist SHA-256 identical to `dist/python-0.2.0`).
