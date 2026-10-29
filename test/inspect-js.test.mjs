@@ -4,7 +4,7 @@ import { inspect, MAX_BYTES } from '../src/inspect-js.mjs';
 
 test('recognises literal-computed clipboard method and preserves location', () => {
   const result = inspect('\nnavigator.clipboard["write" + "Text"]("training example");');
-  assert.deepEqual(result.findings, [{ kind: 'clipboard-write', line: 2, column: 1, detail: 'training example' }]);
+  assert.deepEqual(result.findings, [{ kind: 'clipboard-write', severity: 'note', line: 2, column: 1, detail: 'training example' }]);
   assert.match(result.sha256, /^[a-f0-9]{64}$/);
 });
 test('optional clipboard chain with dynamic argument remains unresolved', () => {

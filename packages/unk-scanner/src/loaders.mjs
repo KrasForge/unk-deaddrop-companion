@@ -1,6 +1,6 @@
 // Recognize a narrow top-level const-binding pattern. Names may vary; input is
 // never evaluated. This establishes syntax relationships, not runtime behavior.
-export function encryptedLoaders(ast, literalString) {
+export function encryptedLoaders(ast, literalString, position) {
   const bindings = new Map();
   const calls = [];
   const method = node => node?.type === 'MemberExpression'
@@ -61,7 +61,7 @@ export function encryptedLoaders(ast, literalString) {
       evidence: [
         ['embedded-base64', payload.init], ['aes-256-gcm', decipher],
         ['authentication-tag', tag], ['decoded-text', source], ['module-compile', compile],
-      ].map(([role, node]) => ({ role, line: node.loc.start.line, column: node.loc.start.column + 1 })),
+      ].map(([role, node]) => ({ role, ...position(node.start) })),
     });
   }
   return results;

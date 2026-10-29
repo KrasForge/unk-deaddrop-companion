@@ -14,7 +14,7 @@ test('worker returns the same findings and contains parser failures', async () =
   const source = 'navigator.clipboard.writeText("example");';
   assert.deepEqual(await inspectBounded(source), inspect(source));
   await assert.rejects(inspectBounded('const = ;'), /Unexpected/);
-  await assert.rejects(inspectBounded('('.repeat(30000)), /stack|worker/i);
+  await assert.rejects(inspectBounded('('.repeat(30000)), /nesting|stack/i);
   assert.deepEqual((await inspectBounded('const ok = 1;')).findings, []);
 });
 

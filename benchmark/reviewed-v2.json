@@ -1,0 +1,24 @@
+{
+  "reviewer": "Static source review of the cited location and its surrounding code, 29 October 2026 (Claude Code session for the analyst). Not an audit of the package.",
+  "decisions": {
+    "benign-context": "The finding's observation is accurate, and the surrounding code shows a legitimate purpose.",
+    "obfuscation-confirmed": "An obfuscator.io-style string array is present as reported; obfuscation alone is not malicious."
+  },
+  "packages": {
+    "electron-run-as-node|anyscalecompute/anyscale-workspaces": {"decision": "benign-context", "rationale": "Generates an SSH ProxyCommand shim (electron-node.cmd or env prefix) that runs a bundled helper with the editor's Node runtime."},
+    "electron-run-as-node|marp-team/marp-vscode": {"decision": "benign-context", "rationale": "Bundled TypeScript tsserver: typings installer launched with execFileSync(process.execPath, ..., { env: { ELECTRON_RUN_AS_NODE: '1' } })."},
+    "electron-run-as-node|sumneko/lua": {"decision": "benign-context", "rationale": "Bundled TypeScript tsserver typings installer (same code as upstream TypeScript)."},
+    "electron-run-as-node|vscode/typescript-language-features": {"decision": "benign-context", "rationale": "Bundled TypeScript tsserver typings installer (same code as upstream TypeScript)."},
+    "electron-run-as-node|onecentlin/laravel-blade": {"decision": "benign-context", "rationale": "Bundled TypeScript tsserver typings installer (same code as upstream TypeScript)."},
+    "electron-run-as-node|robertpiosik/gemini-coder": {"decision": "benign-context", "rationale": "Starts its own websocket-server-process.js from the extension directory with the editor's Node runtime."},
+    "electron-run-as-node|DanielSanMedium/dscodegpt": {"decision": "benign-context", "rationale": "Writes CLI shim scripts (codegpt.cmd, node) that run the editor binary as Node; the TUI spawns a Playwright browser install the same way."},
+    "clickfix-clipboard-command|contextstream/contextcode": {"decision": "benign-context", "rationale": "Setup wizard 'copy-install' button copies the vendor's installer command (curl | bash or irm | iex) for the user to paste; reported as a warning, not an error."},
+    "string-array-obfuscation|dbcode/dbcode": {"decision": "obfuscation-confirmed", "rationale": "Commercial extension shipped through obfuscator.io (self-redefining array function, rebasing decoder, checksum rotation loop)."},
+    "string-array-obfuscation|ZencoderAI/zencoder": {"decision": "obfuscation-confirmed", "rationale": "Minified obfuscator.io output with a parameterless checksum rotation loop."},
+    "string-array-obfuscation|kombai/kombai": {"decision": "obfuscation-confirmed", "rationale": "obfuscator.io RC4 string array with checksum rotation loop."},
+    "string-array-obfuscation|Traycer/traycer-vscode": {"decision": "obfuscation-confirmed", "rationale": "obfuscator.io string array with checksum rotation loop."},
+    "string-array-obfuscation|cyrilletuzi/angular-schematics": {"decision": "obfuscation-confirmed", "rationale": "obfuscator.io array shared by a base64 decoder and an RC4 decoder, solved together."},
+    "string-array-obfuscation|salesforce/salesforcedx-vscode-soql": {"decision": "obfuscation-confirmed", "rationale": "Array variable with obfuscator-style checksum entries and push/shift rotation; rotation not recovered and reported as unresolved."}
+  },
+  "findings": []
+}
