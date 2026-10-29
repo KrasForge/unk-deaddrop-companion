@@ -16,6 +16,11 @@ def fetch(url):
             if time.monotonic()-started>120: raise TimeoutError('archive download exceeds 120 seconds')
         data=b''.join(chunks)
     if len(data)>LIMIT: raise ValueError('archive exceeds 256 MiB cap')
+    # Some registries (VS Marketplace) send gzip transfer encoding; zip and tar
+    # archives never start with the gzip magic, so decode it here.
+    if data[:2]==b'\x1f\x8b' and 'gzip' in (r.headers.get('Content-Encoding') or ''):
+        import gzip; data=gzip.decompress(data)
+        if len(data)>LIMIT: raise ValueError('archive exceeds 256 MiB cap')
     return data
 
 def js(url): return json.loads(fetch(url))
@@ -28,11 +33,11 @@ def acquire(item):
         if cached['status']=='downloaded' or os.getenv('BENCH_RETRY_FAILED')!='1': return cached
     row=dict(item); row['files']=[]
     try:
-        if item['ecosystem']=='npm':
+        if item['ecosystem'].startswith('npm'):
             meta=js('https://registry.npmjs.org/'+urllib.parse.quote(item['name'],safe='')+'/latest')
             row.update(version=meta['version'],url=meta['dist']['tarball'],integrity=meta['dist'].get('integrity'))
         data=fetch(row['url']); row['archive_sha256']=hashlib.sha256(data).hexdigest()
-        if row['ecosystem']=='npm':
+        if row['ecosystem'].startswith('npm'):
             archive=tarfile.open(fileobj=io.BytesIO(data)); members=[(x.name,x.size,x) for x in archive.getmembers() if x.isfile()]
             read=lambda x: archive.extractfile(x).read(8*1024*1024+1)
         else:

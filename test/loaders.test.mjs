@@ -18,7 +18,7 @@ test('links loader steps with locations and without revealing embedded data', ()
   assert.equal(result.length, 1);
   assert.equal(result[0].line, 7);
   assert.deepEqual(result[0].evidence.map(e => e.role),
-    ['embedded-base64', 'aes-256-gcm', 'authentication-tag', 'decoded-text', 'module-compile']);
+    ['embedded-payload', 'cipher', 'authentication-tag', 'decrypted-text', 'code-sink']);
   assert.ok(!JSON.stringify(result).includes('inert fixture'));
 });
 
@@ -27,24 +27,28 @@ test('variable renaming and computed methods preserve loader match', () => {
   assert.equal(matches(renamed).length, 1);
 });
 
+test('other ciphers, slices, sinks, scopes and never-reassigned let still match', () => {
+  for (const changed of [
+    source.replace('decoder.setAuthTag(tag);', ''),
+    source.replace('"aes-256-gcm"', '"aes-256-cbc"'),
+    source.replace('const iv=payload.subarray(0,12)', 'const iv=payload.subarray(0,16)'),
+    source.replace('const text=', 'let text='),
+    source.replace('loader._compile(text, filename);', 'require("vm").runInThisContext(text);'),
+    source.replace('loader._compile(text, filename);', 'new Function(text)();'),
+    'function load(){' + source + '}',
+  ]) assert.equal(matches(changed).length, 1, changed);
+});
+
 test('encryption or compilation alone and disconnected data do not match', () => {
   for (const changed of [
     source.replace('loader._compile(text, filename);', ''),
-    source.replace('decoder.setAuthTag(tag);', ''),
     source.replace('loader._compile(text,', 'loader._compile(otherText,'),
-    source.replace('decoder.final()', 'unrelated.final()'),
-    source.replace('decoder.setAuthTag(tag)', 'unrelated.setAuthTag(tag)'),
+    source.replace('decoder.final()', 'unrelated.final()').replace('decoder.update(body)', 'unrelated.update(body)'),
     source.replace('payload.subarray(28)', 'anotherPayload.subarray(28)'),
-    source.replace('"aes-256-gcm"', '"aes-256-cbc"'),
     source.replace('Buffer.from("inert fixture","base64")', 'readFile(path)'),
-    source.replace('const text=', 'let text='),
-    source.replace('const iv=payload.subarray(0,12)', 'const iv=payload.subarray(0,16)'),
-  ]) assert.equal(matches(changed).length, 0);
-});
-
-test('nested functions and out-of-order authentication are not linked', () => {
-  assert.equal(matches(source.replace('decoder.setAuthTag(tag);', 'function unused(){decoder.setAuthTag(tag);}')).length, 0);
-  assert.equal(matches(source.replace('decoder.setAuthTag(tag);', '') + 'decoder.setAuthTag(tag);').length, 0);
+    source.replace('"aes-256-gcm"', 'algorithm'),
+    source.replace('const text=', 'let text=') + 'text = "";',
+  ]) assert.equal(matches(changed).length, 0, changed);
 });
 
 test('comments and quoted source are not parsed as loader behavior', () => {

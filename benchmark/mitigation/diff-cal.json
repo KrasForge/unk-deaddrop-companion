@@ -1,0 +1,50 @@
+{
+ "files": 143153,
+ "changes": {
+  "up": 2
+ },
+ "addedAlerts": {
+  "string-array-obfuscation:warning": 2
+ },
+ "packagesRaisedTo": {
+  "warning": 1
+ },
+ "samples": [
+  {
+   "direction": "up",
+   "package": "salesforce/salesforcedx-vscode-soql",
+   "member": "extension/dist/serverWorker.js",
+   "sha256": "0461f377000837498093d8ba31e7828161f98d7ccef6342a3e6d08d739ba484d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:121: string array hI resolved: 87/87 call sites decoded (plain, offset 293, rotation 44 by checksum)",
+    "string-array-obfuscation:warning:121: string array yI resolved: 25/25 call sites decoded (plain, offset 317, rotation 5 by checksum)",
+    "string-array-obfuscation:warning:270: string array TI resolved: 63/63 call sites decoded (plain, offset 255, rotation 10 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "salesforce/salesforcedx-vscode-soql",
+   "member": "extension/dist/web/index.js",
+   "sha256": "f8fa1849f6c560275a808485d2a3b35354a2309d3872921d7cdb3e9af2a2004d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:99: string array fge resolved: 87/87 call sites decoded (plain, offset 293, rotation 44 by checksum)",
+    "string-array-obfuscation:warning:99: string array hge resolved: 25/25 call sites decoded (plain, offset 317, rotation 5 by checksum)",
+    "string-array-obfuscation:warning:248: string array vge resolved: 63/63 call sites decoded (plain, offset 255, rotation 10 by checksum)"
+   ]
+  }
+ ]
+}

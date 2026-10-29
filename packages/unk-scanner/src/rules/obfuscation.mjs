@@ -56,15 +56,18 @@ export const rules = [
     meta: {
       severity: 'error',
       mitre: 'T1027.013',
-      description: 'Embedded base64, AES-GCM authentication and decoded text linked syntactically to Module._compile.',
+      description: 'An embedded encoded payload, decrypted with a recognised cipher, reaches a code-compiling sink (Module._compile, vm, eval or Function).',
     },
     create(context) {
       return {
         'Program:exit'() {
-          for (const loader of encryptedLoaders(context.ast, node => context.literal(node), context.position)) {
+          const loaders = encryptedLoaders(context.ast, node => context.literal(node), context.position,
+            { scopes: context.scopes, order: context.order });
+          for (const loader of loaders) {
+            const sink = loader.evidence.at(-1);
             context.report({
               node: loader.node,
-              detail: 'Embedded base64, AES-GCM authentication, and decoded text linked syntactically to _compile',
+              detail: `Embedded payload decrypted with ${loader.algorithm} reaches a code-compiling sink at line ${sink.line}`,
               data: { evidence: loader.evidence },
             });
           }

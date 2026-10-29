@@ -1,0 +1,89 @@
+{
+ "files": 41359,
+ "changes": {
+  "same-level": 1,
+  "status error->worker-error": 1,
+  "up": 3
+ },
+ "addedAlerts": {
+  "child-process-hidden-script:warning": 4
+ },
+ "packagesRaisedTo": {
+  "warning": 2
+ },
+ "samples": [
+  {
+   "direction": "same-level",
+   "package": "samples/ide_extensions/malicious_intent/juanblan281.solid281/0.0.189.vsix",
+   "member": "extension/webpack.js",
+   "sha256": "b0c0610629d1f6ed996764e2cb3f79c982abe16a76be418b8d03786d2c9543fd",
+   "before": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "after": [
+    [
+     "child-process-hidden-script",
+     "warning"
+    ],
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "child-process-hidden-script:warning:19: execFile(): %temp%\\extension.bat"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/dotenv-light/1.8.8/2025-09-21-dotenv-light-v1.8.8.zip",
+   "member": "tmp/tmp5iih4mvh/dotenv-light/package/lib/index.js",
+   "sha256": "9d38f47dddd08090eca5790f9d2645444d253d8d15e234af9750c2bdc4b7ea17",
+   "before": [],
+   "after": [
+    [
+     "child-process-hidden-script",
+     "warning"
+    ]
+   ],
+   "details": [
+    "child-process-hidden-script:warning:87: exec(): \"%TEMP%\\1.cmd"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/dotenv-light/1.8.8/2025-09-21-dotenv-light-v1.8.8.zip",
+   "member": "tmp/tmp5iih4mvh/dotenv-light/package/lib/index.esm.js",
+   "sha256": "e029a8ec50cbe921e4c7ef97f501976c8feb4509eac719ccf0d0a4f9440b6a6d",
+   "before": [],
+   "after": [
+    [
+     "child-process-hidden-script",
+     "warning"
+    ]
+   ],
+   "details": [
+    "child-process-hidden-script:warning:87: exec(): \"%TEMP%\\1.cmd"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/my-not-confused-package/1.0.3/2025-06-19-my-not-confused-package-v1.0.3.zip",
+   "member": "tmp/tmp1t3huplv/my-not-confused-package/package/index.js",
+   "sha256": "b18b8eb0cd7e9d551437d0a88737dd89df846699f644f637ca445eea9b1728a5",
+   "before": [],
+   "after": [
+    [
+     "child-process-hidden-script",
+     "warning"
+    ]
+   ],
+   "details": [
+    "child-process-hidden-script:warning:109: spawn(): /tmp/.rs.js"
+   ]
+  }
+ ]
+}

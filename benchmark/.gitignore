@@ -5,3 +5,11 @@ node_modules/
 acquisition-*.json
 
 __pycache__/
+private-malicious-DO-NOT-RUN/
+datadog-dataset-DO-NOT-RUN/
+tiers/*-acquisition.json
+
+# Large or derived inputs kept on the evaluation server
+tiers/tier1-input.json
+tiers/tier2-input.json
+summary-*-stale.json

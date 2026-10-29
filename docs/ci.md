@@ -27,7 +27,7 @@ jobs:
           category: unk-scanner
 ```
 
-`--fail-on error` fails the job on error-level findings; use `warning` for a stricter gate or `none` to report only. The upload step runs even when the gate fails, so the alerts are visible. Directories are searched for `.js`, `.mjs` and `.cjs` files, and `node_modules` is skipped unless `--include-node-modules` is given. To check vendored dependencies or an unpacked VSIX, pass that directory with the flag.
+`--fail-on error` fails the job on error-level findings; use `warning` for a stricter gate or `none` to report only. The upload step runs even when the gate fails, so the alerts are visible. Directories are searched for JavaScript, TypeScript and JSX files (`.js`, `.mjs`, `.cjs`, `.jsx`, `.ts`, `.mts`, `.cts`, `.tsx`; not `.d.ts`), and `node_modules` is skipped unless `--include-node-modules` is given. To check vendored dependencies or an unpacked VSIX, pass that directory with the flag.
 
 ## Pre-commit
 

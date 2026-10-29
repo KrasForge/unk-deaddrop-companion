@@ -1,8 +1,9 @@
 import { identifyArtifact } from './artifacts.mjs';
 import { builtinRules } from './rules/index.mjs';
-import { Scopes, Evaluator, NO, isFunction, PARENT } from './evaluate.mjs';
+import { Scopes, Evaluator, NO, isFunction, PARENT, assignmentTargets } from './evaluate.mjs';
 import { deobfuscate } from './deobfuscate.mjs';
 import { parse } from 'acorn';
+import { parse as babelParse } from '@babel/parser';
 import { createHash } from 'node:crypto';
 
 export const MAX_FINDINGS = 10000;
@@ -48,23 +49,58 @@ function positions(source) {
   };
 }
 
-// Acorn is recursive-descent: deeply nested input ends in a RangeError, which
-// is reported as an error. The scanner's own walkers are iterative and the
-// evaluator is depth-capped.
-function parseSource(source) {
+// Acorn (ECMAScript) first. When it rejects the input, Babel parses it in
+// AST-only mode with TypeScript or JSX, chosen from the file name when known,
+// and emits ESTree so the rules see the same node shapes. Deeply nested input
+// ends in a stack error, which is reported. The scanner's own walkers are
+// iterative and the evaluator is depth-capped.
+const TS = ['typescript', 'decorators-legacy'];
+const DIALECTS = {
+  ts: [TS], mts: [TS], cts: [TS],
+  tsx: [[...TS, 'jsx']], jsx: [['jsx'], ['flow', 'jsx']],
+  js: [['jsx'], ['flow', 'jsx'], TS, [...TS, 'jsx']],
+};
+const UNKNOWN_DIALECTS = DIALECTS.js;
+
+function stackError(error) {
+  return error instanceof RangeError || /^Not enough stack space|Maximum call stack/.test(error?.message ?? '');
+}
+
+function parseSource(source, filename) {
+  let acornError;
   try {
     try {
-      return parse(source, { ecmaVersion: 'latest', sourceType: 'module' });
+      return { ast: parse(source, { ecmaVersion: 'latest', sourceType: 'module' }), parser: 'acorn' };
     } catch (error) {
       if (!(error instanceof SyntaxError)) throw error;
-      return parse(source, { ecmaVersion: 'latest', sourceType: 'script' });
+      return { ast: parse(source, { ecmaVersion: 'latest', sourceType: 'script' }), parser: 'acorn' };
     }
   } catch (error) {
-    if (error instanceof RangeError || /^Not enough stack space/.test(error?.message)) {
-      throw new Error('Input nesting exceeds parser stack; no result');
-    }
-    throw error;
+    if (stackError(error)) throw new Error('Input nesting exceeds parser stack; no result');
+    if (!(error instanceof SyntaxError)) throw error;
+    acornError = error;
   }
+  const extension = /\.([a-z]+)$/i.exec(filename ?? '')?.[1]?.toLowerCase();
+  for (const plugins of DIALECTS[extension] ?? UNKNOWN_DIALECTS) {
+    try {
+      const file = babelParse(source, {
+        sourceType: 'unambiguous', allowReturnOutsideFunction: true, allowImportExportEverywhere: true,
+        plugins: ['estree', ...plugins],
+      });
+      return { ast: file.program, parser: `babel:${plugins.filter(p => p !== 'decorators-legacy').join('+')}` };
+    } catch (error) {
+      if (stackError(error)) throw new Error('Input nesting exceeds parser stack; no result');
+    }
+  }
+  throw acornError;
+}
+
+// Chains, parentheses and TypeScript-only wrappers around an expression.
+const WRAPPERS = new Set(['ChainExpression', 'ParenthesizedExpression', 'TSNonNullExpression', 'TSAsExpression',
+  'TSSatisfiesExpression', 'TSTypeAssertion', 'TSInstantiationExpression']);
+function unwrap(node) {
+  while (node && WRAPPERS.has(node.type)) node = node.expression;
+  return node;
 }
 
 function index(ast) {
@@ -99,7 +135,7 @@ class Context {
     this.source = source;
     this.ast = ast;
     this.order = order;
-    this.scopes = new Scopes();
+    this.scopes = new Scopes(assignmentTargets(order));
     this.position = positions(source);
     const recovered = deobfuscate(ast, this.scopes, order);
     this.resolved = recovered.resolved;
@@ -109,6 +145,23 @@ class Context {
     this.writes = new Map();
     this.covered = new Map();
     this.listeners = undefined;
+    this.stores = undefined;
+  }
+
+  // Values assigned to a mutable binding anywhere in the file (bounded).
+  assignedValues(binding) {
+    if (!this.stores) {
+      this.stores = new Map();
+      for (const node of this.order) {
+        if (node.type !== 'AssignmentExpression' || node.left.type !== 'Identifier' || !['=', '+='].includes(node.operator)) continue;
+        const target = this.scopes.lookup(node.left.name, node.left);
+        if (target?.kind !== 'opaque') continue;
+        const values = this.stores.get(target) ?? [];
+        if (values.length < 20) values.push(node.right);
+        this.stores.set(target, values);
+      }
+    }
+    return this.stores.get(binding) ?? [];
   }
 
   parent(node) { return node[PARENT]; }
@@ -181,6 +234,11 @@ class Context {
         : binding?.kind === 'object' ? binding.node
           : binding?.kind === 'opaque' && (binding.init?.type === 'ObjectExpression' || isFunction(binding.init)) ? binding.init
             : undefined;
+      if (binding?.kind === 'opaque' && !seen.has(binding)) {
+        // A mutable variable: harvest what is stored into it.
+        seen.add(binding);
+        for (const value of [binding.init, ...this.assignedValues(binding)]) if (value) collect(value, depth + 1);
+      }
       if (!target || seen.has(target)) return;
       seen.add(target);
       collect(target, depth + 1);
@@ -236,7 +294,7 @@ class Context {
   }
 
   memberName(node) {
-    while (node?.type === 'ChainExpression') node = node.expression;
+    node = unwrap(node);
     if (node?.type !== 'MemberExpression') return undefined;
     if (!node.computed) return node.property.type === 'Identifier' ? node.property.name : undefined;
     return this.literal(node.property);
@@ -246,11 +304,21 @@ class Context {
     if (this.writes.has(node)) return this.writes.get(node);
     let write;
     if (node.type === 'CallExpression') {
-      const callee = node.callee.type === 'ChainExpression' ? node.callee.expression : node.callee;
+      const callee = unwrap(node.callee);
       const method = this.memberName(callee);
-      const owner = this.memberName(callee?.object);
+      const owner = this.memberName(unwrap(callee?.object));
       if ((method === 'writeText' && owner === 'clipboard') || (method === 'setData' && owner === 'clipboardData')) {
         write = { method, arg: node.arguments[method === 'setData' ? 1 : 0] };
+      } else if (method === 'execCommand' && ['copy', 'cut'].includes(this.literal(node.arguments[0]))) {
+        // The legacy path copies the current selection, usually a hidden field
+        // filled in the same function: the last text stored before the call.
+        const fn = this.scopes.owner(node);
+        let stored;
+        this.visit(fn.type === 'Program' ? fn : fn.body, inner => {
+          if (inner.type === 'AssignmentExpression' && inner.start < node.start && (!stored || inner.start > stored.start) &&
+              ['value', 'textContent', 'innerText', 'innerHTML'].includes(this.memberName(inner.left))) stored = inner;
+        }, 20000);
+        if (stored) write = { method, arg: stored.right };
       }
     }
     this.writes.set(node, write);
@@ -283,6 +351,12 @@ class Context {
       if (handler.type === 'Identifier') {
         const binding = this.scopes.lookup(handler.name, handler);
         handler = binding?.kind === 'function' ? binding.node : undefined;
+      } else if (handler.type === 'MemberExpression') {
+        // A method of a locally defined object, e.g. handlers.copy.
+        const object = this.objectOf(handler.object);
+        const key = this.memberName(handler);
+        const value = object && key !== undefined ? this.propertyValue(object, key) : undefined;
+        handler = isFunction(value) ? value : undefined;
       }
       if (handler) this.listeners.set(handler, { event, target });
     }
@@ -334,7 +408,7 @@ class Context {
   }
 }
 
-export function inspect(source, { rules = [] } = {}) {
+export function inspect(source, { rules = [], filename } = {}) {
   if (typeof source !== 'string') throw new TypeError('Expected JavaScript text');
   if (Buffer.byteLength(source) > MAX_BYTES) throw new Error('Input exceeds 8 MiB limit');
   const active = [...builtinRules, ...rules];
@@ -344,7 +418,7 @@ export function inspect(source, { rules = [] } = {}) {
     if (ids.has(rule.id)) throw new TypeError(`Duplicate rule id: ${rule.id}`);
     ids.add(rule.id);
   }
-  const ast = parseSource(source);
+  const { ast, parser } = parseSource(source, filename);
   const order = index(ast);
   const context = new Context(source, ast, order);
   const findings = [];
@@ -391,6 +465,7 @@ export function inspect(source, { rules = [] } = {}) {
   const sha256 = createHash('sha256').update(source).digest('hex');
   return {
     schemaVersion: SCHEMA_VERSION,
+    parser,
     sha256,
     artifactMatches: identifyArtifact(sha256),
     bytes: Buffer.byteLength(source),
@@ -398,9 +473,9 @@ export function inspect(source, { rules = [] } = {}) {
     deobfuscation: context.deobfuscation.arrays.map(({ node, ...array }) => ({ ...context.position(node.start), ...array })),
     limitations: [
       'Static analysis only: the input is parsed and partially evaluated, never executed',
-      'Constant propagation covers const bindings, literal object properties and single-return helpers; no general data flow or reachability',
+      'Constant propagation covers const bindings, never-reassigned let/var bindings, literal object properties, single-return helpers, base64 and buffer decoding; no general data flow or reachability',
       'String-array recovery covers obfuscator.io-style plain, base64 and RC4 decoders',
-      'Encrypted-loader recognition covers only a specific top-level const-binding pattern',
+      'Encrypted-loader recognition links an embedded payload, a decipher and a code-compiling sink through bindings; ciphertext read at run time is out of scope',
       'A finding is a review lead, not a maliciousness verdict',
     ],
   };

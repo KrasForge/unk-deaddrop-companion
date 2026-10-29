@@ -1,0 +1,13 @@
+ecosystem,package,member,rule,severity,verdict,reason
+vs-marketplace,MS-vsliveshare/vsliveshare,extension/extension.js,electron-run-as-node,warning,benign,Microsoft Live Share helper launch script template
+vs-marketplace,MS-vsliveshare/vsliveshare,extension/liveshare-hub.js,electron-run-as-node,warning,benign,Live Share hub launch template; was error pre-fix via bundled sudo-prompt
+vs-marketplace,MS-vsliveshare/vsliveshare,extension/port-forwarder-hub.js,electron-run-as-node,warning,benign,Live Share port forwarder launch template; was error pre-fix
+vs-marketplace,GitHub/codespaces,extension/port-forwarder-hub.js,electron-run-as-node,warning,benign,Codespaces port forwarder (shared Live Share code); was error pre-fix
+vs-marketplace,GitHub/codespaces,extension/out/bundle/extension-node.js,electron-run-as-node,warning,benign,Codespaces bundle launch template; was error pre-fix
+vs-marketplace,rbbit/typescript-hero,extension/node_modules/typescript/lib/tsserver.js,electron-run-as-node,warning,benign,bundled TypeScript typings installer
+vs-marketplace,chenxsan/vscode-standardjs,extension/server/node_modules/typescript/lib/tsserver.js,electron-run-as-node,warning,benign,bundled TypeScript typings installer
+vs-marketplace,funkyremi/vscode-google-translate,extension/node_modules/typescript/lib/_tsserver.js,electron-run-as-node,warning,benign,bundled TypeScript typings installer
+vs-marketplace,illixion/vscode-vibrancy-continued,extension/extension/patch-safety.js,electron-run-as-node,warning,benign,theme patcher runs a check with the editor binary (spawnSync)
+vs-marketplace,illixion/vscode-vibrancy-continued,extension/extension/patch-safety.js,electron-run-as-node,warning,benign,theme patcher runs a check with the editor binary (spawn)
+vs-marketplace,illixion/vscode-vibrancy-continued,extension/extension/uninstallHook.js,electron-run-as-node,warning,benign,documented uninstall hook PowerShell sets the variable; no hidden window
+vs-marketplace,vira/vsc-vira-theme,extension/build/index.js,string-array-obfuscation,warning,benign,commercial licence code; rc4 array fully decoded (rotation 195 by checksum); strings are licence shop/update URLs and favicon connectivity probes
