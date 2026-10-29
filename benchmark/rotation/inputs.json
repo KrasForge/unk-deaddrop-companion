@@ -1,0 +1,356 @@
+{
+ "seed": 20261030,
+ "poolPackages": 1325,
+ "chosen": [
+  {
+   "sha256": "18cd46be60bcdaa5b594d8bbb9ec31c51b1c1b5aef231e24964cc4517b8646d8",
+   "package": "dbcode/dbcode",
+   "member": "extension/out/vendor/kerberos.js",
+   "bytes": 5943,
+   "distinctStrings": 78
+  },
+  {
+   "sha256": "94b40b643ca1f428e16f4f361db7daf275e550bfc508641a5c855a0d992fd781",
+   "package": "autoprefixer",
+   "member": "package/lib/autoprefixer.js",
+   "bytes": 4182,
+   "distinctStrings": 28
+  },
+  {
+   "sha256": "b3a755cb1d9eac2a2f9d3d44f115dee643c67ebd8e3285970c135919fe8d3074",
+   "package": "es-iterator-helpers",
+   "member": "package/Iterator.concat/implementation.js",
+   "bytes": 3733,
+   "distinctStrings": 29
+  },
+  {
+   "sha256": "85ccc8dd7a94770b4035976b6e525eab5870e2ca49799f4936a69ca176284fcf",
+   "package": "napi-postinstall",
+   "member": "package/lib/helpers.js",
+   "bytes": 12155,
+   "distinctStrings": 74
+  },
+  {
+   "sha256": "d6780689c8224dc4e45c02fd6da4006caeab05b77f781a17234c17a2349d5cd7",
+   "package": "joi",
+   "member": "package/lib/annotate.js",
+   "bytes": 5237,
+   "distinctStrings": 19
+  },
+  {
+   "sha256": "0d8ccd38514f3994256d0c271b9b6e288174e13847ed2c8561abd5f005bdeb76",
+   "package": "mads-hartmann/bash-ide-vscode",
+   "member": "extension/node_modules/vscode-jsonrpc/lib/common/api.js",
+   "bytes": 11346,
+   "distinctStrings": 77
+  },
+  {
+   "sha256": "ff7b7ed9decdf935f56cca4986f61dfacffafb727ac79fb0d6dcbfc7c4fa1275",
+   "package": "hbenl/vscode-test-explorer",
+   "member": "extension/out/util.js",
+   "bytes": 8199,
+   "distinctStrings": 17
+  },
+  {
+   "sha256": "c3100f65b6072118fb1bc458c8cdcb9c5dc9d7c6f07128a91e7baa61423ec2c4",
+   "package": "@next/env",
+   "member": "package/dist/index.js",
+   "bytes": 10025,
+   "distinctStrings": 44
+  },
+  {
+   "sha256": "8c584c12ac6392484cca5e8714dd6120d9393be4ac189e3129cae21d9c40666e",
+   "package": "@opentelemetry/instrumentation-hapi",
+   "member": "package/dist/instrumentation.cjs",
+   "bytes": 11268,
+   "distinctStrings": 15
+  },
+  {
+   "sha256": "6a9afa8708bbffa67972fdcd1090f2c5a2a2461ad7fbd4a3c36112137e58ad8f",
+   "package": "regjsgen",
+   "member": "package/regjsgen.js",
+   "bytes": 11827,
+   "distinctStrings": 102
+  },
+  {
+   "sha256": "3c60508c387c93504cd5bee7b6cd09e7b76c5f20e75d1e1dd7cac18abacab28e",
+   "package": "@napi-rs/canvas",
+   "member": "package/load-image.js",
+   "bytes": 6180,
+   "distinctStrings": 19
+  },
+  {
+   "sha256": "3027bcae9c41c4f96a46cfe32009ff3bd41db187e76426561dfa24136c2f392d",
+   "package": "supertest",
+   "member": "package/lib/test.js",
+   "bytes": 13806,
+   "distinctStrings": 48
+  },
+  {
+   "sha256": "1805f1f8810ce080b0fdc472bc792fcb55a6e8a04e257cc011bc12013a1a80b4",
+   "package": "nan",
+   "member": "package/tools/1to2.js",
+   "bytes": 14364,
+   "distinctStrings": 154
+  },
+  {
+   "sha256": "33df3735898955bd9179d2ab363518053f94efdddeb4993621130180b67e160d",
+   "package": "antfu/unocss",
+   "member": "extension/dist/multipart-parser-Kxb5jQkZ.cjs",
+   "bytes": 6515,
+   "distinctStrings": 42
+  },
+  {
+   "sha256": "6fa4ebcd33373b5d9a1c26450b78326493172b98091bd818f95051a807ca066c",
+   "package": "@npmcli/agent",
+   "member": "package/lib/agents.js",
+   "bytes": 7974,
+   "distinctStrings": 20
+  },
+  {
+   "sha256": "5586db785b96538ccdcaa45f24e582bf04bd3b646b1cde92041dae349ebbb75f",
+   "package": "@webassemblyjs/wasm-gen",
+   "member": "package/lib/index.js",
+   "bytes": 3214,
+   "distinctStrings": 21
+  },
+  {
+   "sha256": "52fdfaef7a6d00a35684a33d5b93cd1dc4f29b0f3e6abed66bfcb8526fb9129f",
+   "package": "battlecook/omni-viewer",
+   "member": "extension/out/272.js",
+   "bytes": 19093,
+   "distinctStrings": 94
+  },
+  {
+   "sha256": "6b39eee0bb9bfe63c29d350d20176648f2e8cc30bb60783bad8841840925f8fa",
+   "package": "socket.io-client",
+   "member": "package/build/cjs/index.js",
+   "bytes": 3296,
+   "distinctStrings": 25
+  },
+  {
+   "sha256": "5c701054d72f63f6184449ac9ebaff4a55639e0a67fd5016462edc562aef8e99",
+   "package": "handle-thing",
+   "member": "package/lib/handle.js",
+   "bytes": 5536,
+   "distinctStrings": 20
+  },
+  {
+   "sha256": "617aac9f69a3bda010c72cbded79a299e6c17cc117784b792a8cc83512100ec4",
+   "package": "@opentelemetry/instrumentation-mysql",
+   "member": "package/dist/instrumentation.cjs",
+   "bytes": 9519,
+   "distinctStrings": 27
+  },
+  {
+   "sha256": "c8e540d0cac531b528ca74de8e6484f86e8d7048654e9619eedcab2a89a579e1",
+   "package": "@floating-ui/react-dom",
+   "member": "package/dist/floating-ui.react-dom.umd.js",
+   "bytes": 13687,
+   "distinctStrings": 23
+  },
+  {
+   "sha256": "35fa71b8f05cea2bce3ace0bbaaa1c45ab1a06beb23dd49d4d845968dfa23b32",
+   "package": "pesosz/antigravity-auto-accept",
+   "member": "extension/main_scripts/cdp-handler.js",
+   "bytes": 21075,
+   "distinctStrings": 39
+  },
+  {
+   "sha256": "81595ffaa987a0da9b5984336a599936c1b88565771fe5a60cea502555713521",
+   "package": "babel-plugin-macros",
+   "member": "package/dist/index.js",
+   "bytes": 10164,
+   "distinctStrings": 35
+  },
+  {
+   "sha256": "df44f6be1bb34c20489c36bef5b309d19fd4a8c07189d797e768b1b02f1fdf06",
+   "package": "ast-types",
+   "member": "package/lib/def/babel-core.js",
+   "bytes": 10664,
+   "distinctStrings": 113
+  },
+  {
+   "sha256": "90f286969197a3f5b618c2a7123c77084a2a5216a7c2377e254a889a9d708cee",
+   "package": "is-typed-array",
+   "member": "package/test/index.js",
+   "bytes": 3631,
+   "distinctStrings": 58
+  },
+  {
+   "sha256": "f80fb8e2cc7c4550d29bad282789ae804c8a0d8880d930fae6bfe57128e38d71",
+   "package": "@pkgr/core",
+   "member": "package/lib/index.cjs",
+   "bytes": 3016,
+   "distinctStrings": 20
+  },
+  {
+   "sha256": "16f60bdcefc496825cc44ac758d3289bebd3fce3c64d3b2fa39033d2faf130e8",
+   "package": "sucrase",
+   "member": "package/dist/parser/util/charcodes.js",
+   "bytes": 10428,
+   "distinctStrings": 106
+  },
+  {
+   "sha256": "df125a3017ee188ddeaf2d0f056b1a4442d3708060a28d0012c23819616b8970",
+   "package": "vscjava/vscode-java-debug",
+   "member": "extension/bundled/scripts/noConfigScripts/jdwp-wrapper.js",
+   "bytes": 4877,
+   "distinctStrings": 17
+  },
+  {
+   "sha256": "e2ef7bd30bd753f4919b41b101b83fd9b14c9cd6702a806db7c4d5717e593910",
+   "package": "@radix-ui/react-radio-group",
+   "member": "package/dist/index.js",
+   "bytes": 18192,
+   "distinctStrings": 60
+  },
+  {
+   "sha256": "245e131e7f087b7d45c3a7803c19cfea261cc01ccd9927ac83567666998b48cd",
+   "package": "jest-runner",
+   "member": "package/build/testWorker.js",
+   "bytes": 17023,
+   "distinctStrings": 34
+  },
+  {
+   "sha256": "baf17bd3015c83041abf256f35556baa293c7c8aa0d1992d3387a25ddc26fda2",
+   "package": "bser",
+   "member": "package/index.js",
+   "bytes": 15711,
+   "distinctStrings": 34
+  },
+  {
+   "sha256": "4188e24b953e2c70b66150306c66547495ad968d040e31dd65f22a7b3485da28",
+   "package": "@xmldom/xmldom",
+   "member": "package/lib/dom-parser.js",
+   "bytes": 20276,
+   "distinctStrings": 30
+  },
+  {
+   "sha256": "fbf1487fb65085dd03328c49fe14c65fd54eac9a3e8290a394413800408d4239",
+   "package": "@radix-ui/react-tabs",
+   "member": "package/dist/index.js",
+   "bytes": 9255,
+   "distinctStrings": 43
+  },
+  {
+   "sha256": "b0dd2f72cf1a8e08f287737e468bf7ed2de40099b0a373baa37e7a6a75de1f90",
+   "package": "GrapeCity/gc-excelviewer",
+   "member": "extension/out/csv.js",
+   "bytes": 13344,
+   "distinctStrings": 19
+  },
+  {
+   "sha256": "af0342a7e66aca60937f8bc38f260a7969c127fa134e4c124a36acb59ce1511b",
+   "package": "zustand",
+   "member": "package/middleware.js",
+   "bytes": 16819,
+   "distinctStrings": 27
+  },
+  {
+   "sha256": "fd7bf91b5f12c0813462dff1e30a6e98fde7d19f0db44e28bbafb17c31487808",
+   "package": "websocket-driver",
+   "member": "package/lib/websocket/driver/draft75.js",
+   "bytes": 3171,
+   "distinctStrings": 17
+  },
+  {
+   "sha256": "f88af6e6f04e5062ca5fdf7dce0b58f6d3f698e73dbfaf70592c43626714f8b3",
+   "package": "glob-to-regexp",
+   "member": "package/index.js",
+   "bytes": 3434,
+   "distinctStrings": 25
+  },
+  {
+   "sha256": "a16344be016268121d072219c829be32120c54054b4e68f19d4edb981258c1b4",
+   "package": "socket.io",
+   "member": "package/dist/client.js",
+   "bytes": 8332,
+   "distinctStrings": 25
+  },
+  {
+   "sha256": "440815280b247b9aaede2e17c0cde10e1deb86300dceadc8fd1cac678b183f2c",
+   "package": "d3-transition",
+   "member": "package/dist/d3-transition.js",
+   "bytes": 26175,
+   "distinctStrings": 30
+  },
+  {
+   "sha256": "0a6e0ecff28f80b5080cfd38af90bd86b50a925c8293c79b10a56912e2d51fb3",
+   "package": "lodash.truncate",
+   "member": "package/index.js",
+   "bytes": 16655,
+   "distinctStrings": 36
+  },
+  {
+   "sha256": "ed909ea848fc7d243e0e8cc32feeb91a5586fa0e9f913e52b655b040d96fe376",
+   "package": "arg",
+   "member": "package/index.js",
+   "bytes": 4464,
+   "distinctStrings": 19
+  },
+  {
+   "sha256": "53cae7618d2c88514717e787b0eeaa3ff24294cea6cd76b69fa57cf58c2d9d32",
+   "package": "@emotion/serialize",
+   "member": "package/dist/emotion-serialize.development.cjs.js",
+   "bytes": 10787,
+   "distinctStrings": 54
+  },
+  {
+   "sha256": "c712478360ad6e2f414892c171c9bb6fb5cc197fb7766402318451642cf8a5a4",
+   "package": "@svgr/babel-plugin-transform-svg-component",
+   "member": "package/dist/index.js",
+   "bytes": 9491,
+   "distinctStrings": 29
+  },
+  {
+   "sha256": "98e4361f1941631c545d039878d5db3ec22171a97b170f4f0b3ebfe5bcdecdee",
+   "package": "@tanstack/router-utils",
+   "member": "package/dist/cjs/ast.cjs",
+   "bytes": 4417,
+   "distinctStrings": 16
+  },
+  {
+   "sha256": "aaf4ec3457eefd1fdcd1addb049d008634e2fd6eb141aa612da95cdcfa409187",
+   "package": "nwsapi",
+   "member": "package/src/modules/nwsapi-jquery.js",
+   "bytes": 4279,
+   "distinctStrings": 53
+  },
+  {
+   "sha256": "16a91536988a53c23047ee5882392068728a839a244178c3b09b8c54982f58b0",
+   "package": "highagency/pencildev",
+   "member": "extension/node_modules/ws/lib/permessage-deflate.js",
+   "bytes": 14669,
+   "distinctStrings": 24
+  },
+  {
+   "sha256": "b46be679691a4185a3f3561763c72906be5e0bd6dc09af77d3fc0d601b1045dd",
+   "package": "consola",
+   "member": "package/dist/shared/consola.DwRq1yyg.cjs",
+   "bytes": 8682,
+   "distinctStrings": 60
+  },
+  {
+   "sha256": "9b871606b77bf3835b95e6727a5768bdb4b01f2ad00ef1a299db4121c2cfe846",
+   "package": "formdata-node",
+   "member": "package/lib/form-data.cjs",
+   "bytes": 21883,
+   "distinctStrings": 21
+  },
+  {
+   "sha256": "83f26d6438607e5d585f39d0d3a197e72e0151ac5f5849693231e91ff5216cf8",
+   "package": "vscode/json-language-features",
+   "member": "extension/server/dist/node/774.jsonServerMain.js",
+   "bytes": 13452,
+   "distinctStrings": 39
+  },
+  {
+   "sha256": "7beda998b3fd277f3548e12b277bafc3037d243421f007032d38dffee412224c",
+   "package": "naumovs/color-highlight",
+   "member": "extension/node_modules/regenerator-runtime/runtime.js",
+   "bytes": 25307,
+   "distinctStrings": 39
+  }
+ ]
+}

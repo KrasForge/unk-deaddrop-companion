@@ -1,0 +1,1 @@
+{"name":"rot-exp","private":true,"type":"module","dependencies":{"acorn":"8.17.0","deobfuscator":"2.4.6","javascript-obfuscator":"5.9.0","obfuscator-io-deobfuscator":"1.0.6","webcrack":"2.16.0"}}
