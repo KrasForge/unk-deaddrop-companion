@@ -18,6 +18,7 @@
     "README.md"
   ],
   "dependencies": {
+    "@babel/parser": "8.0.8",
     "acorn": "8.17.0"
   },
   "repository": {

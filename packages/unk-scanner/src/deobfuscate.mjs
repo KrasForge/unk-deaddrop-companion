@@ -164,9 +164,22 @@ function propertyName(node) {
   return node.property.type === 'Literal' ? String(node.property.value) : undefined;
 }
 
+// One rotation step: x.push(x.shift()), x.push(x.splice(0, 1)[0]),
+// x.unshift(x.pop()) and similar. Any other in-place reordering of the array
+// inside the rotation function still counts as rotation code, so that the
+// array is never taken to be in stored order.
+const MOVES = new Set(['shift', 'pop', 'splice']);
+const REORDERS = new Set(['push', 'unshift', 'shift', 'pop', 'splice', 'reverse', 'sort', 'copyWithin']);
 function isRotation(node) {
-  return node.type === 'CallExpression' && propertyName(node.callee) === 'push' &&
-    node.arguments[0]?.type === 'CallExpression' && propertyName(node.arguments[0].callee) === 'shift';
+  if (node.type !== 'CallExpression' || !['push', 'unshift'].includes(propertyName(node.callee))) return false;
+  let moved = node.arguments[0];
+  if (moved?.type === 'SpreadElement') moved = moved.argument;
+  if (moved?.type === 'MemberExpression' && moved.computed) moved = moved.object;
+  return moved?.type === 'CallExpression' && MOVES.has(propertyName(moved.callee));
+}
+
+function isReorder(node) {
+  return node.type === 'CallExpression' && REORDERS.has(propertyName(node.callee));
 }
 
 function walkHas(root, test) {
@@ -192,7 +205,7 @@ function rotators(ast, source) {
     let rotates = false;
     walk(node.callee.body, inner => {
       if (++size > 3000) return false;
-      if (isRotation(inner)) rotates = true;
+      if (isRotation(inner) || isReorder(inner)) rotates = true;
     });
     if (rotates && size <= 3000) found.push(node);
   });
@@ -310,12 +323,28 @@ export function deobfuscate(ast, scopes, order) {
     reaches.set(fn, result);
     return result;
   };
+  // The function a call reaches by name, or as a member of a local object.
+  const calleeFunction = callee => {
+    if (callee.type === 'Identifier') return functionOf(scopes.lookup(callee.name, callee));
+    if (callee.type !== 'MemberExpression' || callee.object.type !== 'Identifier') return undefined;
+    const holder = scopes.lookup(callee.object.name, callee.object);
+    const key = propertyName(callee);
+    if (holder?.kind !== 'object' || key === undefined) return undefined;
+    let value;
+    for (const property of holder.node.properties) {
+      if (property.type !== 'Property' || property.computed) continue;
+      const name = property.key.type === 'Identifier' ? property.key.name : String(property.key.value);
+      if (name === key) value = property.value;
+    }
+    if (isFunction(value)) return value;
+    return value?.type === 'Identifier' ? functionOf(scopes.lookup(value.name, value)) : undefined;
+  };
   const sourceOf = new Map(plans.map(plan => [plan.decoder, plan.source]));
   const sites = [];
   walk(ast, node => {
     if (sites.length >= MAX_SITES) return false;
-    if (node.type === 'CallExpression' && node.callee.type === 'Identifier') {
-      const target = functionOf(scopes.lookup(node.callee.name, node.callee));
+    if (node.type === 'CallExpression' && (node.callee.type === 'Identifier' || node.callee.type === 'MemberExpression')) {
+      const target = calleeFunction(node.callee);
       const decoder = target && reachedDecoder(target);
       if (!decoder) return;
       // Calls inside wrappers are decoder plumbing, not call sites.
@@ -362,9 +391,16 @@ export function deobfuscate(ast, scopes, order) {
     }
     const rotator = rotating.length > 0;
     if (!method && !rotator) {
-      // No code rotates this array, so its stored order is the decoded order.
+      // No code rotates this array, so its stored order should be the decoded
+      // order; accept that only if the decoded call sites read as text.
       rotation.value = 0;
-      method = 'unrotated';
+      evaluator.memo.clear();
+      const sample = own.slice(0, 64);
+      const readable = sample.filter(site => {
+        const value = evaluator.evaluate(site);
+        return typeof value === 'string' && PRINTABLE.test(value);
+      }).length;
+      if (readable >= 0.8 * sample.length) method = 'unrotated';
     }
     if (!method) {
       // Rotation is global, so require consensus across many call sites.

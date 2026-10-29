@@ -16,11 +16,11 @@ Every finding carries `kind` (the rule id), `severity` (`error`, `warning` or `n
 
 ## clickfix-clipboard-command
 
-A clipboard write (`navigator.clipboard.writeText`, `clipboardData.setData`) whose value is a terminal command. The value is resolved by pure evaluation where possible, including `const` bindings and recovered obfuscated strings. When it cannot be resolved, the rule harvests string fragments from the argument expression. It also follows locally defined helper functions and objects of helpers, and, for a generic copy helper such as `copyText(text)`, the arguments its callers pass. The detail says which of these supplied the text.
+A clipboard write (`navigator.clipboard.writeText`, `clipboardData.setData`, or `document.execCommand('copy')` after a field's `value` or text is set in the same function) whose value is a terminal command. The value is resolved by pure evaluation where possible: `const` bindings, `let` and `var` bindings that are never reassigned, `atob`, `Buffer.from(...).toString(...)`, `String.fromCharCode(...codes)`, `eval` of a constant function name, and recovered obfuscated strings. When it cannot be resolved, the rule harvests string fragments from the argument expression. It also follows locally defined helper functions and objects of helpers, every value stored into a mutable variable, and, for a generic copy helper such as `copyText(text)`, the arguments its callers pass. The detail says which of these supplied the text. Command text fetched at run time is not in the file and is not detected.
 
 Indicators include pipes into a shell, download cradles, hidden or encoded PowerShell, `iex`, `mshta`, `cmd /c`, base64 decoding, detaching (`nohup`, `setsid`, `perl -MPOSIX`), `osascript -e`, quiet `msiexec` and `rundll32`. The finding is an error when any of these also holds:
 
-- the write happens inside a `copy` or `cut` handler;
+- the write happens inside a `copy` or `cut` handler (including a method of a local object registered as the handler);
 - the text includes verification-lure wording;
 - a strong indicator is present: a hidden or encoded window, `mshta`, base64 decoding or detaching.
 
@@ -40,6 +40,8 @@ Any programmatic clipboard write, with the resolved value or `dynamic argument; 
 
 Both escalate (to error and warning respectively) when the same file contains hidden-window PowerShell (`-WindowStyle Hidden`, `-w hidden`) or a script path in a temporary or `.vscode` directory. The recovered UNK_DeadDrop Windows branch writes a temporary `.ps1` that sets the variable and launches the editor binary with a hidden window. Reading the variable, as native-addon loaders do, produces only a `campaign-marker` note.
 
+Script text is also matched after resolution, so a variable name assembled from fragments or decoded from base64 is found. Escalation looks at the launching function, local helpers it calls, and every function that uses a variable holding the script text. An encoded PowerShell command (`-EncodedCommand`, `-enc`) counts as hidden execution, and so does a launch that is both `detached` and `windowsHide` when it names a binary other than `process.execPath`. Extensions relaunch their own runtime detached to run bundled helper servers, so a `process.execPath` launch stays a warning even when detached; a malicious extension can use the same shape.
+
 ## child-process-hidden-script
 
 A child-process call whose resolved command or arguments name a `.js`, `.py`, `.sh`, `.ps1`, `.vbs`, `.bat` or `.cmd` file under `/tmp`, `/var/tmp`, `%TEMP%`, `$env:TEMP`, `AppData\Local\Temp` or `.vscode`.
@@ -48,13 +50,13 @@ A child-process call whose resolved command or arguments name a `.js`, `.py`, `.
 
 An obfuscator.io-style string array: a self-redefining function holding a string-array literal, or an array variable that rotation code shifts, together with a decoder that rebases its index (`i = i - OFFSET`). The decoder's own code is never run. The scanner identifies the variant (plain, base64 with the custom alphabet, RC4) and the offset, then reimplements the decoding.
 
-The rotation is recovered in one of three ways:
+Rotation code is `x.push(x.shift())` or an equivalent step (`push(splice(0, 1)[0])`, `unshift(pop())`) in an immediately invoked function that receives or names the array; any other reordering call there (`reverse`, `sort`, `splice`) still marks the array as rotated. The rotation is recovered in one of three ways:
 
 - **`checksum`:** the rotation loop's `parseInt` checksum is evaluated for each candidate rotation, and the first match is taken, as the obfuscated program's own loop would. Several decoders sharing one array (for example base64 and RC4) are solved together.
-- **`unrotated`:** no code rotates the array.
+- **`unrotated`:** no code rotates or reorders the array, and at least 80% of up to 64 call sites decode to printable text in stored order. Otherwise the scanner falls through to consensus.
 - **`printable-consensus`:** a single rotation is the only one that decodes at least 80% of up to 64 call sites to printable text, and the runner-up decodes at most half as many. A keyless base64 or plain array decodes to printable text under every rotation, so it stays `unresolved` rather than guessed.
 
-Recovered strings, including those reached through wrapper functions, aliases (`const a = decoder`), constant objects and single-return helpers, are substituted into every other rule. The `deobfuscation` array in the report records the variant, offset, rotation, method and decoded call-site count.
+Recovered strings, including those reached through wrapper functions, aliases (`const a = decoder`, or a `var`/`let` alias that is never reassigned), members of constant objects (`o.d(...)`) and single-return helpers, are substituted into every other rule. The `deobfuscation` array in the report records the variant, offset, rotation, method and decoded call-site count.
 
 Obfuscation is common in commercial extensions; this finding says the strings were hidden and whether they were recovered, not that the code is malicious.
 
@@ -64,7 +66,7 @@ A URL with a host, or the argument to `require`/`import` of `child_process`, `vs
 
 ## encrypted-loader
 
-Embedded base64, AES-256-GCM decipher with authentication tag, and the decoded text passed to `_compile`, linked through top-level `const` bindings. Nothing is decrypted. Evidence locations name each link.
+An embedded base64 or hex payload (a `Buffer.from` literal, possibly sliced, or a literal passed to `update` with its encoding), decrypted by a `createDecipheriv` object with a recognised cipher name (AES, ChaCha20, DES, Camellia, ARIA, SM4 and similar, in any mode), whose `update`/`final` output reaches a code-compiling sink: `Module._compile`, `vm.runInThisContext`, `runInNewContext`, `runInContext`, `compileFunction`, `new vm.Script`, `eval` or `Function`. The links follow bindings through any scope (`const`, and `let`/`var` that are never reassigned). An authentication tag set on the same decipher is recorded as evidence but is not required. Ciphertext read from a file or the network at run time is out of scope. Nothing is decrypted. Evidence locations name each link (`embedded-payload`, `cipher`, `authentication-tag`, `decrypted-text`, `code-sink`).
 
 ## campaign-marker
 

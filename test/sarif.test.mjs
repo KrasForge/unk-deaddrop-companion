@@ -16,6 +16,8 @@ test('directory scan emits SARIF 2.1.0 with rules, locations and fail-on exit co
   writeFileSync(join(dir, 'src', 'ok.mjs'), 'export const ok = 1;\n');
   writeFileSync(join(dir, 'src', 'broken.cjs'), 'const = ;\n');
   writeFileSync(join(dir, 'node_modules', 'skipped.js'), "navigator.clipboard.writeText('x');\n");
+  writeFileSync(join(dir, 'src', 'types.d.ts'), 'export declare const x: number;\n');
+  writeFileSync(join(dir, 'src', 'page.tsx'), "export const P = () => <b onClick={() => navigator.clipboard.writeText('y')}>c</b>;\n");
   const run = args => spawnSync(process.execPath, [bin, ...args], { cwd: dir, encoding: 'utf8', timeout: 30000 });
   const result = run(['--format', 'sarif', '--fail-on', 'error', '.']);
   assert.equal(result.status, 1, result.stderr);
@@ -33,5 +35,7 @@ test('directory scan emits SARIF 2.1.0 with rules, locations and fail-on exit co
   assert.equal(run(['--format', 'sarif', '.']).status, 0);
   assert.equal(run(['--strict', '.']).status, 2);
   const json = JSON.parse(run(['--include-node-modules', '.']).stdout);
-  assert.equal(json.files.length, 4);
+  assert.equal(json.files.length, 5);
+  assert.ok(!json.files.some(f => f.path.endsWith('.d.ts')));
+  assert.equal(json.files.find(f => f.path.endsWith('page.tsx')).parser, 'babel:typescript+jsx');
 });

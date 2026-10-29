@@ -2,7 +2,8 @@
 
 ```
 input bytes → UTF-8 validation → isolated analysis process
-  → Acorn AST (no location objects) → iterative index with parent links
+  → Acorn AST, or @babel/parser AST-only (TypeScript/JSX) as ESTree when Acorn rejects
+  → iterative index with parent links
   → string-array recovery (decoder variant, offset, rotation)
   → rule visitors over one pass, with pure evaluation on demand
   → findings, deobfuscation summary, artifact identity → JSON or SARIF

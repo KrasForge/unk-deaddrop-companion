@@ -11,7 +11,7 @@ The tool came out of the [UNK_DeadDrop investigation](https://krasforge.github.i
 | `clickfix-clipboard-command` | error, or warning for a plain install command | A clipboard write whose value is a terminal command: pipes into a shell, download cradles, hidden or encoded PowerShell, `mshta`, detaching. Errors when the write replaces a copy event, carries verification wording or hides execution |
 | `electron-run-as-node` | warning, error with hidden execution | A process launched with `ELECTRON_RUN_AS_NODE`, which makes a signed editor binary run arbitrary Node code (ATT&CK T1218.015) |
 | `string-array-obfuscation` | warning | An obfuscator.io-style string array, with whether its strings were recovered |
-| `encrypted-loader` | error | Embedded base64, AES-256-GCM decryption and `Module._compile` linked together |
+| `encrypted-loader` | error | Embedded encoded payload, decryption and a code-compiling sink (`Module._compile`, `vm`, `eval`, `Function`) linked together |
 | `child-process-hidden-script` | warning | A script launched from a temporary or `.vscode` directory |
 | `clipboard-write`, `clipboard-copy-override`, `obfuscated-string-indicator`, `campaign-marker` | note | Context: ordinary clipboard use, copy handlers, URLs and modules recovered from obfuscation, investigation markers |
 
@@ -33,7 +33,7 @@ Both install an `unk-scanner` command. With Python, `python -m unk_scanner` sele
 
 ```sh
 unk-scanner suspicious.js                              # one report as JSON
-unk-scanner ./unpacked-extension/                      # every .js/.mjs/.cjs file
+unk-scanner ./unpacked-extension/                      # every JS, TS and JSX file
 unk-scanner --include-node-modules ./unpacked-vsix/    # include bundled dependencies
 unk-scanner --format sarif --fail-on error src/ > results.sarif
 ```
@@ -138,7 +138,7 @@ Load your own rules with `--rule ./my-rule.mjs`. The isolated process may read o
 
 ## Limitations
 
-- **Parsing:** TypeScript and JSX are not parsed. Published packages usually ship compiled JavaScript, which is.
+- **Parsing:** JavaScript is parsed with Acorn. When Acorn rejects a file, `@babel/parser` parses it in AST-only mode as TypeScript and/or JSX (by file extension, otherwise tried in turn), and the report's `parser` field records which was used. Flow and other dialects are not supported.
 - **Evaluation:** no general data flow or reachability. A finding in a function that is never called is still reported.
 - **String arrays:** recovery covers obfuscator.io-style plain, base64 and RC4 arrays. Arrays reached through reassignable `var` aliases are reported as unresolved.
 - **What it cannot show:** whether a page displayed different text from what it copied, whether code ran, or whether anything was collected. Those need a browser or endpoint telemetry.
