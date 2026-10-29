@@ -9,10 +9,13 @@ import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { setPriority } from 'node:os';
+import { realpathSync } from 'node:fs';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const packageRoot = resolve(here, '..');
-const acornRoot = dirname(createRequire(import.meta.url).resolve('acorn/package.json'));
+// Real paths: the permission model compares resolved paths, and temporary or
+// package directories are often reached through symlinks (macOS /var).
+const packageRoot = realpathSync(resolve(here, '..'));
+const acornRoot = realpathSync(dirname(createRequire(import.meta.url).resolve('acorn/package.json')));
 const MAX_RESPONSE = 64 * 1024 * 1024;
 
 let probed;
@@ -54,7 +57,7 @@ function command({ heapMb, ruleFiles }) {
     '--disallow-code-generation-from-strings',
     '--permission', `--allow-fs-read=${packageRoot}`, `--allow-fs-read=${acornRoot}`,
     ...ruleFiles.map(file => `--allow-fs-read=${file}`),
-    resolve(here, 'child.mjs'), ...ruleFiles];
+    resolve(packageRoot, 'src', 'child.mjs'), ...ruleFiles];
   const limits = prlimit ? ['prlimit', '--cpu=600', '--fsize=0', '--nofile=128', '--core=0', '--'] : [];
   return [...(network ?? []), ...limits, ...node];
 }
@@ -64,7 +67,7 @@ export class ScannerPool {
     if (!Number.isInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 600000) {
       throw new Error('Timeout must be an integer from 1 to 600000 ms');
     }
-    this.options = { timeoutMs, heapMb, ruleFiles: ruleFiles.map(file => resolve(file)) };
+    this.options = { timeoutMs, heapMb, ruleFiles: ruleFiles.map(file => realpathSync(resolve(file))) };
     this.size = Math.max(1, size);
     this.idle = [];
     this.queue = [];
