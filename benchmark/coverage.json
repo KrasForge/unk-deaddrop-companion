@@ -1,0 +1,45 @@
+[
+  {
+    "ecosystem": "npm",
+    "selected_packages": 2500,
+    "acquisition_status": {
+      "downloaded": 2500
+    },
+    "packages_without_sources": 42,
+    "excluded_sources": 1,
+    "unique_files": 71820,
+    "status": {
+      "parsed": 49688,
+      "parse-failure": 22132
+    },
+    "valid_rejects": 21843,
+    "findings": {
+      "clipboard-write": 29,
+      "campaign-marker": 3
+    },
+    "alerted_files": 23
+  },
+  {
+    "ecosystem": "open-vsx",
+    "selected_packages": 500,
+    "acquisition_status": {
+      "downloaded": 500
+    },
+    "packages_without_sources": 94,
+    "excluded_sources": 112,
+    "unique_files": 85055,
+    "status": {
+      "parsed": 71730,
+      "parse-failure": 13323,
+      "worker-error": 1,
+      "timeout": 1
+    },
+    "valid_rejects": 12865,
+    "findings": {
+      "campaign-marker": 295,
+      "clipboard-write": 1215,
+      "string-array-obfuscation": 35
+    },
+    "alerted_files": 677
+  }
+]

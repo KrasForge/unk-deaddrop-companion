@@ -1,0 +1,16 @@
+package,version,rule,severity,files,verdict,review,reason
+@yuriai/web,0.2.4,electron-run-as-node,error,1,false-positive,code read,AI desktop app builds a hidden encoded PowerShell command for its own helper; helper talks only to 127.0.0.1 with a local password
+dsh-mobile,0.7.1,clickfix-clipboard-command,error,1,false-positive,code read,copied remote-access setup guide; curl only prints the HTTP status code; 'verify' comes from 'frpc verify'
+@shuffleio/shuffle-core,0.0.68,clickfix-clipboard-command,warning,3,benign,code read,workflow UI copies API and webhook snippets (one hit in a .d.mts declaration file)
+@buzzni/happy-cli,1.1.10-aplus.368,child-process-hidden-script,warning,1,benign,code read,sandbox smoke test writes and runs a fake OAuth server in /tmp inside its test container
+@rainbow-robotics/muscat-plugin-kit,0.10.1,child-process-hidden-script,warning,1,benign,code read,dev server writes a Python entry script into a docker container's /tmp
+glimmervoid,0.47.0,electron-run-as-node,warning,1,benign,code read,editor extension spawns its relay with process.execPath and windowsHide
+clearcote,0.67.0,electron-run-as-node,warning,1,benign,code read,licence lease check-in on exit; key passed via env
+acrylblends,1.0.7,electron-run-as-node,warning,6,benign,code read,writes launcher shims for its own app (unsets the variable when probing node)
+sesport,0.1.8,electron-run-as-node,warning,1,benign,code read,smoke test of a desktop app in headless mode
+@lily-cooperative/custom-farm,0.38.1,electron-run-as-node,warning,1,benign,code read,starts its Electron overlay detached
+(39 further packages),,electron-run-as-node,warning,58,benign,detail triage,"dsh plugins, MCP bridges, code-server, bundled TypeScript typings installer, agent CLIs; launch target and env recorded per finding"
+alvin-bot,,string-array-obfuscation,warning,397,benign,decoded strings,Telegram/Discord bot; decoded endpoints are the bot APIs
+"@funny-booth/google-workspace-mcp, @funny-booth/agent-core, basinfy, @cnrai/pave, @whalent/agent, jivamai",,string-array-obfuscation,warning,364,benign,decoded strings,obfuscated commercial or agent CLIs; child_process plus vendor/OAuth/LLM endpoints only
+(8 @univerjs-pro modules and @whalent/agent-core),,string-array-obfuscation,warning,31,not assessed,unresolved,arrays unresolved; commercial Univer Pro modules
+(137 further packages),,string-array-obfuscation,warning,~5350,benign,decoded strings,no decoded string matched the suspicious-indicator list (child_process, shells, exfil services, wallets, credential stores)
