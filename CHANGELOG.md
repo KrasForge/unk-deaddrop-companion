@@ -1,14 +1,26 @@
 # Changelog
 
-## Unreleased
+## Unreleased: scanner 0.2.0
 
-- Prepare npm `unk-scanner` 0.1.1 with the corrected registry installation instructions in the packaged README.
+Scanner 0.2.0 (JSON schema version 2). Not yet published to npm or PyPI.
+
+- **String arrays:** recover obfuscator.io-style string arrays statically. The scanner identifies plain, base64 and RC4 decoders and their offsets, and reimplements the decoding. It solves the rotation from the obfuscator's own checksum loop, including several decoders sharing one array, and otherwise uses guarded printable consensus. Recovered strings feed every rule. Nothing from the input is executed.
+- **Pure evaluator:** add a pure partial evaluator for constants, literal objects, string operations and single-return helpers, with step and depth caps.
+- **ClickFix rules:**
+  - `clickfix-clipboard-command` resolves the copied value or harvests fragments from command builders and caller arguments, then classifies shell, PowerShell, `mshta`, detaching and lure indicators.
+  - `clipboard-copy-override` reports global copy handlers.
+- **Electron rules:** `electron-run-as-node` reports launches, generated scripts and assignments, and escalates only alongside hidden execution. `child-process-hidden-script` reports scripts launched from temporary or `.vscode` paths.
+- **Rule modules:** rules are now modules (`id`, `meta`, `create(context)`) dispatched in one pass. Custom rules load through `--rule` or `inspect(source, { rules })`. Each finding carries a `severity`.
+- **Isolation:** the CLI parses in a pool of child processes under the Node permission model with a capped heap and an empty environment. On Linux it adds a network namespace and rlimits where available. A per-file deadline restarts the process. The default heap is 512 MiB, which the largest corpus bundles (up to 8 MiB of source) need. Acorn location objects are no longer created: peak memory on a 7.9 MB bundle fell from 462 MB to 399 MB.
+- **CLI:** add `--format sarif` (SARIF 2.1.0), `--fail-on`, multiple files and directories, `--jobs`, `--timeout` and `--strict`.
+- **Benchmark:** evaluate on 2,500 npm packages and 500 Open VSX extensions (143,153 unique files); see `BENCHMARK.md`.
 
 ## 2.1.0 - 2026-10-28
 
 This release adds installable scanner packages and records the current tool and detection scope.
 
 - Publish `unk-scanner` 0.1.0 on npm and 0.1.1 on PyPI. The Python package bundles the JavaScript engine and Acorn 8.17.0 with their licenses.
+- Publish npm `unk-scanner` 0.1.1 with corrected installation instructions in the packaged README; a fresh registry install reports version 0.1.1.
 - Add bounded worker parsing, heap and finding limits, explicit bounded gzip decoding, preserved BOM columns, and nonblocking rejection of named pipes.
 - Recognize retained AES-GCM loader structure through linked top-level bindings without decrypting or executing the source.
 - Add separate exact-source identity records for the retained login interface, shared module-preload polyfill, and obfuscated extension. Keep contextual identity out of behavioral findings.

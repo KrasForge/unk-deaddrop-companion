@@ -11,7 +11,7 @@ import shutil
 import subprocess
 import sys
 
-__version__ = "0.1.1"
+__version__ = "0.2.0"
 
 
 class ScannerError(RuntimeError):
@@ -57,7 +57,8 @@ def scan(path: str | Path, *, gzip: bool = False, timeout: float = 30) -> dict:
 
 def main() -> int:
     try:
-        return subprocess.run(_command() + sys.argv[1:], timeout=30).returncode
+        # The engine enforces per-file deadlines; a directory scan may take longer overall.
+        return subprocess.run(_command() + sys.argv[1:]).returncode
     except (ScannerError, OSError, subprocess.SubprocessError) as error:
         print(f"unk-scanner: {error}", file=sys.stderr)
         return 2

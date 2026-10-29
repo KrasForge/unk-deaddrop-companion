@@ -1,0 +1,21 @@
+{
+  "scannerSourceSha256": "712e6774bf0d64132a95bb18d809bef4d88a7a925e5853a8906dae2188fa7441",
+  "acornVersion": "8.17.0",
+  "node": "v22.22.2",
+  "os": "linux",
+  "architecture": "x64",
+  "availableParallelism": 16,
+  "totalMemoryBytes": 16465461248,
+  "cpus": "Intel(R) Xeon(R) W-1370 @ 2.90GHz",
+  "workers": 4,
+  "sourceOccurrences": 84590,
+  "uniqueFiles": 71820,
+  "completed": 71820,
+  "seconds": 26.021710462,
+  "filesPerSecond": 2760.0030407255554,
+  "bytesPerSecond": 20158590.103676174,
+  "independentValidation": true,
+  "scope": "read + UTF-8 decode + inspect + worker messaging + optional independent Babel validation on failures + JSONL write; excludes acquisition",
+  "scannerFallback": "Acorn module to script only; no TypeScript parser",
+  "failedPackages": 0
+}

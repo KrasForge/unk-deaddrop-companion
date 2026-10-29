@@ -1,0 +1,27 @@
+{
+  "unique_files": 143153,
+  "status": {
+    "parsed": 111187,
+    "parse-failure": 31964,
+    "worker-error": 1,
+    "timeout": 1
+  },
+  "finding_instances": {
+    "clipboard-write": 1243,
+    "campaign-marker": 297,
+    "string-array-obfuscation": 35
+  },
+  "alerted_files": 698,
+  "independently_valid_acorn_rejects": 31292,
+  "valid_source_failure_rate": 0.219625348296942,
+  "acquisition": {
+    "npm": {
+      "downloaded": 2500
+    },
+    "open-vsx": {
+      "downloaded": 500
+    }
+  },
+  "false_positive_rate": null,
+  "reason": "Requires adjudication; popularity does not establish benign ground truth"
+}

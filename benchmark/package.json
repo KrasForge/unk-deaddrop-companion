@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@babel/parser": "8.0.8"
+  },
+  "name": "unk-scanner-benchmark",
+  "private": true,
+  "type": "module"
+}

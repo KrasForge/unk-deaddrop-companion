@@ -1,0 +1,7 @@
+private-corpus/
+results-*.jsonl
+acquisition.json
+node_modules/
+acquisition-*.json
+
+__pycache__/
