@@ -1,42 +1,73 @@
-# Parse-only AST engineering
+# Scanner design
 
-The original case used Acorn to locate string tables and decoder wrappers before
-separate decoding. This companion provides a smaller, newly implemented triage
-tool; it is not the original full deobfuscator and does not claim equivalent
-coverage.
+```
+input bytes → UTF-8 validation → isolated analysis process
+  → Acorn AST (no location objects) → iterative index with parent links
+  → string-array recovery (decoder variant, offset, rotation)
+  → rule visitors over one pass, with pure evaluation on demand
+  → findings, deobfuscation summary, artifact identity → JSON or SARIF
+```
 
-Input bytes → UTF-8 validation → Acorn AST → iterative tree traversal → literal
-folding / member-call recognition → JSON findings with locations and hash.
+Nothing from the input is executed, imported, installed or fetched. "Evaluation" means interpreting a small, side-effect-free expression subset in the scanner's own code.
 
-The scanner accepts JavaScript module syntax, falling back to script syntax. It
-recognises clipboard writes through `navigator.clipboard.writeText(...)`-shaped
-and `event.clipboardData.setData(...)`-shaped calls, including literal computed
-names and optional member access. It also searches folded string literals for
-specific markers from the clipboard lure, phase-three home sweep, browser
-App-Bound decryption path, Windows collection branches, COM elevation builder,
-and Overlord agent. Receiver names are syntactic: an object named `clipboard`
-might be unrelated to a browser. A finding does not prove command execution,
-clipboard deception or malicious intent.
+## Pure evaluation
 
-Only string literals, interpolation-free template literals and string-literal
-addition are folded. Variables, getters, calls and mixed-type coercion are not
-evaluated. The tool does not reconstruct encrypted tables, follow aliases, prove
-data flow or compare displayed text to copied text. Dynamic arguments remain
-explicitly unresolved. Nested literal folding stops at depth 32.
+`evaluate.mjs` interprets the following:
 
-The CLI limits input to 8 MiB, validates a regular file, hashes original bytes,
-and rejects malformed UTF-8. Parsing is in-process and can still consume substantial
-CPU/memory on adversarial syntax; use OS resource controls and isolation for
-untrusted samples. No input is imported, installed, fetched or executed.
+- literals, templates and arithmetic, bitwise, comparison and logical operators on primitives;
+- `const` bindings and literal object properties;
+- array and string indexing and `.length`;
+- `parseInt`, `String.fromCharCode` and a fixed set of string methods;
+- functions whose body is a single `return` of a supported expression, with parameters bound to the call's arguments.
 
-## npm package
+Anything else is unresolved, never guessed. This covers:
 
-The scanner implementation lives in `packages/unk-scanner/src/inspect.mjs`. The original `src/inspect-js.mjs` entry point delegates to it. The npm package exposes the `unk-scanner` executable and the `inspect` API. The companion root remains private.
+- calls and member access on unknown values;
+- `let`/`var` bindings, assignments and loops;
+- getters, spreads and regular expressions.
 
-Before release, run `npm ci --ignore-scripts`, `npm test`, and `npm pack --workspace unk-scanner`. Run `npm run test:package` to check the ten-file tarball allowlist and verify its installed executable and API in an empty directory. Publish only the reviewed package tarball with an authorized npm account. Update the package and root READMEs after publication. Scanner versions are independent of the companion rule-suite version. Future changes should preserve schemaVersion 1 or explicitly version incompatible output changes.
+Each evaluation is capped at 20,000 steps and depth 48. Strings are capped at 1 MiB and arrays at 10,000 elements. Scopes are function-level; conflicting declarations in one scope are treated as unknown.
 
-The CLI uses a worker with a 10-second deadline and V8 heap limits. The synchronous API retains caller-process behavior. Explicit `--gzip` decoding bounds compressed and decoded input to 8 MiB and records both hashes. A 10,000-finding limit fails the analysis explicitly. The matcher also recognizes an allowlist of marker identifiers and parenthesized optional clipboard owners; it still performs no variable or alias resolution.
+## String-array recovery
 
-Encrypted-loader analysis recognizes a narrow chain of top-level const bindings. It links embedded base64, fixed IV/tag/ciphertext subarrays, AES-256-GCM decipher/update/final calls, authentication-tag assignment, and text passed to _compile. It emits evidence locations rather than embedded material. These are syntactic relationships; receiver identity and runtime outcomes remain unproven. Tests disconnect individual links to verify that unrelated encryption and compilation do not form a finding.
+`deobfuscate.mjs` finds obfuscator.io-style arrays and their decoders. It identifies each decoder's variant and offset from its syntax. Plain, base64 (with the shuffled alphabet read from the decoder) and RC4 decoding are reimplemented in the scanner. Rotation recovery is described in [rules.md](rules.md#string-array-obfuscation).
 
-The additive artifactMatches field identifies three exact decoded-source hashes independently of findings. Context-only login code and a shared polyfill are explicitly classified as non-alert context. The obfuscated extension has exact identity coverage only. Counts of identified artifacts must remain separate from findings; neither measures recall on unseen variants.
+On the retained UNK_DeadDrop VSIX entry point, the checksum gives rotation 391, the same value the manually verified decoder used. It decodes 2,139 of 2,140 call sites in under a second, without running the sample. The preprint's manual workflow compared candidate rotations by printable output. The checksum method reproduces the program's own stopping condition instead, and the printable heuristic is kept only as a guarded fallback.
+
+## Context
+
+Rules receive constant propagation and recovered strings, so a ClickFix command held in a `const` or hidden in a string array is visible to the clipboard rules. When a clipboard value cannot be resolved, the rule harvests string fragments; it does not evaluate them. Fragments come from the argument, from locally defined helpers and objects of helpers, and from caller arguments for generic copy helpers. All of these traversals have node budgets.
+
+## Isolation and limits
+
+The CLI analyses each file in a pool of child processes (`isolate.mjs`). Each analysis process runs as follows:
+
+- under the Node permission model, with no file writes, child processes, workers, WASI or native addons, and reads limited to the scanner's own directory, Acorn and named rule files;
+- with `--disallow-code-generation-from-strings`, a 512 MiB old-generation heap, an empty environment and lowered priority;
+- on Linux, when the system permits it, inside an unprivileged user and network namespace with no interfaces (`unshare --net`), and with `prlimit` caps on CPU time (600 s per process), file size (0), open files (128) and core dumps.
+
+A per-file deadline (default 10 s) kills the process, and a fresh one takes the next file. A crash, out-of-memory termination or timeout affects only that file's result.
+
+Acorn is recursive-descent. Deeply nested input ends in a stack error, which is reported. The scanner's own walkers are iterative, and its recursive helpers (literal folding and evaluation) are depth-capped. Input is limited to 8 MiB, decoded gzip to 8 MiB, and findings to 10,000 per file; a limit failure gives an error, never a partial report.
+
+These controls reduce the impact of a parser or engine defect; they are not a substitute for running the scanner itself in a disposable account or container when handling hostile samples at scale. The Node permission model is not a security boundary against a V8 exploit. The namespace and rlimits are the stronger layer and are only applied where available, so the report's `isolation` object records exactly what was applied.
+
+The `inspect()` API runs in the caller's process without these controls.
+
+## Output
+
+JSON schema version 2 adds `severity` to each finding and a `deobfuscation` array to each report. A single file with JSON output produces one report, as in version 1. Several files or a directory produce `{ schemaVersion, tool, isolation, files: [...] }`. `--format sarif` produces SARIF 2.1.0 (see [ci.md](ci.md)).
+
+## Rules
+
+Rules are modules with `id`, `meta` and `create(context)`, dispatched in one pass over the AST. Built-in rules live in `src/rules/`; see [rules.md](rules.md) for each rule and for writing new ones.
+
+## Release checks
+
+Before release, run the following:
+
+- `npm ci --ignore-scripts` and `npm test`;
+- `npm run test:package`, which checks the tarball allowlist, the installed CLI, SARIF output and the API in an empty directory;
+- `node scripts/prepare-python.mjs` before building the Python wheel.
+
+Publish only reviewed tarballs from an authorized account. Scanner versions are independent of the companion rule-suite version.

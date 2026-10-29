@@ -14,12 +14,15 @@ const run = (args, entry = bin) => spawnSync(process.execPath, [entry, ...args],
 test('CLI help, version and argument errors', () => {
   assert.match(run(['--help']).stdout, /Usage: unk-scanner/);
   assert.equal(run(['--version']).stdout, `${packageVersion}\n`);
-  for (const args of [[], ['--unknown'], ['a', 'b'], ['--']]) {
+  for (const args of [[], ['--unknown'], ['--'], ['--format', 'xml', 'a.js']]) {
     const result = run(args);
     assert.equal(result.status, 2);
     assert.equal(result.stdout, '');
     assert.match(result.stderr, /unk-scanner:/);
   }
+  const missing = run(['absent-a.js', 'absent-b.js']);
+  assert.equal(missing.status, 2);
+  assert.match(missing.stderr, /absent-a\.js: No such file/);
 });
 
 test('CLI reads original bytes, preserves legacy output, and rejects invalid input', t => {
@@ -42,7 +45,7 @@ test('CLI reads original bytes, preserves legacy output, and rejects invalid inp
     assert.equal(failure.status, 2);
     assert.equal(failure.stdout, '');
   }
-  assert.equal(run([dir]).status, 2);
+  assert.deepEqual(JSON.parse(run([dir]).stdout).files.map(f => f.path), [file]);
   assert.equal(run([join(dir, 'absent.js')]).status, 2);
   writeFileSync(file, 'export const safe = 1;');
   assert.equal(run([file]).status, 0);

@@ -1,0 +1,155 @@
+{
+  "scanner": "unk-scanner 0.2.0 (unreleased)",
+  "date": "2026-10-29",
+  "note": "Static analysis of retained investigation artifacts in isolated processes; nothing was executed. Paths omitted.",
+  "files": [
+    {
+      "sha256": "5ee915bb8d0363bd92176cc595d7425fd7e7830508d8824d90b5285a3d2b11bd",
+      "role": "ClickFix lure page bundle (Category Labs)",
+      "maxSeverity": "error",
+      "alerts": [
+        "clickfix-clipboard-command:error"
+      ],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "d24df1cacc01adee4e031b0f4d582448b7462f31975b57f553b7e0e86dddb184",
+      "role": "encrypted stage-2 loader",
+      "maxSeverity": "error",
+      "alerts": [
+        "encrypted-loader:error"
+      ],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "694626bed2df1f0d0026a3f7ead7692b44c7e73041cdd799b79a025335533cdc",
+      "role": "decrypted stage-3 collector",
+      "maxSeverity": "error",
+      "alerts": [
+        "electron-run-as-node:error"
+      ],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "340672ff0ffdf28d6c745d37a4a7deb51816951cf21a9d80b41924a55375b66f",
+      "role": "ClickFix lure page bundle (variant)",
+      "maxSeverity": "error",
+      "alerts": [
+        "clickfix-clipboard-command:error"
+      ],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "5498038886bab8a8db2159495c015f26e322708fc7a7f3ea698e7b7c06e3d148",
+      "role": "decrypted stage-3 collector (aazdias generation)",
+      "maxSeverity": "error",
+      "alerts": [
+        "electron-run-as-node:error"
+      ],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "750cfe570556ed5ce86d9d3bf46b3ce9f40f2b4ac31f4030070deba04020d724",
+      "role": "encrypted stage-2 loader",
+      "maxSeverity": "error",
+      "alerts": [
+        "encrypted-loader:error"
+      ],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "6039d9ef0777b5d78a0bc46840fe2529a37ee910ff5467a62b019fc9117d0922",
+      "role": "encrypted loader (deepfake-guard)",
+      "maxSeverity": "error",
+      "alerts": [
+        "encrypted-loader:error"
+      ],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "70ea6e2eaab58bdb83b7b235dd6253ffbcaed5e7df0286cbefd72d7650c3f47a",
+      "role": "decrypted collector (deepfake-guard)",
+      "maxSeverity": "error",
+      "alerts": [
+        "electron-run-as-node:error"
+      ],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "ce7865ba3b511bba88c428439651c464d7f66a5a01b4c814883b62c9c6cc32fa",
+      "role": "ClickFix lure page script (3dscenebox)",
+      "maxSeverity": "error",
+      "alerts": [
+        "clickfix-clipboard-command:error"
+      ],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "5557912dedf7f75666683afbe2632e0b89b8ee23f621432296a9c48eff63e9f4",
+      "role": "Domatisc panel login interface (context only)",
+      "maxSeverity": null,
+      "alerts": [],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "d3ebce2f05fe91a8260e87fd11a6ea17c156703d081b3f91d9bbe5fd6aeedc10",
+      "role": "VSIX Node bootstrap (obfuscated)",
+      "maxSeverity": "warning",
+      "alerts": [
+        "string-array-obfuscation:warning"
+      ],
+      "deobfuscation": [
+        {
+          "line": 1,
+          "column": 14,
+          "array": "_0x96c7",
+          "strings": 1022,
+          "variant": "rc4",
+          "offset": 288,
+          "rotation": 261,
+          "method": "checksum",
+          "callSites": 17,
+          "decodedSites": 15
+        }
+      ]
+    },
+    {
+      "sha256": "e5b7d6411d0c95da047185d94fca98d454b73df2e7f46f2753e212af2ca45da5",
+      "role": "Windows Node agent",
+      "maxSeverity": "note",
+      "alerts": [],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "bf820623e8deaa37092650c7fae594e56b8d81c27b541419006cca2d0536353b",
+      "role": "Windows Node/Python pipeline",
+      "maxSeverity": "error",
+      "alerts": [
+        "electron-run-as-node:error"
+      ],
+      "deobfuscation": []
+    },
+    {
+      "sha256": "d5e9288693aa745dc89368deac677e7ea1ec81e663283af30838cdae189b7a7e",
+      "role": "VSIX extension entry point (obfuscated)",
+      "maxSeverity": "warning",
+      "alerts": [
+        "string-array-obfuscation:warning"
+      ],
+      "deobfuscation": [
+        {
+          "line": 1,
+          "column": 14009,
+          "array": "_0x3205",
+          "strings": 3899,
+          "variant": "rc4",
+          "offset": 333,
+          "rotation": 391,
+          "method": "checksum",
+          "callSites": 2140,
+          "decodedSites": 2139
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "corpus": {
+    "npm": {
+      "downloaded": 2500
+    },
+    "open-vsx": {
+      "downloaded": 500
+    }
+  },
+  "source_occurrences": 197978,
+  "coverage": {
+    "all": {
+      "unique_files": 143153,
+      "status": {
+        "parsed": 111189,
+        "parse-failure": 31964
+      },
+      "parse_failures_by_extension": {
+        "ts": 28864,
+        "cts": 751,
+        "js": 99,
+        "mts": 2039,
+        "tsx": 206,
+        "mjs": 2,
+        "jsx": 1,
+        "cjs": 2
+      },
+      "rejected_but_valid_under_babel": 31292,
+      "javascript_files": 108171,
+      "javascript_parse_failures": 103,
+      "javascript_failures_valid_under_babel": 28
+    },
+    "npm": {
+      "unique_files": 71820,
+      "status": {
+        "parsed": 49688,
+        "parse-failure": 22132
+      },
+      "parse_failures_by_extension": {
+        "ts": 20001,
+        "cts": 578,
+        "js": 31,
+        "mts": 1438,
+        "tsx": 82,
+        "mjs": 2
+      },
+      "rejected_but_valid_under_babel": 21843,
+      "javascript_files": 47392,
+      "javascript_parse_failures": 33,
+      "javascript_failures_valid_under_babel": 7
+    },
+    "open-vsx": {
+      "unique_files": 85055,
+      "status": {
+        "parsed": 71732,
+        "parse-failure": 13323
+      },
+      "parse_failures_by_extension": {
+        "ts": 12272,
+        "js": 74,
+        "mts": 629,
+        "cts": 219,
+        "mjs": 2,
+        "tsx": 124,
+        "jsx": 1,
+        "cjs": 2
+      },
+      "rejected_but_valid_under_babel": 12865,
+      "javascript_files": 70731,
+      "javascript_parse_failures": 78,
+      "javascript_failures_valid_under_babel": 21
+    }
+  },
+  "findings": {
+    "campaign-marker:note": {
+      "instances": 298,
+      "files": 243,
+      "packages": 155
+    },
+    "clickfix-clipboard-command:warning": {
+      "instances": 1,
+      "files": 1,
+      "packages": 1
+    },
+    "clipboard-copy-override:note": {
+      "instances": 55,
+      "files": 28,
+      "packages": 18
+    },
+    "clipboard-write:note": {
+      "instances": 1272,
+      "files": 521,
+      "packages": 167
+    },
+    "electron-run-as-node:note": {
+      "instances": 183,
+      "files": 172,
+      "packages": 127
+    },
+    "electron-run-as-node:warning": {
+      "instances": 16,
+      "files": 9,
+      "packages": 7
+    },
+    "obfuscated-string-indicator:note": {
+      "instances": 273,
+      "files": 15,
+      "packages": 4
+    },
+    "string-array-obfuscation:warning": {
+      "instances": 90,
+      "files": 90,
+      "packages": 5
+    }
+  },
+  "review": {
+    "electron-run-as-node:warning:benign-context": 16,
+    "string-array-obfuscation:warning:obfuscation-confirmed": 90,
+    "clickfix-clipboard-command:warning:benign-context": 1
+  },
+  "deobfuscation": {
+    "arrays": {
+      "base64+rc4:checksum": 1,
+      "plain:checksum": 69,
+      "plain:unresolved": 19,
+      "rc4:checksum": 1
+    },
+    "call_sites": 486601,
+    "decoded": 486208
+  },
+  "scan_time_ms_parsed_files": {
+    "median": 0.78,
+    "p95": 16.09,
+    "p99": 188.37,
+    "max": 7580
+  },
+  "runs": {
+    "validated": {
+      "mode": "in-process worker threads around inspect()",
+      "workers": 4,
+      "uniqueFiles": 143153,
+      "completed": 143153,
+      "seconds": 326.016278651,
+      "filesPerSecond": 439.09770577206393,
+      "bytesPerSecond": 11927510.601894518,
+      "node": "v22.22.2",
+      "cpus": "Intel(R) Xeon(R) W-1370 @ 2.90GHz",
+      "scannerSourceSha256": "a5d2e40fd7b8cf3428d8aefd3fca15901302f959c7e9376fbc1474af8ac6efff",
+      "harnessSha256": "42c2cd50693a4518540bf3e15440214409b8e937481e95eb266da140631d1afa",
+      "isolation": null
+    },
+    "isolated": {
+      "mode": "isolated child processes (CLI path)",
+      "workers": 4,
+      "uniqueFiles": 143153,
+      "completed": 143153,
+      "seconds": 347.32439988799996,
+      "filesPerSecond": 412.15935317576844,
+      "bytesPerSecond": 11195765.748832867,
+      "node": "v22.22.2",
+      "cpus": "Intel(R) Xeon(R) W-1370 @ 2.90GHz",
+      "scannerSourceSha256": "a5d2e40fd7b8cf3428d8aefd3fca15901302f959c7e9376fbc1474af8ac6efff",
+      "harnessSha256": "42c2cd50693a4518540bf3e15440214409b8e937481e95eb266da140631d1afa",
+      "isolation": {
+        "mode": "child-process",
+        "permissionModel": true,
+        "networkNamespace": true,
+        "rlimits": {
+          "cpuSeconds": 600,
+          "fileSizeBytes": 0,
+          "openFiles": 128,
+          "core": 0
+        },
+        "heapMb": 512,
+        "environment": "empty"
+      }
+    }
+  },
+  "isolated_status": {
+    "parsed": 111189,
+    "parse-failure": 31964
+  },
+  "isolated_findings": {
+    "campaign-marker:note": {
+      "instances": 298,
+      "files": 243,
+      "packages": 155
+    },
+    "clickfix-clipboard-command:warning": {
+      "instances": 1,
+      "files": 1,
+      "packages": 1
+    },
+    "clipboard-copy-override:note": {
+      "instances": 55,
+      "files": 28,
+      "packages": 18
+    },
+    "clipboard-write:note": {
+      "instances": 1272,
+      "files": 521,
+      "packages": 167
+    },
+    "electron-run-as-node:note": {
+      "instances": 183,
+      "files": 172,
+      "packages": 127
+    },
+    "electron-run-as-node:warning": {
+      "instances": 16,
+      "files": 9,
+      "packages": 7
+    },
+    "obfuscated-string-indicator:note": {
+      "instances": 273,
+      "files": 15,
+      "packages": 4
+    },
+    "string-array-obfuscation:warning": {
+      "instances": 90,
+      "files": 90,
+      "packages": 5
+    }
+  }
+}

@@ -1,50 +1,64 @@
 # unk-scanner
 
-Local, static JavaScript triage based on the [UNK_DeadDrop investigation](https://krasforge.github.io/UNK_DeadDrop/). Acorn parses the input without executing it. The scanner reports literal and allowlisted identifier campaign markers, syntactic clipboard writes, and a specific encrypted-loader pattern with one-based source locations.
+Static JavaScript triage from the [UNK_DeadDrop investigation](https://krasforge.github.io/UNK_DeadDrop/). It finds ClickFix clipboard command substitution, Electron `ELECTRON_RUN_AS_NODE` launches, obfuscator.io string arrays (and recovers their strings), encrypted `_compile` loaders and campaign markers. Input is parsed and partially evaluated in isolated processes and never executed.
 
 ## Install and run
 
-Requires Node.js 22 or later. Install version 0.1.1 from npm:
+Requires Node.js 22 or later.
 
 ```sh
-npm install --global unk-scanner@0.1.1 --ignore-scripts
+npm install --global unk-scanner@0.2.0 --ignore-scripts
 unk-scanner suspect.js > findings.json
+unk-scanner --format sarif --fail-on error src/ > results.sarif
 unk-scanner --help
-unk-scanner --version
 ```
 
-Use `unk-scanner -- ./-filename.js` for option-like paths. The command accepts one UTF-8 JavaScript file, up to 8 MiB, and emits JSON. For gzip-compressed HTTP bodies, use `unk-scanner --gzip input.js`. Both compressed and decoded sizes are capped at 8 MiB. Without the flag, gzip magic produces an actionable error. Exit status 0 means analysis completed, including when findings exist. Status 2 means invalid arguments, unreadable input, encoding failure, or parse failure. Errors go to stderr.
+Arguments are files or directories; directories are searched for `.js`, `.mjs` and `.cjs`, skipping `node_modules` unless `--include-node-modules` is given. Use `--` before option-like paths. One file with JSON output prints a single report. Several files print `{ schemaVersion, tool, isolation, files }`.
 
-## Findings and limits
+| Option | Effect |
+| --- | --- |
+| `--format json\|sarif` | Output format; SARIF 2.1.0 for code scanning ([CI guide](https://github.com/KrasForge/unk-deaddrop-companion/blob/main/docs/ci.md)) |
+| `--fail-on error\|warning\|note\|none` | Exit 1 when a finding reaches the level (default `none`) |
+| `--rule FILE` | Load an additional rule module (repeatable) |
+| `--timeout MS` / `--jobs N` | Per-file deadline (default 10,000) and analysis processes (default up to 4) |
+| `--strict` | Exit 2 if any file could not be analysed |
+| `--gzip` | Decode one gzip-compressed input; compressed and decoded sizes are capped at 8 MiB |
 
-With `--gzip`, top-level hashes and sizes describe the original compressed input; `decoded` records the decoded SHA-256, byte count, and encoding. Locations refer to decoded JavaScript.
+Exit 0 means analysis completed, including when there are findings below `--fail-on`. Exit 1 means the `--fail-on` threshold was reached. Exit 2 means invalid arguments, no analysable input, or `--strict` with an analysis error; errors go to stderr.
 
-The JSON includes schemaVersion, the original file's SHA-256, byte count, findings, and limitations. Each finding contains kind, line, column, and detail. Clipboard literal details are truncated to 240 JavaScript string code units; dynamic arguments are marked unresolved.
+## Findings
 
-The scanner folds string literals, templates without interpolation, and literal concatenation. It supports module syntax with a script-syntax fallback. It does not resolve aliases, track data flow or reachability, decrypt payloads, or decode obfuscated string tables. A marker or clipboard write alone does not establish maliciousness; an empty result does not establish safety.
+Each finding has `kind`, `severity`, `line`, `column` and `detail`. Rule-specific fields such as `indicators` and `evidence` may also appear. The rules, their severities and their escalation conditions are documented in [rules.md](https://github.com/KrasForge/unk-deaddrop-companion/blob/main/docs/rules.md). Severities were calibrated on 3,000 popular npm packages and Open VSX extensions, where no error-level finding occurred ([benchmark](https://github.com/KrasForge/unk-deaddrop-companion/blob/main/BENCHMARK.md)).
 
-Analysis does not execute or import the input, install its dependencies, or contact remote infrastructure. Output can contain source strings. Handle reports with the input's sensitivity. The CLI parses in a worker with a 10-second deadline and V8 heap limits (256 MiB old generation, 32 MiB young generation). A maximum of 10,000 findings prevents unbounded reports. Limit failures return exit 2 without a partial report. These are application limits, not a security sandbox or a total process-memory guarantee. Use operating-system isolation for untrusted inputs.
+The report also contains:
 
-## Encrypted-loader findings
+- `schemaVersion` (2);
+- the input's SHA-256 and byte count;
+- `deobfuscation`, giving each string array's variant, offset, rotation, method and decoded call-site count;
+- `artifactMatches`;
+- `limitations`.
 
-An `encrypted-loader` finding links a specific top-level sequence: a literal base64 buffer, its IV/tag/ciphertext slices, an AES-256-GCM decipher, authentication-tag assignment, conversion of update/final output to text, and an `_compile` call receiving that text. Evidence locations identify five steps without copying keys or encrypted payloads into the report.
+With `--gzip`, `decoded` records the decompressed hash and size.
 
-Recognition follows direct top-level `const` bindings. It tolerates renamed variables and literal-computed method names. It does not evaluate expressions, decrypt anything, establish that receivers are genuine Node APIs, or prove execution or successful authentication. Other loader layouts, nested scopes, mutable bindings, and string-table obfuscation may remain unmatched. Encryption or compilation alone does not trigger this finding; it is not campaign attribution.
+A finding is a review lead, not a verdict, and an empty report does not establish safety. Output can contain strings from the input; handle it with the input's sensitivity.
 
-## Exact artifact identity
+## Isolation
 
-`artifactMatches` is separate from `findings`. It identifies three exact decoded-source hashes retained in the investigation: the login interface, a shared module-preload polyfill, and the obfuscated extension entry point. The login interface has classification `context-only`; the polyfill is a `shared-web-component`. Neither is a malware alert or an attribution indicator. The extension match identifies the retained bytes but does not resolve its behavior.
-
-With gzip input, identity matches use the decoded source hash, while the top-level hash still describes the original input. Any source-byte change invalidates exact identity. Do not merge identity counts into behavioral detection or recall statistics. Review context at the [research series](https://krasforge.github.io/UNK_DeadDrop/).
+The CLI parses each file in a child process under the Node permission model. The process has no file writes, child processes, workers or addons, and can read only the scanner's own code. It runs with a capped heap and an empty environment. On Linux, where permitted, it also runs in an empty network namespace with rlimits. A per-file deadline kills a stuck process. The JSON and SARIF output record which controls applied. These reduce the impact of a parser defect but are not a sandbox against a V8 exploit; analyse hostile samples in a disposable environment.
 
 ## JavaScript API
 
 ```js
 import { inspect } from 'unk-scanner';
-const result = inspect('navigator.clipboard.writeText("example");');
+const report = inspect('navigator.clipboard.writeText("example");');
+const custom = inspect(source, { rules: [myRule] });
 ```
 
-The synchronous API runs in the caller process without the CLI worker deadline or heap limits. The API accepts source text and hashes its UTF-8 encoding. The CLI hashes original file bytes, including any UTF-8 byte-order mark.
+`inspect()` runs synchronously in the caller's process without isolation or deadlines. It hashes the UTF-8 encoding of the text. The CLI hashes the original file bytes, including any byte-order mark.
+
+## Encrypted loaders and artifact identity
+
+An `encrypted-loader` finding links embedded base64, AES-256-GCM decryption with tag authentication, and the decoded text passed to `_compile`, through top-level `const` bindings. Nothing is decrypted. `artifactMatches` identifies three exact retained source hashes and is separate from findings: login code and a shared polyfill are context only.
 
 ## Development
 
@@ -53,7 +67,7 @@ From the companion repository root:
 ```sh
 npm ci --ignore-scripts
 npm test
-npm pack --workspace unk-scanner
+npm run test:package
 ```
 
-Code is MIT licensed. Acorn retains its own license. This package includes no malware samples, YARA rules, or credentials. Existing YARA validation statistics do not measure scanner accuracy.
+Code is MIT licensed. Acorn retains its own license. The package includes no malware samples or credentials.

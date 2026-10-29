@@ -1,6 +1,6 @@
 # UNK_DeadDrop Companion
 
-Parse-only JavaScript AST scanning and 33 experimental YARA detections for defensive analysis of developer-targeting lures. The investigation discusses behaviors reported in the wider Contagious Interview cluster tracked by MITRE ATT&CK as [G1052](https://attack.mitre.org/groups/G1052/). Similarities do not establish that UNK_DeadDrop and G1052 share an operator or identity.
+Static JavaScript analysis and 33 experimental YARA detections for defensive analysis of developer-targeting lures. The investigation discusses behaviors reported in the wider Contagious Interview cluster tracked by MITRE ATT&CK as [G1052](https://attack.mitre.org/groups/G1052/). Similarities do not establish that UNK_DeadDrop and G1052 share an operator or identity.
 
 Start with the [twelve-part research series](https://krasforge.github.io/UNK_DeadDrop/) and its [preprint PDF](https://krasforge.github.io/UNK_DeadDrop/downloads/UNK_DeadDrop-Preprint.pdf). The preprint is published on Zenodo under CC BY 4.0: [record DOI](https://doi.org/10.5281/zenodo.23696198) · [concept DOI](https://doi.org/10.5281/zenodo.23652297).
 
@@ -15,32 +15,29 @@ The defensive purpose is to inspect JavaScript without executing it and to exerc
 | `rules/yara/` | 33 experimental file-content rules in 28 files, each matched against at least one retained investigation artifact |
 | `tools/replay_yara.py` | Read-only replay over selected files and supported archive members, without extracting or executing content |
 | `packages/unk-scanner/` and `packages/unk-scanner-python/` | npm and Python CLI/API packages; Python bundles the JavaScript engine and Acorn with their licenses |
-| `test/` and `tests/` | Inert JavaScript buffers and YARA boundary fixtures |
-| `docs/` | Scanner design, rule conditions, limitations, evidence coverage, and actual-artifact and benign-corpus validation results |
+| `test/` and `tests/` | Inert JavaScript buffers, a generated obfuscation fixture, isolation probes and YARA boundary fixtures |
+| `benchmark/` | Corpus acquisition, benchmark harness and review data (source code of the corpus is not redistributed) |
+| `docs/` | Scanner design, rule reference, CI integration, limitations, evidence coverage, and validation results |
 | `CITATION.cff` and `.zenodo.json` | Citation and archive metadata for the software and its related preprint |
 
 This public repository contains zero live malware payloads or active credentials. It also excludes victim data, private case records, and raw investigation databases. The tests use synthetic inert fixtures.
 
 ## Use the scanner
 
-The Python `unk-scanner` 0.1.1 distribution is available on [PyPI](https://pypi.org/project/unk-scanner/0.1.1/), and the Node.js `unk-scanner` 0.1.1 distribution is available on [npm](https://www.npmjs.com/package/unk-scanner). Python requires 3.10+ and Node.js 22+; the npm package requires Node.js 22+. See the [npm package README](packages/unk-scanner/README.md) and [Python package README](packages/unk-scanner-python/README.md) for installation, JSON output, exit codes, and limitations.
+The published `unk-scanner` 0.1.1 is on [PyPI](https://pypi.org/project/unk-scanner/0.1.1/) and [npm](https://www.npmjs.com/package/unk-scanner). Version 0.2.0 in this repository is not yet published. It recovers obfuscator.io string arrays and reports ClickFix clipboard command substitution and Electron `ELECTRON_RUN_AS_NODE` launches with context-dependent severity. It also writes SARIF for code scanning and parses each file in an isolated process. See the [npm package README](packages/unk-scanner/README.md), the [rule reference](docs/rules.md), the [CI guide](docs/ci.md) and the [design notes](docs/tool-design.md).
 
-Install the published Python package with:
-
-```sh
-python -m pip install unk-scanner
-python -m unk_scanner suspect.js > findings.json
-```
+From a checkout:
 
 ```sh
 npm ci --ignore-scripts
 npm test
-node src/inspect-js.mjs /path/to/held/source.js > analysis-output.json
+node packages/unk-scanner/bin/unk-scanner.mjs /path/to/held/source.js > analysis-output.json
+node packages/unk-scanner/bin/unk-scanner.mjs --format sarif --fail-on error src/ > results.sarif
 ```
 
-The scanner is local and static: it does not execute, import, fetch nor install project content. Its output can include literal strings from the input. Handle it with the same care as the source file. The 8 MiB source limit and parse-only behavior do not make an untrusted file safe to process; use isolation and operating-system resource limits.
+The scanner is local and static: it does not execute, import, fetch or install project content, and its evaluator interprets only a side-effect-free expression subset. Output can include literal strings from the input; handle it with the same care as the source file. Process isolation reduces the impact of a parser defect but is not a sandbox against an engine exploit. Analyse hostile samples in a disposable environment.
 
-See the [scanner validation](docs/scanner-validation.md) for actual-artifact results, benign clipboard findings, and known coverage gaps.
+The [corpus benchmark](BENCHMARK.md) covers 2,500 npm packages and 500 Open VSX extensions, 143,153 unique files. It reports parse coverage, finding prevalence by rule and severity, the review of every warning, throughput, and sensitivity on the retained UNK_DeadDrop artifacts. See the [scanner validation](docs/scanner-validation.md) for the earlier artifact checks.
 
 ## Review the detection content
 

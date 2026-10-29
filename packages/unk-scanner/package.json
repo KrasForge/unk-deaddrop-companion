@@ -1,6 +1,6 @@
 {
   "name": "unk-scanner",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Static JavaScript triage for UNK_DeadDrop campaign markers and clipboard writes",
   "type": "module",
   "license": "MIT",

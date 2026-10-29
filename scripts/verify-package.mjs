@@ -14,8 +14,10 @@ try {
   const [pack] = JSON.parse(npm('pack', '--workspace', 'unk-scanner', '--pack-destination', temp, '--json'));
   assert.deepEqual(pack.files.map(f => f.path).sort(), [
     'LICENSE', 'README.md', 'bin/unk-scanner.mjs', 'package.json',
-    'src/artifacts.mjs', 'src/bounded.mjs', 'src/cli.mjs', 'src/inspect.mjs', 'src/loaders.mjs', 'src/worker.mjs',
-  ]);
+    'src/artifacts.mjs', 'src/bounded.mjs', 'src/child.mjs', 'src/cli.mjs', 'src/deobfuscate.mjs', 'src/evaluate.mjs',
+    'src/inspect.mjs', 'src/isolate.mjs', 'src/loaders.mjs', 'src/rules/campaign-marker.mjs', 'src/rules/clipboard.mjs',
+    'src/rules/electron.mjs', 'src/rules/index.mjs', 'src/rules/obfuscation.mjs', 'src/sarif.mjs',
+  ].sort());
   npm('install', '--prefix', temp, '--ignore-scripts', '--no-audit', '--no-fund', join(temp, pack.filename));
   const bin = resolve(temp, 'node_modules/unk-scanner/bin/unk-scanner.mjs');
   assert.equal(execFileSync(process.execPath, [bin, '--version'], { encoding: 'utf8' }).trim(), packageVersion);
@@ -27,7 +29,10 @@ try {
   execFileSync(process.execPath, ['--input-type=module', '-e',
     "import { inspect } from 'unk-scanner'; if (inspect('const ok=1').findings.length) process.exit(1);",
   ], { cwd: temp });
-  console.log('Package allowlist, installed CLI, and public API passed.');
+  const sarif = JSON.parse(execFileSync(process.execPath, [bin, '--format', 'sarif', sample], { encoding: 'utf8' }));
+  assert.equal(sarif.version, '2.1.0');
+  assert.equal(sarif.runs[0].results[0].ruleId, 'clipboard-write');
+  console.log('Package allowlist, installed CLI, SARIF output, and public API passed.');
 } finally {
   rmSync(temp, { recursive: true, force: true });
 }

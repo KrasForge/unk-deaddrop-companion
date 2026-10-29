@@ -1,0 +1,39 @@
+{
+  "harnessSha256": "42c2cd50693a4518540bf3e15440214409b8e937481e95eb266da140631d1afa",
+  "workerHeapMiB": 512,
+  "perFileTimeoutSeconds": 60,
+  "scannerSourceSha256": "a5d2e40fd7b8cf3428d8aefd3fca15901302f959c7e9376fbc1474af8ac6efff",
+  "acornVersion": "8.17.0",
+  "node": "v22.22.2",
+  "os": "linux",
+  "architecture": "x64",
+  "availableParallelism": 16,
+  "totalMemoryBytes": 16465461248,
+  "cpus": "Intel(R) Xeon(R) W-1370 @ 2.90GHz",
+  "workers": 4,
+  "sourceOccurrences": 197978,
+  "uniqueFiles": 143153,
+  "completed": 143153,
+  "seconds": 347.32439988799996,
+  "filesPerSecond": 412.15935317576844,
+  "bytesPerSecond": 11195765.748832867,
+  "independentValidation": false,
+  "scope": "read + UTF-8 decode + inspect + worker messaging + optional independent Babel validation on failures + JSONL write; excludes acquisition",
+  "scannerFallback": "Acorn module to script only; no TypeScript parser",
+  "mode": "isolated child processes (CLI path)",
+  "isolation": {
+    "mode": "child-process",
+    "permissionModel": true,
+    "networkNamespace": true,
+    "rlimits": {
+      "cpuSeconds": 600,
+      "fileSizeBytes": 0,
+      "openFiles": 128,
+      "core": 0
+    },
+    "heapMb": 512,
+    "environment": "empty"
+  },
+  "statusCounts": null,
+  "failedPackages": 0
+}
