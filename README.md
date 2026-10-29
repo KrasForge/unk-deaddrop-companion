@@ -24,7 +24,7 @@ This public repository contains zero live malware payloads or active credentials
 
 ## Use the scanner
 
-The published `unk-scanner` 0.1.1 is on [PyPI](https://pypi.org/project/unk-scanner/0.1.1/) and [npm](https://www.npmjs.com/package/unk-scanner). Version 0.2.0 in this repository is not yet published. It recovers obfuscator.io string arrays and reports ClickFix clipboard command substitution and Electron `ELECTRON_RUN_AS_NODE` launches with context-dependent severity. It also writes SARIF for code scanning and parses each file in an isolated process. See the [npm package README](packages/unk-scanner/README.md), the [rule reference](docs/rules.md), the [CI guide](docs/ci.md) and the [design notes](docs/tool-design.md).
+`unk-scanner` 0.2.0 is published on [npm](https://www.npmjs.com/package/unk-scanner) and [PyPI](https://pypi.org/project/unk-scanner/0.2.0/) (`npm install -g unk-scanner --ignore-scripts` or `python -m pip install unk-scanner`; both need Node.js 22+). It recovers obfuscator.io string arrays and reports ClickFix clipboard command substitution and Electron `ELECTRON_RUN_AS_NODE` launches with context-dependent severity. It also writes SARIF for code scanning and parses each file in an isolated process. See the [npm package README](packages/unk-scanner/README.md), the [rule reference](docs/rules.md), the [CI guide](docs/ci.md) and the [design notes](docs/tool-design.md).
 
 From a checkout:
 
