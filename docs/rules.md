@@ -48,7 +48,7 @@ A child-process call whose resolved command or arguments name a `.js`, `.py`, `.
 
 ## string-array-obfuscation
 
-An obfuscator.io-style string array: a self-redefining function holding a string-array literal, or an array variable that rotation code shifts, together with a decoder that rebases its index (`i = i - OFFSET`). The decoder's own code is never run. The scanner identifies the variant (plain, base64 with the custom alphabet, RC4) and the offset, then reimplements the decoding.
+An obfuscator.io-style string array: a self-redefining function holding a string-array literal, or an array variable that rotation code shifts, together with a decoder that rebases its index (`i = i - OFFSET`). In output from javascript-obfuscator 4.x and earlier, the decoder replaces itself with an inner function that does the rebasing; the offset and key parameter are then read from that inner function. The decoder's own code is never run. The scanner identifies the variant (plain, base64 with the custom alphabet, RC4) and the offset, then reimplements the decoding.
 
 Rotation code is `x.push(x.shift())` or an equivalent step (`push(splice(0, 1)[0])`, `unshift(pop())`) in an immediately invoked function that receives or names the array; any other reordering call there (`reverse`, `sort`, `splice`) still marks the array as rotated. The rotation is recovered in one of three ways:
 
@@ -56,7 +56,7 @@ Rotation code is `x.push(x.shift())` or an equivalent step (`push(splice(0, 1)[0
 - **`unrotated`:** no code rotates or reorders the array, and at least 80% of up to 64 call sites decode to printable text in stored order. Otherwise the scanner falls through to consensus.
 - **`printable-consensus`:** a single rotation is the only one that decodes at least 80% of up to 64 call sites to printable text, and the runner-up decodes at most half as many. A keyless base64 or plain array decodes to printable text under every rotation, so it stays `unresolved` rather than guessed.
 
-Recovered strings, including those reached through wrapper functions, aliases (`const a = decoder`, or a `var`/`let` alias that is never reassigned), members of constant objects (`o.d(...)`) and single-return helpers, are substituted into every other rule. The `deobfuscation` array in the report records the variant, offset, rotation, method and decoded call-site count.
+Recovered strings, including those reached through wrapper functions, aliases (`const a = decoder`, or a `var`/`let` alias that is never reassigned), members of constant objects (`o.d(...)`) and helpers that return one expression, optionally after declaring locals with pure initialisers (as obfuscator wrappers do with offset objects), are substituted into every other rule. The `deobfuscation` array in the report records the variant, offset, rotation, method and decoded call-site count.
 
 Obfuscation is common in commercial extensions; this finding says the strings were hidden and whether they were recovered, not that the code is malicious.
 

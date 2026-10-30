@@ -25,6 +25,42 @@ const primitive = value => value === null || ['string', 'number', 'boolean', 'un
 
 export function isFunction(node) { return FUNCTION_TYPES.has(node?.type); }
 
+// Initialisers that cannot change state: no calls, assignments, updates or
+// functions. Such a local can be skipped until a returned expression reads it.
+const IMPURE = new Set(['CallExpression', 'NewExpression', 'AssignmentExpression', 'UpdateExpression',
+  'AwaitExpression', 'YieldExpression', 'TaggedTemplateExpression', 'ImportExpression', ...FUNCTION_TYPES]);
+function pure(node) {
+  const pending = [node];
+  while (pending.length) {
+    const current = pending.pop();
+    if (!current || IMPURE.has(current.type)) return false;
+    for (const key in current) {
+      const value = current[key];
+      if (Array.isArray(value)) { for (const child of value) if (child?.type) pending.push(child); }
+      else if (value?.type) pending.push(value);
+    }
+  }
+  return true;
+}
+
+// The expression a helper returns, when its body is a single return statement,
+// optionally preceded by declarations of locals with pure initialisers
+// (obfuscators put offset objects there). Locals resolve through scopes.
+export function returnedExpression(fn) {
+  if (!isFunction(fn) || fn.async || fn.generator) return undefined;
+  if (fn.body.type !== 'BlockStatement') return fn.body;
+  const statements = fn.body.body;
+  const last = statements.at(-1);
+  if (last?.type !== 'ReturnStatement' || !last.argument) return undefined;
+  for (const statement of statements.slice(0, -1)) {
+    if (statement.type !== 'VariableDeclaration') return undefined;
+    for (const declaration of statement.declarations) {
+      if (declaration.id.type !== 'Identifier' || !declaration.init || !pure(declaration.init)) return undefined;
+    }
+  }
+  return last.argument;
+}
+
 // Lexical scopes are function-level; block-level `const` declarations are
 // attributed to their function. Conflicting declarations become ambiguous.
 // `let` and `var` bindings count as constant only when the scopes are given
@@ -416,14 +452,10 @@ export class Evaluator {
     return this.#fail();
   }
 
-  // Inline a helper whose body is a single return of a supported expression.
+  // Inline a helper that returns a supported expression (see returnedExpression).
   #inline(fn, args, frames, depth, state) {
-    let body = fn.body;
-    if (fn.async || fn.generator) this.#fail();
-    if (body.type === 'BlockStatement') {
-      if (body.body.length !== 1 || body.body[0].type !== 'ReturnStatement' || !body.body[0].argument) this.#fail();
-      body = body.body[0].argument;
-    }
+    const body = returnedExpression(fn);
+    if (!body) this.#fail();
     const frame = new Map();
     fn.params.forEach((param, index) => {
       if (param.type !== 'Identifier') this.#fail();

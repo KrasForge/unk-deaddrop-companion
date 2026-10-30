@@ -28,6 +28,9 @@ import { parse } from 'acorn';
 const [tool, ...ids] = process.argv.slice(2);
 const manifests = {};
 const TOKEN = /^\d+[a-zA-Z]+$/;
+// Scanner engines by evaluation-server workspace: frozen (caf3f552), hardened as
+// in Section 5.6 before the decoder changes (202f56f2), and revised (with them).
+const ENGINES = { 'scanner-frozen': 'unk-bench', 'scanner-hardened': 'unk-bench-mit', 'scanner-revised': 'unk-bench-v2' };
 
 let stringArray = new Set();
 const allStrings = node => node.type === 'ArrayExpression' && node.elements.length >= 5 &&
@@ -83,9 +86,9 @@ function sequence(code) {
     if (node.type === 'Property' && !node.computed) { pending.push(node.value); continue; }
     if (node.type === 'Literal' && typeof node.value === 'string') items.push([node.start, node.value]);
     if (node.type === 'MemberExpression' && !node.computed && node.property.type === 'Identifier') items.push([node.property.start, node.property.name]);
-    // The obfuscator also hides template-literal text and class method names.
+    // The obfuscator also hides template-literal text and class method and field names.
     if (node.type === 'TemplateElement' && node.value.cooked) items.push([node.start, node.value.cooked]);
-    if (node.type === 'MethodDefinition' && !node.computed && node.key.type === 'Identifier') items.push([node.key.start, node.key.name]);
+    if ((node.type === 'MethodDefinition' || node.type === 'PropertyDefinition') && !node.computed && node.key.type === 'Identifier') items.push([node.key.start, node.key.name]);
     for (const key in node) {
       const value = node[key];
       if (Array.isArray(value)) { for (const child of value) if (child?.type) pending.push(child); }
@@ -142,8 +145,8 @@ for (const id of ids) {
   let R;
   const extra = {};
   try {
-    if (tool === 'scanner-frozen' || tool === 'scanner-hardened') {
-      const { arrays, resolved } = await scanner(tool === 'scanner-frozen' ? 'unk-bench' : 'unk-bench-mit', obfuscated);
+    if (ENGINES[tool]) {
+      const { arrays, resolved } = await scanner(ENGINES[tool], obfuscated);
       const values = [...resolved.values()].filter(v => !(TOKEN.test(v) && !O.has(v)));
       R = new Set(values);
       extra.arrays = arrays.map(a => ({ method: a.method, variant: a.variant, rotation: a.rotation, callSites: a.callSites, decodedSites: a.decodedSites }));

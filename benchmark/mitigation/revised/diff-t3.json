@@ -1,0 +1,3631 @@
+{
+ "files": 41359,
+ "changes": {
+  "up": 224,
+  "same-level": 1,
+  "status error->worker-error": 1
+ },
+ "addedAlerts": {
+  "string-array-obfuscation:warning": 221,
+  "child-process-hidden-script:warning": 5
+ },
+ "packagesRaisedTo": {
+  "warning": 59
+ },
+ "samples": [
+  {
+   "direction": "up",
+   "package": "samples/ide_extensions/malicious_intent/0xS1rx58D3V.ChatGPT-B0T/0.0.1.vsix",
+   "member": "extension/extension.js",
+   "sha256": "553bff3c37e2bc4b5effc794ee7b10bd94b3d894586dc93b07669a18e94905e3",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:66: string array _0x3e52 resolved: 40/40 call sites decoded (plain, offset 268, rotation 12 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/keythereum-utils/1.2.3/2025-06-20-keythereum-utils-v1.2.3.zip",
+   "member": "tmp/tmp7fp4mu0o/keythereum-utils/package/src/randomBytesUtil.js",
+   "sha256": "1446113b831d63caba8abd8dc66582941a277efec00313ba228c5c642e913e39",
+   "before": [],
+   "after": [
+    [
+     "child-process-hidden-script",
+     "warning"
+    ],
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "child-process-hidden-script:warning:4: spawn(): \"$env:TEMP\\1.cmd",
+    "string-array-obfuscation:warning:4: string array _0x3a12 resolved: 15/15 call sites decoded (plain, offset 253, rotation 7 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/ide_extensions/malicious_intent/GavinLamWood.vs-blanket/0.0.8.vsix",
+   "member": "extension/src/extension.js",
+   "sha256": "ae0124638bd183b302ba1c5db3570118da18c065f2d9be7a5a814fd9d29d040e",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x1c68 resolved: 72/72 call sites decoded (base64, offset 331, rotation 31 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/ide_extensions/malicious_intent/Ethereum.SoliditySupport/1.0.0.vsix",
+   "member": "extension/extension.js",
+   "sha256": "8b2f9792027d412b3ddc9b2607c5e48cfbb45fdce5a1947f4c8ea7f570e8a981",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x5e84 resolved: 788/788 call sites decoded (plain, offset 456, rotation 408 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/ide_extensions/malicious_intent/VitalikButerin-EthFoundation.blan-co/0.0.8.vsix",
+   "member": "extension/src/extension.js",
+   "sha256": "875c8a67d5bcf2256ed640474c18f2845b8cdf7781294cbdc0ccbbe47a80f69d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x2470 resolved: 19/19 call sites decoded (plain, offset 448, rotation 4 by checksum)"
+   ]
+  },
+  {
+   "direction": "same-level",
+   "package": "samples/ide_extensions/malicious_intent/juanblan281.solid281/0.0.189.vsix",
+   "member": "extension/webpack.js",
+   "sha256": "b0c0610629d1f6ed996764e2cb3f79c982abe16a76be418b8d03786d2c9543fd",
+   "before": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "after": [
+    [
+     "child-process-hidden-script",
+     "warning"
+    ],
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "child-process-hidden-script:warning:19: execFile(): %temp%\\extension.bat"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/compromised_lib/vant/3.6.13/2024-12-20-vant-v3.6.13.zip",
+   "member": "tmp/tmpe_2t5_54/vant/package/lib/utils/support.js",
+   "sha256": "92c486bcc03a68b5b0b914417bca063bf40ad08db246a1c3f11bb8999afedf43",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a0_0x153a resolved: 5860/5860 call sites decoded (plain, offset 417, rotation 392 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/@liuliang520500@sinataoke_cn/2.0.10/2026-09-06-@liuliang520500_sinataoke_cn-v2.0.10.zip",
+   "member": "tmp/tmpixqx2e9r/@liuliang520500-sinataoke_cn/package/dist/smithery.js",
+   "sha256": "4a9ec0c1334b305f2da8f23fd6bf8f5224496291c894f5e0c9c1e30f0ec2d71c",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a2_0x2948 resolved: 5809/5809 call sites decoded (base64, offset 305, rotation 128 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/@liuliang520500@sinataoke_cn/2.0.10/2026-09-06-@liuliang520500_sinataoke_cn-v2.0.10.zip",
+   "member": "tmp/tmpixqx2e9r/@liuliang520500-sinataoke_cn/package/dist/index.js",
+   "sha256": "c85bb2c5c7f47b0184c9bc2dcef394186a0e4ed05b474a88bf574df21927e1b9",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:2: string array a0_0x2484 resolved: 5856/5856 call sites decoded (base64, offset 492, rotation 202 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/@liuliang520500@sinataoke_cn/2.0.10/2026-09-06-@liuliang520500_sinataoke_cn-v2.0.10.zip",
+   "member": "tmp/tmpixqx2e9r/@liuliang520500-sinataoke_cn/package/dist/cli.js",
+   "sha256": "aca90d45ebc6859470b4e128fc988d6807f37c4207d77479dc861c5afbdb6096",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:2: string array a1_0x1e76 resolved: 5611/5611 call sites decoded (base64, offset 327, rotation 366 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/@mosfe@beam/2.0.0/2024-04-17-@mosfe_beam-v2.0.0.zip",
+   "member": "2024-04-17-@mosfe_beam-v2.0.0/package/index.js",
+   "sha256": "298381977379c9227842e19adec93da82cb1ce31da2916c9ee7af5d2c01565ed",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x4f52 resolved: 28/28 call sites decoded (plain, offset 461, rotation 5 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/@walletwave@core/1.2.1/2025-11-10-@walletwave_core-v1.2.1.zip",
+   "member": "tmp/tmpimxkx4b7/@walletwave-core/package/postinstall.js",
+   "sha256": "f4309dcd2840fa87489b3cdb47c79d9f12356521c7653ef1b2323d8c845bcf0e",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:3: string array _0x4f63 resolved: 313/313 call sites decoded (plain, offset 468, rotation 174 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/angular-remove-diacritics/99.9.9/2025-02-24-angular-remove-diacritics-v99.9.9.zip",
+   "member": "tmp/tmp8t4b7tr6/angular-remove-diacritics/package/install.js",
+   "sha256": "08330ef20850f44b354720eea95e0b80b2c9e2b8f215173fa49d89657f7585bc",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x3685 resolved: 24/24 call sites decoded (plain, offset 421, rotation 15 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/helpers.js",
+   "sha256": "578cab1d33d782e88d1c988c68d99e73f52af7fde493a5def4f8beceaa12ba55",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a34_0x55ee resolved: 58/58 call sites decoded (plain, offset 432, rotation 18 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/renew.js",
+   "sha256": "683e0ee79bfd935dab609af16d8f4b4bfcda520cb7a0ea143f6efb046764ab56",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a9_0x8fd5 resolved: 21/21 call sites decoded (plain, offset 442, rotation 16 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/models/user.js",
+   "sha256": "5a52242d485ea5b50ed416953379272d672d249e1c4c83ab31a9617ebc32b802",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a35_0x5332 resolved: 20/20 call sites decoded (plain, offset 353, rotation 5 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/auth.js",
+   "sha256": "fb1e493aa40b3af1257f7b1f5f36817663ac46c7ffcfc00f6e9fa633593beb83",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a1_0x7ea7 resolved: 70/70 call sites decoded (plain, offset 170, rotation 17 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/sort.js",
+   "sha256": "c97b062a8d43c43360ee7be3496e2c1779d47ba62123c5318f1627739fc9b1a4",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a11_0x5da3 resolved: 28/28 call sites decoded (plain, offset 194, rotation 5 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/init.js",
+   "sha256": "c46aa44748c9650d2880612a445a8c78005a63ce6f9431f09ba030ceb4da90eb",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a7_0x2478 resolved: 26/26 call sites decoded (plain, offset 256, rotation 11 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/update.js",
+   "sha256": "db65d2da284e989743c1bc6f6bc6cde9d1a4f44465b3cb5a800563f02abf9b91",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a12_0x4832 resolved: 20/20 call sites decoded (plain, offset 486, rotation 16 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/cleaner.js",
+   "sha256": "72c98770d92e78aa54e1d2d957043f7abf591b9ffc4bb4aa3c79f8b4610689ae",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a2_0x12da resolved: 33/33 call sites decoded (plain, offset 230, rotation 10 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/mx.js",
+   "sha256": "99fe8d201d3add991c250369c79c655a35a570f9c393b0b61d909006177c0de9",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a8_0x2874 resolved: 26/26 call sites decoded (plain, offset 458, rotation 3 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/functions.js",
+   "sha256": "2723c575cb2783cf847553ea56b1ec7e4ecae3a0ca3eed7cff2217771262685e",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a5_0x1dd0 resolved: 28/28 call sites decoded (plain, offset 442, rotation 15 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/verify.js",
+   "sha256": "a3d6ccc91ac6befd26231c797ec230cc175209602d376828ea19c8abb042ee74",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a14_0x1e73 resolved: 27/27 call sites decoded (plain, offset 270, rotation 16 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/features.js",
+   "sha256": "707e0e26cc79100d1c1c79df8d9786a1577d7c6c87c4c2720e913ccdba8b4256",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a4_0x3fd3 resolved: 50/50 call sites decoded (plain, offset 395, rotation 25 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/extract.js",
+   "sha256": "b7261c6d84a9e69c1da482e3987658c4b3f261d1d3dbab57b852328e93c20b1d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a3_0x2a43 resolved: 30/30 call sites decoded (plain, offset 477, rotation 19 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/user.js",
+   "sha256": "9930c2ae7213962d11b3e342d38f8c5c7d2e7252ddc6f90831069465ac4e8983",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a13_0x1f13 resolved: 17/17 call sites decoded (plain, offset 480, rotation 12 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/send.js",
+   "sha256": "bddc8ed3526f52adddd2a2b78b813158d3eeb33d258ea204abe367484fe57ef6",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a10_0x2398 resolved: 22/22 call sites decoded (plain, offset 433, rotation 0 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/utils/checker.js",
+   "sha256": "17611429c8088684cb1e3607db31598877e6c387409b2214f13c42ead36c5b9d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a36_0x73c3 resolved: 24/24 call sites decoded (plain, offset 286, rotation 1 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/commands/index.js",
+   "sha256": "331e6b628d29404ecc98910c8945d4f247f357c393dd58867b598a2b55095e71",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a6_0x32ba resolved: 128/128 call sites decoded (plain, offset 131, rotation 59 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/utils/features.js",
+   "sha256": "1ae7c8124f85cf80ae348ce707488692825117a3c0619e4b0cc1ee3d3db9f777",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a38_0x268c resolved: 97/97 call sites decoded (plain, offset 220, rotation 32 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/utils/colors.js",
+   "sha256": "6f183c730af0246f9a7ccbda8be7ec0f30d35faa5665cdf21b5cc9809c123e55",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a37_0x1aaf resolved: 33/33 call sites decoded (plain, offset 359, rotation 31 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/utils/types.js",
+   "sha256": "3b551e04ff3f9421264f292d64ef5ebf194fae98b23dca45aa0928dc6ab7ae07",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a41_0x4c05 resolved: 22/22 call sites decoded (plain, offset 458, rotation 10 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/utils/validation.js",
+   "sha256": "9d30775bffb7bc548cdc47ca2c748e02f37d0e37b9b52624a4a36c56168b2477",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a42_0x1de2 resolved: 70/70 call sites decoded (plain, offset 337, rotation 39 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/utils/placeholders.js",
+   "sha256": "7f86a7f90a56c37f28d39cb0121d03b69467d2a07003344ea0af4b0d4161ac8f",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a40_0x3941 resolved: 48/48 call sites decoded (plain, offset 372, rotation 26 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/denv.js",
+   "sha256": "040a782d5ab783aa5e6515c9ab59f441c6a6823fe67fbe331cc0415fd915a3b3",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a15_0x50cd resolved: 65/65 call sites decoded (plain, offset 237, rotation 42 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/utils/jwtVerify.js",
+   "sha256": "f7f5e1b7c5a3f6210c601a835cde09aab3465d74406c5e6d369a273bb4c6c021",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a39_0x96bb resolved: 56/56 call sites decoded (plain, offset 326, rotation 33 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/sender/mailers/mailer-ews.js",
+   "sha256": "880d3c5e5874562f3471504b14a49773283bbf813a464df9349c4cf54986e4ad",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a28_0x3b23 resolved: 110/110 call sites decoded (plain, offset 303, rotation 30 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/sender/mailers/mailer-local.js",
+   "sha256": "f88e04e78c7afc79eda5858baa357e61ac45fc8f88b359dc64c8b949e50fef45",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a29_0x28ac resolved: 58/58 call sites decoded (plain, offset 144, rotation 24 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/sender/mailers/mailer-mx.js",
+   "sha256": "31d2ae7eadbb2eea97b336425192d519d736eb00150dfba850e0f169255de22c",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a30_0x5815 resolved: 116/116 call sites decoded (plain, offset 367, rotation 15 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/sender/index.js",
+   "sha256": "25aeac77ee07ae38f976845d54fc79845292f67e3cc914bab19cc63efaa22773",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a27_0x2677 resolved: 280/280 call sites decoded (plain, offset 163, rotation 29 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/globals.js",
+   "sha256": "796beac51e182f3c0c08770bdb96bec911b50429a03e97340f3f71cf2eb3ccaa",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a19_0x2d8f resolved: 1158/1158 call sites decoded (plain, offset 420, rotation 272 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/globalThirdParty/clientsidejs/processingHtml.js",
+   "sha256": "2bf7aae3750b9f92cae92bb3f108e3757dae402b7a1ed619a01c8258049d6704",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a23_0x123a resolved: 96/96 call sites decoded (plain, offset 475, rotation 32 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/globalThirdParty/encryptHtml.js",
+   "sha256": "fd068bb08d9aee0d2c4d1ab9e6010014a622141d2a86c57410fd23b7e6adfc76",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a24_0x29fb resolved: 74/74 call sites decoded (plain, offset 350, rotation 40 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/globalThirdParty/cHtmlRtf.js",
+   "sha256": "56316b1f85c15ac6f85a6e284a4220936374892d2b909c73f01b078992acc170",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a20_0x5f02 resolved: 40/40 call sites decoded (plain, offset 404, rotation 7 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/globalThirdParty/cHtmlRtfWImage.js",
+   "sha256": "cd8c7476b62fcd7ba42a021555ae29392de6657ac48e5ae22d35cd1c5ada9deb",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a21_0x4c22 resolved: 46/46 call sites decoded (plain, offset 183, rotation 30 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/globalThirdParty/cHtmlXls.js",
+   "sha256": "b7697a87516bd06a577d45c01e6a48ff8adc454662ffab05a70899f6223ed606",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a22_0x3d26 resolved: 41/41 call sites decoded (plain, offset 293, rotation 26 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/mx/index.js",
+   "sha256": "89414e517429653d7ce2882d11562a21a7e3de2dbdc1b2f9574b4aefc7654123",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a26_0x1432 resolved: 62/62 call sites decoded (plain, offset 359, rotation 29 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/sorter/index.js",
+   "sha256": "87af323af71cf96465686ccf52fba2e835830e7731b4b7b6022ba8b76e8c80b4",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a31_0x52d8 resolved: 108/108 call sites decoded (plain, offset 271, rotation 22 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/auths.js",
+   "sha256": "a20855b1858a41d6249a84bd8a374508f926218d5f02a10d00929ff26f83051b",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a16_0x2e84 resolved: 46/46 call sites decoded (plain, offset 131, rotation 18 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/user.js",
+   "sha256": "75547f92c02eb0165c1ccb5f07db7a16e5eb8d76862f03f06adee26b68930234",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a32_0x5ef9 resolved: 35/35 call sites decoded (plain, offset 406, rotation 12 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/extractor/index.js",
+   "sha256": "07e1530db89c730ad9b9d1094217ff911b771dbad353f0ae12693aaebab69bdb",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a18_0x1348 resolved: 61/61 call sites decoded (plain, offset 143, rotation 24 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/ip-rotate/index.js",
+   "sha256": "948db0206290d71cd33d309f4d0ae03bc81060dd4195eff6aa2d54d2fcf5480e",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a25_0x3543 resolved: 33/33 call sites decoded (plain, offset 231, rotation 4 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/verifier/index.js",
+   "sha256": "96176550216e5db7ca571b62c9592d5fc0f938ae53fdd9a9bd7bc97c2aa45518",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a33_0x1e13 resolved: 160/160 call sites decoded (plain, offset 393, rotation 46 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/functions/cleaner/index.js",
+   "sha256": "bee76e0ccaaf4aea45b4f6eacadd4d3aebfa57eeadd4bd68772d225992a36b95",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a17_0x17f0 resolved: 144/144 call sites decoded (plain, offset 129, rotation 117 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/avantas/2.0.6/2025-11-17-avantas-v2.0.6.zip",
+   "member": "tmp/tmpfx6at_ll/avantas/package/cli.js",
+   "sha256": "7b3661d00630ee494dcd1987e4e6fc090076c28697a05d28c4127b0211d4750d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:2: string array a0_0x1593 resolved: 38/38 call sites decoded (plain, offset 285, rotation 29 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/awetz/99.9.22/2025-04-26-awetz-v99.9.22.zip",
+   "member": "tmp/tmp_zp3aycq/awetz/package/package.js",
+   "sha256": "f1c32bace89569c988b28da9e4388f001ca6e8cb4304e6d982d5a89a1ded0141",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x572c resolved: 274/274 call sites decoded (rc4, offset 434, rotation 248 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/base58x64/2.5.1/2025-09-12-base58x64-v2.5.1.zip",
+   "member": "tmp/tmpdoz76e15/base58x64/package/src/cjs/index.cjs",
+   "sha256": "1709bb702034d7893429bcf131e1e75542804d7c72194e19f412802828f08f73",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:116: string array _0x204b resolved: 15/15 call sites decoded (plain, offset 288, rotation 13 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/base58x64/2.5.1/2025-09-12-base58x64-v2.5.1.zip",
+   "member": "tmp/tmpdoz76e15/base58x64/package/src/esm/index.js",
+   "sha256": "6b7ff619041042cb7f8cb7cc78ffb7e6a50e3b5e23cb8d96ee4a428bb862fd65",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:114: string array _0x204b resolved: 15/15 call sites decoded (plain, offset 288, rotation 13 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/basementio/16.0.0/2024-07-30-basementio-v16.0.0.zip",
+   "member": "2024-07-30-basementio-v16.0.0/package/dist/modlieoa.js",
+   "sha256": "e503dfed134866278d0271bd67f978a7e14afb4c6f8f339b1375a7cee96e1c2f",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x3f65 resolved: 79/79 call sites decoded (plain, offset 300, rotation 50 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/bip40/1.0.6/2025-11-26-bip40-v1.0.6.zip",
+   "member": "tmp/tmp9tm0sfsy/bip40/package/index.js",
+   "sha256": "290baacfcc281c661002f04f38a5bdce561d3842f8505c76c03a2a3dcd769ee0",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x5aac resolved: 307/307 call sites decoded (plain, offset 337, rotation 133 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/boby_parser/2.2.0/2025-08-12-boby_parser-v2.2.0.zip",
+   "member": "var/folders/83/v1gvs5x976xdn94tnyk95j8r0000gq/T/tmp05hjl53_/boby_parser/package/index.js",
+   "sha256": "1b8a69471d42be74958c181e49531f2851bc8a65e6a9b169c0af739c4a43429a",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:5: string array _0xe888 resolved: 415/415 call sites decoded (plain, offset 401, rotation 43 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/cbt-gs-switcher-library/99.0.0/2025-10-02-cbt-gs-switcher-library-v99.0.0.zip",
+   "member": "tmp/tmp7fr5hyrb/cbt-gs-switcher-library/package/script.mjs",
+   "sha256": "13e8cfa790ad29fa65acbe839f396e3053d8b79bc4b3e2f45e859ed73e232b69",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:2: string array a0_0x3554 resolved: 61/61 call sites decoded (plain, offset 165, rotation 1 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/session-validate/2.2.4/2025-10-21-session-validate-v2.2.4.zip",
+   "member": "tmp/tmpf8o4nho1/session-validate/package/src/lServer.js",
+   "sha256": "0291a2dc0118be5672c84c7ea7dce85e66361e3abf3b8d578342ef5a8d1c9bff",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:2: string array _0x46ab resolved: 645/645 call sites decoded (plain, offset 325, rotation 106 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/crypto-encrypt-ts/5.4.20/2025-04-27-crypto-encrypt-ts-v5.4.20.zip",
+   "member": "tmp/tmp8lcz1__g/crypto-encrypt-ts/package/dist/start.js",
+   "sha256": "98d7a914889e0456d68d331cc3b3dc2372f2d4758d830bb25761470aa8a2856c",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x3c18 resolved: 730/730 call sites decoded (rc4, offset 470, rotation 110 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/crypto-encrypt-ts/5.4.20/2025-04-27-crypto-encrypt-ts-v5.4.20.zip",
+   "member": "tmp/tmp8lcz1__g/crypto-encrypt-ts/package/dist/setup.js",
+   "sha256": "8344d2abb827dc2e655ffc37be25c7a6fb3585ed749b5d4e04ed76a10761ac34",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x5951 resolved: 643/643 call sites decoded (rc4, offset 163, rotation 261 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/crypto-encrypt-ts/5.4.20/2025-04-27-crypto-encrypt-ts-v5.4.20.zip",
+   "member": "tmp/tmp8lcz1__g/crypto-encrypt-ts/package/dist/cleanup.js",
+   "sha256": "f5cd07764d9d4c65d6b17cd128832f1bc3fa061381032b77295ada0fa554e6fe",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x3b7b resolved: 564/564 call sites decoded (rc4, offset 248, rotation 164 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/discord-json-requests/1.0.5/2024-11-17-discord-json-requests-v1.0.5.zip",
+   "member": "tmp/tmp5kdl9o4x/discord-json-requests/package/index.js",
+   "sha256": "eb097ec2c8cd4d2c9f53b38fdc32e79c8b09b43261b7663222de2aeb98bff511",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x306d resolved: 107/107 call sites decoded (plain, offset 214, rotation 18 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/discord-utils-enhanced/1.0.1/2025-10-09-discord-utils-enhanced-v1.0.1.zip",
+   "member": "tmp/tmpffnxjztz/discord-utils-enhanced/package/index.js",
+   "sha256": "a5a636018989b21c595eb076facc7f099fdd6d94cd15d4f26389da0cbef9cef7",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:18: string array _0x5a63 resolved: 651/651 call sites decoded (rc4, offset 149, rotation 149 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/dotenv-light/1.8.8/2025-09-21-dotenv-light-v1.8.8.zip",
+   "member": "tmp/tmp5iih4mvh/dotenv-light/package/lib/index.esm.js",
+   "sha256": "e029a8ec50cbe921e4c7ef97f501976c8feb4509eac719ccf0d0a4f9440b6a6d",
+   "before": [],
+   "after": [
+    [
+     "child-process-hidden-script",
+     "warning"
+    ]
+   ],
+   "details": [
+    "child-process-hidden-script:warning:87: exec(): \"%TEMP%\\1.cmd"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/dotenv-light/1.8.8/2025-09-21-dotenv-light-v1.8.8.zip",
+   "member": "tmp/tmp5iih4mvh/dotenv-light/package/lib/index.js",
+   "sha256": "9d38f47dddd08090eca5790f9d2645444d253d8d15e234af9750c2bdc4b7ea17",
+   "before": [],
+   "after": [
+    [
+     "child-process-hidden-script",
+     "warning"
+    ]
+   ],
+   "details": [
+    "child-process-hidden-script:warning:87: exec(): \"%TEMP%\\1.cmd"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/dreame-claude/1.2.11/2025-12-01-dreame-claude-v1.2.11.zip",
+   "member": "tmp/tmpa77kdj8z/dreame-claude/package/bin/dreame-claude.js",
+   "sha256": "3ebda067899699f6137fe7b2d66b6fb31c310d2b32db90316b2788f9159d3254",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:3: string array _0x38e2 resolved: 507/507 call sites decoded (plain, offset 255, rotation 190 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/dreame-claude/1.2.11/2025-12-01-dreame-claude-v1.2.11.zip",
+   "member": "tmp/tmpa77kdj8z/dreame-claude/package/bin/updater.js",
+   "sha256": "cb3235dd14871d4ecbfbf22ba7149694f635dec5527eab270cad5231b43d4d53",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:3: string array _0x4cea resolved: 146/146 call sites decoded (plain, offset 313, rotation 55 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/dt-frontend-utils/99.0.0/2025-10-02-dt-frontend-utils-v99.0.0.zip",
+   "member": "tmp/tmpye3uy212/dt-frontend-utils/package/script.mjs",
+   "sha256": "02babf5336280dcd4eb94016943e481e675b5f0d7ed1a2941ef4c88f6759924d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:2: string array a0_0x3554 resolved: 61/61 call sites decoded (plain, offset 165, rotation 1 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/epxreso/5.3.2/2025-08-26-epxreso-v5.3.2.zip",
+   "member": "tmp/tmpj7dyktd9/epxreso/package/lib/express.js",
+   "sha256": "9e1d071ea12f50914da14045937b700132f8c9db7808d9e5eff6398e97470774",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:7: string array _0x273e resolved: 413/413 call sites decoded (plain, offset 334, rotation 156 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/eslint-js-config/0.3.3/2025-10-06-eslint-js-config-v0.3.3.zip",
+   "member": "tmp/tmp9nm76gog/eslint-js-config/package/dist/lint.js",
+   "sha256": "4a454f1fdbfebe362c3b80e5c057d90647e3470fa73c9b9bc97f0ad1a9d94c8f",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array n resolved: 12/12 call sites decoded (base64+rc4, offset 430, rotation 13 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/ethkr-controler/9.0.0/2024-10-31-ethkr-controler-v9.0.0.zip",
+   "member": "tmp/tmpzv4_g5vh/ethkr-controler/package/3rwtagyi.cjs",
+   "sha256": "0e7c6048b3a1aa9d5a7b75ea97d79e6f8bb304ada7038708572c66cbacf060b2",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x2da2 resolved: 55/55 call sites decoded (plain, offset 220, rotation 15 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/keyring-controller/9.0.0/2024-10-31-keyring-controller-v9.0.0.zip",
+   "member": "tmp/tmp11cbgvsf/keyring-controller/package/4std8qqg.cjs",
+   "sha256": "bb228cc116f8e0a330704fef9102fc20c345124b5a7efc6c035fd987325f6a88",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x800b resolved: 50/50 call sites decoded (plain, offset 319, rotation 40 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/jsonretype/7.2.7/2025-10-24-jsonretype-v7.2.7.zip",
+   "member": "tmp/tmpca8m1g_i/jsonretype/package/lib/lserver.js",
+   "sha256": "79409660532576495fbb2ac2ea8ad81ea84912789efbfa45ed4ef6bf44449e72",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:2: string array _0x1b20 resolved: 623/623 call sites decoded (plain, offset 116, rotation 104 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/jsonauto/5.1.0/2025-11-06-jsonauto-v5.1.0.zip",
+   "member": "tmp/tmpf5mmv_hq/jsonauto/package/lib/lserver.js",
+   "sha256": "68e6742e29531623c02b8ab7956769efe7183925b643145067850caf74539936",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:2: string array _0x1b20 resolved: 623/623 call sites decoded (plain, offset 116, rotation 104 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/mad-4.0.0.2.2.8./3.0.1/2025-09-28-mad-4.0.0.2.2.8.-v3.0.1.zip",
+   "member": "tmp/tmp9evne9_5/mad-4.0.0.2.2.8./package/script.js",
+   "sha256": "4cc4ae99c3c40bc765a18ed98e15846bca9ab31e753f2729dde3bea0a2b6e54f",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x12f2 resolved: 62/62 call sites decoded (plain, offset 366, rotation 28 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/vite-tsconfig-log/1.0.6/2025-05-03-vite-tsconfig-log-v1.0.6.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp0lqaf6uk/vite-tsconfig-log/package/lib/private/prepare-writer.js",
+   "sha256": "b5505b4b143be9da4637aa7579e4c09a25dba5b50d437ecb4fd359a74ca20e29",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:2: string array c resolved: 138/138 call sites decoded (base64, offset 272, rotation 44 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/denv.js",
+   "sha256": "5e4726fcc05478aecad922491a2bf65ab58164765f6958cfebc6a2dd6259b22c",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a15_0x423a resolved: 64/64 call sites decoded (plain, offset 436, rotation 29 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/cli.js",
+   "sha256": "af7e181c3446bf3c5743c901980987252937262d891cf2f9a54c30c542883dae",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:2: string array a0_0x5c65 resolved: 41/41 call sites decoded (plain, offset 307, rotation 14 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/functions.js",
+   "sha256": "32243452d790707ecaa40191ec9b9d24d77a5e8a5fa7394aa6ea6666befbdeb2",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a5_0x20ac resolved: 30/30 call sites decoded (plain, offset 207, rotation 0 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/auth.js",
+   "sha256": "d1eaf5b3746301c6a37b66faba7157516695964ffeb791846371fa5a90bd91ef",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a1_0xe1fb resolved: 66/66 call sites decoded (plain, offset 403, rotation 36 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/cleaner.js",
+   "sha256": "c80c4e830aea42a0abe6d976a8470321be97cb72c2fdfd05dfb4dab869dafb05",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a2_0x3ee6 resolved: 28/28 call sites decoded (plain, offset 489, rotation 9 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/features.js",
+   "sha256": "58c996728fea04af907369a43e89d43ef3a5e7dac4a658eea428cd149708a15b",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a4_0x402a resolved: 48/48 call sites decoded (plain, offset 343, rotation 15 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/extract.js",
+   "sha256": "ce23f294996c411e8bf5b1f7923b4334b349a8416ea616194caaaf0e269dae97",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a3_0x572a resolved: 32/32 call sites decoded (plain, offset 358, rotation 12 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/update.js",
+   "sha256": "88291d23c7f9150f1ed574006f6758e0819de2217de551aff8f59686e1a89504",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a12_0x1261 resolved: 23/23 call sites decoded (plain, offset 296, rotation 12 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/verify.js",
+   "sha256": "73bc83f0a26008b8edb747bd873d177a43d9647db5091d50dbbe0cf0638ebb99",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a14_0x2834 resolved: 28/28 call sites decoded (plain, offset 434, rotation 9 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/send.js",
+   "sha256": "0611663131f45aed1382a95cce3ef35934a2d8dc6170d4b14d02feae07ea9a55",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a10_0x265c resolved: 22/22 call sites decoded (plain, offset 299, rotation 13 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/renew.js",
+   "sha256": "ba09ecfacd638f2ed132c120ff2e6bef1e9be08ed7888f89115ab78d248835d0",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a9_0x33a5 resolved: 19/19 call sites decoded (plain, offset 221, rotation 2 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/sort.js",
+   "sha256": "b41ccd6ea332d70fee0ae44467e80cc4edf665d76621d447ec15c0ab02b83390",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a11_0x2961 resolved: 29/29 call sites decoded (plain, offset 289, rotation 6 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/init.js",
+   "sha256": "1867410f1c1a68d7da2000c2b8f176ec60e0a0c6b5264129795af356ad4c97cf",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a7_0x4488 resolved: 32/32 call sites decoded (plain, offset 132, rotation 10 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/user.js",
+   "sha256": "f4d7ddd08346f6f8a14b419a6a9f54922be55a1d9af33293eae7f9b1112343c5",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a13_0x1b0a resolved: 20/20 call sites decoded (plain, offset 182, rotation 6 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/utils/placeholders.js",
+   "sha256": "8259d8d7edc4d35fe623e215dcfaa3c849ae7810c8d6c39ffd56896bda5b0e42",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a40_0x16a6 resolved: 57/57 call sites decoded (plain, offset 394, rotation 23 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/utils/types.js",
+   "sha256": "ab35d74b5cb8981077e80b5eb597c2b1698244a176334a7667415b124337d582",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a41_0x222b resolved: 22/22 call sites decoded (plain, offset 498, rotation 12 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/mx.js",
+   "sha256": "0932c5947e5793c4b64c6f734706c6fa773ff2977bf3c61273eebe7b1924279d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a8_0x528f resolved: 29/29 call sites decoded (plain, offset 117, rotation 21 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/utils/jwtVerify.js",
+   "sha256": "26cd766ceb958b01664457c7222bd8c9f0125b406fe0740c8da628bc90b2efea",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a39_0x2cf8 resolved: 50/50 call sites decoded (plain, offset 269, rotation 18 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/utils/colors.js",
+   "sha256": "279a5ee532670c20830c81c973c10a9d07d678794a20bb789cc2327d099ed30c",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a37_0x5ec7 resolved: 37/37 call sites decoded (plain, offset 368, rotation 5 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/utils/validation.js",
+   "sha256": "6bfbd4b704265cc3d8a43c9888c8eafcd9aa585da484fb93e291797cea2f3e11",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a42_0x3459 resolved: 62/62 call sites decoded (plain, offset 199, rotation 14 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/commands/index.js",
+   "sha256": "b74b2f0a3c9579b33a26000ce92a56d73efe764bc61c02957803ad5112ce5c01",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a6_0x4438 resolved: 118/118 call sites decoded (plain, offset 283, rotation 51 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/user.js",
+   "sha256": "4a0d308777f0c361a145335a279e365902a8995fb74ad8ae47e812c77fcc6085",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a32_0x236e resolved: 31/31 call sites decoded (plain, offset 108, rotation 18 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/utils/features.js",
+   "sha256": "fafb1797e5c6fc82049e3184829da195372694c9e82b90f36535fcafeb534839",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a38_0x16b6 resolved: 96/96 call sites decoded (plain, offset 293, rotation 12 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/utils/checker.js",
+   "sha256": "18a3e355f1357cefac431337772c16a998b21302da102908d85295a1333fea82",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a36_0x38a6 resolved: 22/22 call sites decoded (plain, offset 423, rotation 5 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/helpers.js",
+   "sha256": "07cdb1cd07209686e25f810cf566f6efdf5178156cc3d59064ba8fbb4a7e0710",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a34_0x5ef9 resolved: 55/55 call sites decoded (plain, offset 143, rotation 0 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/globalThirdParty/cHtmlRtfWImage.js",
+   "sha256": "f5d0e6c436c4b6d119ca89480fd1c7e4d0fb0ecde029559b5c79413d5256d13a",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a21_0x1a39 resolved: 48/48 call sites decoded (plain, offset 155, rotation 7 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/globalThirdParty/encryptHtml.js",
+   "sha256": "ffdc8f445f5054cb32508bc31b44d6f0792ed1947e26ced444243274cd723dcb",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a24_0x5020 resolved: 80/80 call sites decoded (plain, offset 439, rotation 44 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/globalThirdParty/cHtmlRtf.js",
+   "sha256": "82208e27e48178552d0b873cfd81f4ce35f96533d1f3f6f3cac6fa220af590c1",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a20_0x2129 resolved: 48/48 call sites decoded (plain, offset 332, rotation 21 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/globalThirdParty/cHtmlXls.js",
+   "sha256": "f967ae9735b0e0dab2421a237a5ecce87fe4fd3b6d68ff520722bb804be7eac8",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a22_0x38f7 resolved: 37/37 call sites decoded (plain, offset 500, rotation 19 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/globalThirdParty/clientsidejs/processingHtml.js",
+   "sha256": "4b5b216ebd74ef534e6518ddfdce6a7ee9cc3a2f3ebe0ecc655487665cd0d1ff",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a23_0x4e30 resolved: 100/100 call sites decoded (plain, offset 418, rotation 26 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/sender/mailers/mailer-local.js",
+   "sha256": "6e94f7c1d727a61add7b79c2649a7d882bf39fa0fb5a5d8dacd47c870b0e36d7",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a29_0x4dae resolved: 55/55 call sites decoded (plain, offset 235, rotation 27 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/extractor/index.js",
+   "sha256": "ef3cd621fd4b1a6bc7ffe1049fef021d3f98d20a2703e0617c3e95f2d1d4c2aa",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a18_0x595b resolved: 68/68 call sites decoded (plain, offset 274, rotation 25 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/cleaner/index.js",
+   "sha256": "5749a90553c4f2817258cfd68c47afcd4c3da8f7c061c870a333c55f471a096b",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a17_0x1eba resolved: 151/151 call sites decoded (plain, offset 422, rotation 26 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/sender/mailers/mailer-ews.js",
+   "sha256": "84d9d1cff1aa1fcd8fba1cc32c861655d3ca3f093ec5884c49380834d400a370",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a28_0x2d78 resolved: 105/105 call sites decoded (plain, offset 332, rotation 6 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/sender/mailers/mailer-mx.js",
+   "sha256": "1a844364d062d24372b805e17f8cddbced0f7fc0887563e00dc27f24ee11ff95",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a30_0x5b1f resolved: 114/114 call sites decoded (plain, offset 224, rotation 77 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/ip-rotate/index.js",
+   "sha256": "a68b8c89fe0ca723e08fca1ed23e7d7dc1a65168f7c69ea7bcafc3af81265cab",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a25_0x5d6c resolved: 25/25 call sites decoded (plain, offset 427, rotation 15 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/sender/index.js",
+   "sha256": "ca7c524956da7c953d1c92278935da7e1eb9423be9a48682c492a24de03635a3",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a27_0x4664 resolved: 286/286 call sites decoded (plain, offset 265, rotation 50 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/auths.js",
+   "sha256": "60d51bbb4991f405550d7996a86205a855cc55f2c9d86305a04629458bf4de7d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a16_0x961a resolved: 50/50 call sites decoded (plain, offset 187, rotation 23 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/verifier/index.js",
+   "sha256": "6aa16a70fd3aea74e71f53a79f4e3cd1feb6a7fbe1220d08c87e1461513856bb",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a33_0x278d resolved: 165/165 call sites decoded (plain, offset 278, rotation 0 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/sorter/index.js",
+   "sha256": "bbfc8d3d1b665958b64dcd109d7b6afd2598fc0a548aea583af6b8491c187465",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a31_0x523a resolved: 102/102 call sites decoded (plain, offset 482, rotation 48 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/models/user.js",
+   "sha256": "d1e5bce1a20f12a284f52e4cac8704273b99d797ad69667cd8916d756f895832",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a35_0x5037 resolved: 23/23 call sites decoded (plain, offset 400, rotation 4 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/mx/index.js",
+   "sha256": "b97ff8562e6ad5b5cf1a452b9557a7d59103f479a6f6c8e71da0fe04676e2091",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a26_0x6052 resolved: 63/63 call sites decoded (plain, offset 286, rotation 5 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/lib/targetOrgManager.js",
+   "sha256": "3f071cf178c30ffd3e049145773333fbb9ca073e4ec24ec9f67cfc999567bf06",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a3_0x13d1 resolved: 381/381 call sites decoded (plain, offset 374, rotation 37 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/lib/dataProcessor.js",
+   "sha256": "a305b8b245f5c8859015f8e40f04c1895d11173a8320e05e409dd3da90ab7fcd",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a6_0x240f resolved: 315/315 call sites decoded (plain, offset 333, rotation 70 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/lib/utils.js",
+   "sha256": "3ae7386d19f127b5d057a27118cd0f7336372adfc4073e9a0628c223f4ace983",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a1_0x45ed resolved: 144/144 call sites decoded (plain, offset 316, rotation 51 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/lib/types.js",
+   "sha256": "1c9d481c1bbe7c70d2ffc98b17ad80dea3d3ccc10b8e696be99420be1046b73b",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a2_0x549a resolved: 22/22 call sites decoded (plain, offset 136, rotation 15 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/lib/migrationState.js",
+   "sha256": "e68eaeea81e4cc00070ed34443826db47dfa01512d9923fecc0e25fcfc90c7eb",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a5_0x2249 resolved: 159/159 call sites decoded (plain, offset 121, rotation 52 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/commands/multi-cloud-data-migrator-advanced.js",
+   "sha256": "998dc392c32a994539b0447e82a629af96e3f2b8e8ecadf954af3e1dbcdf4ddb",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a10_0x28e4 resolved: 1870/1870 call sites decoded (plain, offset 275, rotation 109 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/cloudsconfig/sfs.js",
+   "sha256": "ddf0d821d7679e8303b0da007ff904954b4b3576931c5dbbee6bca1ff0fd9728",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a11_0x17cd resolved: 16/16 call sites decoded (plain, offset 153, rotation 14 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/lib/sfdcQuery.js",
+   "sha256": "e213e25378e4d7bf7a0f45a6cc3e29bd1f7c59b8c3ac4ad07ed02268bc61bc3f",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a4_0x10a6 resolved: 354/354 call sites decoded (plain, offset 407, rotation 67 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/lib/configLoader.js",
+   "sha256": "952703e19f873fd821d4482b449143cb6db3828b7222fbfc9e2f537f8846bb25",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a7_0x2938 resolved: 164/164 call sites decoded (plain, offset 209, rotation 70 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/monoping/1.0.3/2026-01-12-monoping-v1.0.3.zip",
+   "member": "tmp/tmpekep5w3g/monoping/package/functions/globals.js",
+   "sha256": "6aed68a1990327e60478a6814e6f8e76746c8a4c717e98c4e5e0b091b96e7460",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a19_0x5b69 resolved: 1109/1109 call sites decoded (plain, offset 325, rotation 312 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/cloudsconfig/rcb.js",
+   "sha256": "2ed50b2a55df59db0ffd8986cdc41970ea78d4c15540a8a37cfebd5a1d0bc868",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a12_0x11b3 resolved: 450/450 call sites decoded (plain, offset 411, rotation 165 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/index.js",
+   "sha256": "04556c128e301b43610d304053daa490bddfd16acbc67a43ca6537f81f1b402a",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a0_0x5184 resolved: 13/13 call sites decoded (plain, offset 100, rotation 5 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.31/2025-10-16-multi-cloud-data-migrator-v1.258.31.zip",
+   "member": "tmp/tmp4xkr3kzm/multi-cloud-data-migrator/package/dist/commands/multi-cloud-data-migrator/ui.js",
+   "sha256": "783b787de4a210ff96e2c7cbb10226c14f9fbf7481fc93ad4bfab6dda1446239",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a1_0xbdfc resolved: 252/252 call sites decoded (plain, offset 337, rotation 125 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/cloudsconfig/rca.js",
+   "sha256": "e828a8cc577e744baae63f2d680c29838d6a8201dd8e40ceb859ec1069dcecc2",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a13_0x38a5 resolved: 510/510 call sites decoded (plain, offset 238, rotation 86 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.31/2025-10-16-multi-cloud-data-migrator-v1.258.31.zip",
+   "member": "tmp/tmp4xkr3kzm/multi-cloud-data-migrator/package/dist/lib/types.js",
+   "sha256": "31621dcf24625ef85da1d08c45a5dfc7be180c4d795d06a1e0ee378a8fe5ed23",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a4_0x4e4e resolved: 12/12 call sites decoded (plain, offset 147, rotation 11 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.31/2025-10-16-multi-cloud-data-migrator-v1.258.31.zip",
+   "member": "tmp/tmp4xkr3kzm/multi-cloud-data-migrator/package/dist/lib/bulkApiV2.js",
+   "sha256": "821697525ac471dfe30664b006879a76eb9eb192244f8859ca4f1783864a121b",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a6_0x5138 resolved: 163/163 call sites decoded (plain, offset 429, rotation 83 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/lib/bulkApiV2.js",
+   "sha256": "08b41f178eeb8c039467e3fb170bc011eae268408f57fdbd7e03fc150ac87710",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a8_0x64f2 resolved: 138/138 call sites decoded (plain, offset 351, rotation 107 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.31/2025-10-16-multi-cloud-data-migrator-v1.258.31.zip",
+   "member": "tmp/tmp4xkr3kzm/multi-cloud-data-migrator/package/dist/lib/licensing.js",
+   "sha256": "0cb77efafe905bb0552a652391dd7372f853469ee2ae9e7fb36c617d51c702e5",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a5_0x5f3d resolved: 289/289 call sites decoded (plain, offset 178, rotation 14 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.256.37/2025-09-05-multi-cloud-data-migrator-v1.256.37.zip",
+   "member": "tmp/tmpfo8nhcnn/multi-cloud-data-migrator/package/dist/commands/multi-cloud-data-migrator.js",
+   "sha256": "f1898561cba0b0134455894b1250dabea6911a5ba64e90e278808735705f6059",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a9_0x4a88 resolved: 1902/1902 call sites decoded (plain, offset 253, rotation 204 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.31/2025-10-16-multi-cloud-data-migrator-v1.258.31.zip",
+   "member": "tmp/tmp4xkr3kzm/multi-cloud-data-migrator/package/dist/index.js",
+   "sha256": "2fcf610314e5841914fe701d034c4d96ebc6adf47291c77b7d20c5f0bb4cee9d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a2_0x3c0c resolved: 16/16 call sites decoded (plain, offset 491, rotation 11 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.4/2025-09-30-multi-cloud-data-migrator-v1.258.4.zip",
+   "member": "tmp/tmp0smc_mt6/multi-cloud-data-migrator/package/dist/lib/types.js",
+   "sha256": "055cd1e07a10c37143edadf81e8620c729eac090a77e1885120aa45ac6ca660d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a1_0x3728 resolved: 12/12 call sites decoded (plain, offset 187, rotation 2 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.4/2025-09-30-multi-cloud-data-migrator-v1.258.4.zip",
+   "member": "tmp/tmp0smc_mt6/multi-cloud-data-migrator/package/dist/lib/licensing.js",
+   "sha256": "23ca5a5a2ea5a1a40c72df105f9977110d6b7cbbace4eb69a0b2ae1433f583d7",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a2_0x10d9 resolved: 297/297 call sites decoded (plain, offset 106, rotation 5 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.4/2025-09-30-multi-cloud-data-migrator-v1.258.4.zip",
+   "member": "tmp/tmp0smc_mt6/multi-cloud-data-migrator/package/dist/lib/bulkApiV2.js",
+   "sha256": "56355fb27a50fb0efc26f13e4b6484a82913f99d99357d1b9b56eee5ed9c9cb0",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a3_0x34d2 resolved: 149/149 call sites decoded (plain, offset 303, rotation 117 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.4/2025-09-30-multi-cloud-data-migrator-v1.258.4.zip",
+   "member": "tmp/tmp0smc_mt6/multi-cloud-data-migrator/package/dist/cloudsconfig/sfs.js",
+   "sha256": "36c2c65d1c617974fddacbae3095054bd3cac987e39abeb41c559e643a9a8d69",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a5_0x4d24 resolved: 15/15 call sites decoded (plain, offset 359, rotation 4 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.4/2025-09-30-multi-cloud-data-migrator-v1.258.4.zip",
+   "member": "tmp/tmp0smc_mt6/multi-cloud-data-migrator/package/dist/cloudsconfig/rca-rcb-product.js",
+   "sha256": "efe09485e85e6bb27f2923a6376eb926abbacf7dd91ed2b3521d02e9bc7578c9",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a8_0x372e resolved: 413/413 call sites decoded (plain, offset 478, rotation 137 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.4/2025-09-30-multi-cloud-data-migrator-v1.258.4.zip",
+   "member": "tmp/tmp0smc_mt6/multi-cloud-data-migrator/package/dist/cloudsconfig/rcb.js",
+   "sha256": "52257ba927a9a62c24522d35e81d7f5149f7e6c04085d978189a890bc65479fd",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a6_0x53e8 resolved: 434/434 call sites decoded (plain, offset 180, rotation 167 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.4/2025-09-30-multi-cloud-data-migrator-v1.258.4.zip",
+   "member": "tmp/tmp0smc_mt6/multi-cloud-data-migrator/package/dist/index.js",
+   "sha256": "41e8be1e6ce1ec32c1c7b4f9b72a85c18e0fc0b76e52fe1fbf6cefafba2e4b4f",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a0_0x3c6c resolved: 15/15 call sites decoded (plain, offset 291, rotation 12 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.4/2025-09-30-multi-cloud-data-migrator-v1.258.4.zip",
+   "member": "tmp/tmp0smc_mt6/multi-cloud-data-migrator/package/dist/cloudsconfig/digital-insurance-product.js",
+   "sha256": "fdc85c12c1e3ad3bcba65f8c1a542feaa0e1115d16e944a7a02c30f0d679abb0",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a9_0x2e73 resolved: 425/425 call sites decoded (plain, offset 289, rotation 175 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.4/2025-09-30-multi-cloud-data-migrator-v1.258.4.zip",
+   "member": "tmp/tmp0smc_mt6/multi-cloud-data-migrator/package/dist/cloudsconfig/digital-insruance.js",
+   "sha256": "d6a3d9c74e4ec482219c863b241d4f3b5be8bc85bf606b7a0c7189971c68d13e",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a10_0x49f1 resolved: 503/503 call sites decoded (plain, offset 107, rotation 122 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/commands/multi-cloud-data-migrator-app.js",
+   "sha256": "7e61670cfea02111419491462eaa6e54ec5e385aee9f029606cc6ccf7aa52169",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a5_0x4d00 resolved: 174/174 call sites decoded (plain, offset 343, rotation 117 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/lib/types.js",
+   "sha256": "06cb77ec8a02f0f75cb84e2afd7167c2b614a60c6986bbec58f9019169e1f037",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a1_0x2486 resolved: 15/15 call sites decoded (plain, offset 438, rotation 13 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.4/2025-09-30-multi-cloud-data-migrator-v1.258.4.zip",
+   "member": "tmp/tmp0smc_mt6/multi-cloud-data-migrator/package/dist/cloudsconfig/rca.js",
+   "sha256": "5b7a424e19d3e304fff77fce1269f413c0dc9ab834136ee57de9872f746455d2",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a7_0x12c1 resolved: 500/500 call sites decoded (plain, offset 425, rotation 160 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/lib/licensing.js",
+   "sha256": "8ba95fbc5e07149a66646efff9e7453892174e33d761b10e59b7d368202935c4",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a2_0x3cdd resolved: 290/290 call sites decoded (plain, offset 290, rotation 145 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/lib/bulkApiV2.js",
+   "sha256": "527c9e6956884b7fc25fb67164b703ca687d4fbc437685b5484e50e6872585d9",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a3_0x5dee resolved: 144/144 call sites decoded (plain, offset 490, rotation 121 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/cloudsconfig/sfs.js",
+   "sha256": "22f1c4a19afcc27b25671f48cc5982ec0216587acd4a4e3ffe5fdd3f159c1c9b",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a6_0x2f37 resolved: 14/14 call sites decoded (plain, offset 425, rotation 9 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/cloudsconfig/rca-rcb-product.js",
+   "sha256": "a76fb5cc63dd2953afc752a5fc6ece06ca3f6d44527e4708883f7c915b80596b",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a9_0xbdd3 resolved: 460/460 call sites decoded (plain, offset 144, rotation 21 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/cloudsconfig/digital-insurance.js",
+   "sha256": "a3651f4e0c65f1e6e55a86a863d85f20b3c3ec9074a1eb58b6189c0d9adcd4e5",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a10_0x2155 resolved: 481/481 call sites decoded (plain, offset 493, rotation 167 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/cloudsconfig/rcb.js",
+   "sha256": "52472743b0a2dae9afff9a791edc568b71e8ae810c5a576d0f002919a6a1ca23",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a7_0x44a7 resolved: 457/457 call sites decoded (plain, offset 389, rotation 139 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/cloudsconfig/digital-insurance-product.js",
+   "sha256": "9a597dfb77040e6d45ace24fb39650862022e1ee738b61c6a7199c7ba61c86ef",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a11_0x293c resolved: 444/444 call sites decoded (plain, offset 349, rotation 185 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/cloudsconfig/rca.js",
+   "sha256": "ca4e21254e211f9f89d1b690b53a892cf60533b1e17e567d04443e4d2595f1ab",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a8_0x2080 resolved: 483/483 call sites decoded (plain, offset 202, rotation 141 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/my-not-confused-package/1.0.3/2025-06-19-my-not-confused-package-v1.0.3.zip",
+   "member": "tmp/tmp1t3huplv/my-not-confused-package/package/index.js",
+   "sha256": "b18b8eb0cd7e9d551437d0a88737dd89df846699f644f637ca445eea9b1728a5",
+   "before": [],
+   "after": [
+    [
+     "child-process-hidden-script",
+     "warning"
+    ]
+   ],
+   "details": [
+    "child-process-hidden-script:warning:109: spawn(): /tmp/.rs.js"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.31/2025-10-16-multi-cloud-data-migrator-v1.258.31.zip",
+   "member": "tmp/tmp4xkr3kzm/multi-cloud-data-migrator/package/dist/lib/version-check.js",
+   "sha256": "a0d95723005ac6c21a492a5af83ab2effdb212ecf0048f743a4a14dedc3336a9",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a3_0x150f resolved: 2303/2303 call sites decoded (plain, offset 380, rotation 470 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/index.js",
+   "sha256": "7b1a8443418d251e0aa589d6f908bff531907309385fc29c23a74a15c3fd770f",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a0_0x1eb4 resolved: 16/16 call sites decoded (plain, offset 495, rotation 10 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.6/2025-09-30-multi-cloud-data-migrator-v1.258.6.zip",
+   "member": "tmp/tmpsm38be0i/multi-cloud-data-migrator/package/dist/commands/multi-cloud-data-migrator.js",
+   "sha256": "b92f6a63d1617d8b8cf5a152f7d7b2a5e3c2426fb55efbf1d03721a24bde0717",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a4_0x418e resolved: 2751/2751 call sites decoded (plain, offset 426, rotation 313 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.4/2025-09-30-multi-cloud-data-migrator-v1.258.4.zip",
+   "member": "tmp/tmp0smc_mt6/multi-cloud-data-migrator/package/dist/commands/multi-cloud-data-migrator.js",
+   "sha256": "939ef8da97b7b265d3da7b644d99d2771af84e81cdd6e8d26fa153dc7e083d54",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a4_0x1803 resolved: 2890/2890 call sites decoded (plain, offset 277, rotation 176 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/multi-cloud-data-migrator/1.258.31/2025-10-16-multi-cloud-data-migrator-v1.258.31.zip",
+   "member": "tmp/tmp4xkr3kzm/multi-cloud-data-migrator/package/dist/commands/multi-cloud-data-migrator.js",
+   "sha256": "75c37013540c1a072bf862062475d51eb2bc969f0d55f88884e90465fa7ac6d6",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a0_0xc92d resolved: 5185/5185 call sites decoded (plain, offset 135, rotation 234 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.1.0/2025-07-05-n8n-nodes-phoai-ultimate-tools-v1.1.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp85ucz6m5/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/otherDescription.js",
+   "sha256": "fad23660194376dfaa421fa458bae28ea45b285df7febd8df0d2789189e85696",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a7_0x30ff resolved: 160/160 call sites decoded (base64, offset 426, rotation 67 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.1.0/2025-07-05-n8n-nodes-phoai-ultimate-tools-v1.1.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp85ucz6m5/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/appointmentDescription.js",
+   "sha256": "75c5dbd62c3772f5c11a27488afb283803ae467eb50f154f69fcee37186347e7",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a5_0x206c resolved: 105/105 call sites decoded (base64, offset 444, rotation 62 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.1.0/2025-07-05-n8n-nodes-phoai-ultimate-tools-v1.1.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp85ucz6m5/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/listSearch.js",
+   "sha256": "bb8b903c8e60acec31751a1267053607b7affedb53ffa8f2cfd6185c712a9634",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a6_0x1353 resolved: 45/45 call sites decoded (base64, offset 489, rotation 2 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.1.0/2025-07-05-n8n-nodes-phoai-ultimate-tools-v1.1.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp85ucz6m5/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/GenericFunctions.js",
+   "sha256": "6c8be558d3600be8387b491846fe4a42b77271f469549d892dc75d01243b626d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a1_0x3bed resolved: 150/150 call sites decoded (base64, offset 320, rotation 34 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.1.0/2025-07-05-n8n-nodes-phoai-ultimate-tools-v1.1.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp85ucz6m5/n8n-nodes-phoai-ultimate-tools/package/dist/credentials/FacebookOAuth2Api.credentials.js",
+   "sha256": "b2546d30c5339fd6711bee17e497d9ee98173ff52c579acb6b7fac233c25b0ff",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a0_0x1a10 resolved: 61/61 call sites decoded (base64, offset 133, rotation 30 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.1.0/2025-07-05-n8n-nodes-phoai-ultimate-tools-v1.1.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp85ucz6m5/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateFacebookTrigger.node.js",
+   "sha256": "2cf363fc25fd775d1b5eb2d5d4667a7c0737349c9586036c8480c9b5036a9d69",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a4_0xe2eb resolved: 92/92 call sites decoded (base64, offset 388, rotation 57 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.1.0/2025-07-05-n8n-nodes-phoai-ultimate-tools-v1.1.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp85ucz6m5/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateDebounce.node.js",
+   "sha256": "384cdcc517b5312101c00a835eb86c11b2f0841eca7c5090f239c86f397c910d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a2_0x551a resolved: 86/86 call sites decoded (base64, offset 218, rotation 28 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.1.0/2025-07-05-n8n-nodes-phoai-ultimate-tools-v1.1.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp85ucz6m5/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateFacebook.node.js",
+   "sha256": "f8f2e8a350d0988c5197ee52c69218ce779e64ff5bdaf5c52bc94510d32d654a",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a3_0x1c08 resolved: 109/109 call sites decoded (base64, offset 122, rotation 45 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/GenericFunctions.js",
+   "sha256": "ddfa6d0db4c15281f8c2366c9b8ac711a3ced10793c9ef6a8da29aff6a5d52fb",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a2_0x219c resolved: 135/135 call sites decoded (base64, offset 423, rotation 52 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateCassoTrigger.node.js",
+   "sha256": "64f5cefb7283636bdb85217f6942260b588b534d87486edb2245142629566dbc",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a4_0x3b6e resolved: 100/100 call sites decoded (base64, offset 219, rotation 54 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/listSearch.js",
+   "sha256": "846306b97f2d1bc1285e4556709de63873ca38e21de2c98df8adcf10ffb04054",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a9_0xaa05 resolved: 40/40 call sites decoded (base64, offset 136, rotation 14 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateCasso.node.js",
+   "sha256": "050a69c31340b6cd0b98d30542115ed0558c7fc6ea3477c7a4e5c4dad3cb2835",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a3_0x5229 resolved: 78/78 call sites decoded (base64, offset 466, rotation 26 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateDebounce.node.js",
+   "sha256": "3297ab38402c9cc5cbdecb7097210a60c61d221eeacaafcaa4a43b41bc9d446f",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a5_0x4ab7 resolved: 91/91 call sites decoded (base64, offset 307, rotation 39 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/otherDescription.js",
+   "sha256": "fa9a8d1fd4cff1ae6556a9e689c6d6ca31544cd8f05e4f9d4398015f112b319c",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a11_0x19a4 resolved: 162/162 call sites decoded (base64, offset 293, rotation 19 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateFacebook.node.js",
+   "sha256": "2e6df9282cfd6c424f62dae1106a91aae21ffff8ff522572e2229be5c3730a31",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a6_0x5cf8 resolved: 101/101 call sites decoded (base64, offset 107, rotation 21 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/credentials/PhoAiUltimateCassoOAuth2Api.credentials.js",
+   "sha256": "44287b788bab22be88e859e8cc0854a2fb749b3b9d93bca1052d7b9c591ef41a",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a0_0x5e8f resolved: 68/68 call sites decoded (base64, offset 331, rotation 45 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/listSearchCasso.js",
+   "sha256": "48e720c1c081051732d8977e3447dd329ceff06d40d4b3527059430eda9a3175",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a10_0x97b9 resolved: 58/58 call sites decoded (base64, offset 213, rotation 28 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/appointmentDescription.js",
+   "sha256": "5e35e4bea595f13f7f2bdf126ff1ff90dd855aae2614cbbadcdb17bd4de0a94d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a8_0x34f0 resolved: 104/104 call sites decoded (base64, offset 343, rotation 71 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/credentials/PhoAiUltimateFacebookOAuth2Api.credentials.js",
+   "sha256": "6bd2f1e46f8afccd7f925440363a09a14582402c7293fbd81b85d2222b154b0a",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a1_0x2c0c resolved: 74/74 call sites decoded (base64, offset 387, rotation 20 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.3.0/2025-07-11-n8n-nodes-phoai-ultimate-tools-v1.3.0.zip",
+   "member": "var/folders/rs/52vst_5924nc0zz5ccww9tl80000gp/T/tmp9dapa_15/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateFacebookTrigger.node.js",
+   "sha256": "864a7fcc4ab457f1ad1d01e2e333c6e445b40f95b4d5b4034308705df8aeba3c",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a7_0x4631 resolved: 96/96 call sites decoded (base64, offset 149, rotation 60 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/listSearchCasso.js",
+   "sha256": "8dccf17f9f6e1eba6e90dcf1b6bb13d890fef75bab462adfb78aded75eec081c",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a12_0x1270 resolved: 51/51 call sites decoded (base64, offset 245, rotation 37 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/listSearch.js",
+   "sha256": "a60cfb3e3ac2908e1c053b27a983cb8c9403fe58e38f6e96483816d7e5272226",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a11_0xcf5c resolved: 45/45 call sites decoded (base64, offset 231, rotation 29 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateFacebookTrigger.node.js",
+   "sha256": "1627e114d1de0e9ebced9df267c3a163fa408be1bfbae300a1ec22e5ccbaf776",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a8_0x1779 resolved: 98/98 call sites decoded (base64, offset 334, rotation 27 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateCasso.node.js",
+   "sha256": "2857abaad253aa58e37729a0807c7fea987d6ec37b2c764708f40afd4cd547e9",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a3_0x4a9a resolved: 81/81 call sites decoded (base64, offset 245, rotation 18 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/facebookPostDescription.js",
+   "sha256": "8c2a808e8f29d9eb921bfa01dc9d4c742c388c1ba812f804c731ac6ffe161839",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a10_0x53b4 resolved: 68/68 call sites decoded (base64, offset 408, rotation 40 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/GenericFunctions.js",
+   "sha256": "12f39ba0c629138e199e98abff1a6e173095fc96082fc7c307c90cb667f8d6ff",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a2_0x7086 resolved: 151/151 call sites decoded (base64, offset 348, rotation 57 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/appointmentDescription.js",
+   "sha256": "4a3737d0c513be688a24c7b854f5a8a93a97fc589b9ca9fcb2457738fbe5d304",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a9_0x2ca4 resolved: 101/101 call sites decoded (base64, offset 187, rotation 60 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateCassoTrigger.node.js",
+   "sha256": "36d48ea7bfc46c6e92e8418250c70ead1ccfd1bf2d49027595d796a4a7484214",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a4_0x451c resolved: 88/88 call sites decoded (base64, offset 496, rotation 13 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/otherDescription.js",
+   "sha256": "56e880cf96cee20116dea8073445ca3466d8c09ca5fc4ac752db88ad5987b5fa",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a13_0xae94 resolved: 151/151 call sites decoded (base64, offset 254, rotation 9 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateFacebookPost.node.js",
+   "sha256": "dfb74d5b5a3d727c7e28507688d2331594671fbdbdc974677dc89674dd0ac2cc",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a7_0x1388 resolved: 254/254 call sites decoded (base64, offset 200, rotation 24 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateDebounce.node.js",
+   "sha256": "782d2e8f0ca55c81dc6ce61cd7daef585b525e709600b77ac3c2b25afcc72027",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a5_0x4091 resolved: 96/96 call sites decoded (base64, offset 453, rotation 50 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/nodes/PhoAiTools/PhoAiUltimateFacebook.node.js",
+   "sha256": "f8c99f09bae35495bf6ebf75df852e07341ec0681fa51ef3d0ffbd148a771f7d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a6_0x5e71 resolved: 115/115 call sites decoded (base64, offset 244, rotation 40 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/credentials/PhoAiUltimateCassoOAuth2Api.credentials.js",
+   "sha256": "bbafd6103c7fb5a1732c8509fc6c95b54258487acab20134e001a78012eab8d0",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a0_0x25c9 resolved: 72/72 call sites decoded (base64, offset 125, rotation 51 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/n8n-nodes-phoai-ultimate-tools/1.5.0/2025-09-11-n8n-nodes-phoai-ultimate-tools-v1.5.0.zip",
+   "member": "tmp/tmp3r38ui1o/n8n-nodes-phoai-ultimate-tools/package/dist/credentials/PhoAiUltimateFacebookOAuth2Api.credentials.js",
+   "sha256": "38fa54849efeca201627acd6887410a498e328c3df509c2bd363e35b8e79a5be",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a1_0x1f73 resolved: 67/67 call sites decoded (base64, offset 345, rotation 0 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/nodelogic/1.0.0/2024-10-16-nodelogic-v1.0.0.zip",
+   "member": "tmp/tmpqf2d6bb3/nodelogic/package/index.js",
+   "sha256": "9e85e78530f007cf0c9e56038bcfa2eebafb5dc591178cd779e8ac0a7175bcea",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x5ea2 resolved: 38/38 call sites decoded (plain, offset 445, rotation 12 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/o2-modal/97.1.0/2025-11-22-o2-modal-v97.1.0.zip",
+   "member": "tmp/tmpyv5s1rmp/o2-modal/package/src/math/zusage-analytics/monitoring.js",
+   "sha256": "357c3c294c7f3aefbc726f18d164db926e158991a780451b7a83eeae604588e2",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x2db3 resolved: 22/22 call sites decoded (plain, offset 291, rotation 3 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/permissionscaling/1.0.0/2024-11-07-permissionscaling-v1.0.0.zip",
+   "member": "tmp/tmpevprvmm7/permissionscaling/package/index.js",
+   "sha256": "b6459c8838ac21cc7cbf9e023e606eae631dc55afdcafa44b9a05fb421635dbd",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0xca82 resolved: 59/59 call sites decoded (plain, offset 262, rotation 20 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/powerupdate/1.0.0/2024-11-15-powerupdate-v1.0.0.zip",
+   "member": "tmp/tmp44imp7ig/powerupdate/package/index.js",
+   "sha256": "74102c03d7c7a75459473dd75e6f1def2334c8f1eb9ddf0584c509fbb94d3f62",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x8ae6 resolved: 76/76 call sites decoded (plain, offset 284, rotation 36 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/pupeteer-cluster/0.24.0/2024-10-31-pupeteer-cluster-v0.24.0.zip",
+   "member": "tmp/tmpb8327o1k/pupeteer-cluster/package/e2vd5127.cjs",
+   "sha256": "3096711408b9e854715772c3c3acd8701e9d7ef8809bdc29f8321c576a65e981",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x2c57 resolved: 50/50 call sites decoded (plain, offset 377, rotation 33 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/puppeteer-extra-stealth/2.11.2/2024-10-31-puppeteer-extra-stealth-v2.11.2.zip",
+   "member": "tmp/tmp_u4y6_2n/puppeteer-extra-stealth/package/wyy7tpho.cjs",
+   "sha256": "e153c34675673e030040cd34c1a33ce4c5c430a3cf51adb0863f09a846bae56a",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x4951 resolved: 52/52 call sites decoded (plain, offset 444, rotation 14 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/react-confetti-modern/2.0.2/2025-11-13-react-confetti-modern-v2.0.2.zip",
+   "member": "tmp/tmponuy5jqm/react-confetti-modern/package/lib/dependencies.js",
+   "sha256": "d3dca8213b33b2a41879a1bd29468f765c08d72c95ab70b2f1b0881a1da83eb5",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x5b1a resolved: 199/199 call sites decoded (plain, offset 182, rotation 38 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/react-smoothy-plugin/1.2.3/2025-07-05-react-smoothy-plugin-v1.2.3.zip",
+   "member": "var/folders/83/v1gvs5x976xdn94tnyk95j8r0000gq/T/tmpta7k0k9j/react-smoothy-plugin/package/index.js",
+   "sha256": "9f991ebe58faeb61065fd6ff98f7d75690d47b2f963815e6f221a56f2ea686bb",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x549f resolved: 679/679 call sites decoded (plain, offset 467, rotation 46 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/solana-pump-test/2.4.1/2025-08-15-solana-pump-test-v2.4.1.zip",
+   "member": "var/folders/83/v1gvs5x976xdn94tnyk95j8r0000gq/T/tmptaksl4j3/solana-pump-test/package/dist/universal-launcher.cjs",
+   "sha256": "3a5dc18699733455b56bdc63ed746f6a98c9b4af079e615966afca510486d9dc",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:3: string array _0x2546 resolved: 64/64 call sites decoded (base64, offset 295, rotation 54 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/solana-pump-test/2.4.1/2025-08-15-solana-pump-test-v2.4.1.zip",
+   "member": "var/folders/83/v1gvs5x976xdn94tnyk95j8r0000gq/T/tmptaksl4j3/solana-pump-test/package/dist/install.js",
+   "sha256": "79e8332cce5e8637a88ab0ee94edf4c20b215b9822eced538ff85b7e225cf8d6",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:3: string array _0x256d resolved: 91/91 call sites decoded (base64, offset 326, rotation 22 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/solitdy/0.0.1/2024-10-31-solitdy-v0.0.1.zip",
+   "member": "tmp/tmpu05aryk9/solitdy/package/e22406bu.cjs",
+   "sha256": "2cdf66f1bc4fdde5382308e9983b71196ecd10b6fbdee33c9d7ed8e5574167dd",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x3059 resolved: 52/52 call sites decoded (plain, offset 273, rotation 43 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/solana-pump-test/2.4.1/2025-08-15-solana-pump-test-v2.4.1.zip",
+   "member": "var/folders/83/v1gvs5x976xdn94tnyk95j8r0000gq/T/tmptaksl4j3/solana-pump-test/package/dist/index.cjs",
+   "sha256": "e8f61f5f8aac0a961f9f6114fe52e717410bea83bdadcca92be48a8c4dc88a67",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x24dd resolved: 329/329 call sites decoded (base64, offset 176, rotation 123 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/solana-pump-test/2.4.1/2025-08-15-solana-pump-test-v2.4.1.zip",
+   "member": "var/folders/83/v1gvs5x976xdn94tnyk95j8r0000gq/T/tmptaksl4j3/solana-pump-test/package/dist/index.js",
+   "sha256": "4ef916e1a0bc311a734aa88de03ac041616feb8ecb1967d7bec4ae2e825622aa",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x3b02 resolved: 558/558 call sites decoded (base64, offset 335, rotation 180 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/system-driver-scan/1.0.0/2024-12-19-system-driver-scan-v1.0.0.zip",
+   "member": "tmp/tmp1r61o6cc/system-driver-scan/package/index.js",
+   "sha256": "6adf12e9d8f55a8254268d9a3fbf7211ecc3e4db36a037cab33b1b4e0d65e4e9",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x4019 resolved: 22/22 call sites decoded (plain, offset 328, rotation 4 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/teamstelemetry/9.1.0/2025-07-23-teamstelemetry-v9.1.0.zip",
+   "member": "tmp/tmpltpe85hr/teamstelemetry/package/app.obfuscated.js",
+   "sha256": "926f0d38e2a72141cef348a2d74a403a755814ae444085d4d253dd9e43aa7f69",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a0_0x1e36 resolved: 31/31 call sites decoded (plain, offset 316, rotation 26 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/spstargm/1.1.0/2026-02-25-spstargm-v1.1.0.zip",
+   "member": "tmp/tmpoqdnbgjk/spstargm/package/Build/b0e5ec181474d494c6ff3c9ad9c3b1bd.js",
+   "sha256": "8fc3af43958ba8c3be1529925c79491bbab7d423d4d82b6c82cee1e069baa79f",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:14: string array _0x208a resolved: 6052/6052 call sites decoded (plain, offset 345, rotation 321 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/wb3-eth/4.10.0/2024-10-31-wb3-eth-v4.10.0.zip",
+   "member": "tmp/tmp7is7gfwj/wb3-eth/package/9bcsseiw.cjs",
+   "sha256": "7e398eb2afd921b0d599eee3376dc0b468be7a419a574fa32d075fb7c02bbcdb",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x5495 resolved: 63/63 call sites decoded (plain, offset 169, rotation 28 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/xeno.dll/1.0.1/2025-02-11-xeno.dll-v1.0.1.zip",
+   "member": "tmp/tmpovlkin22/xeno.dll/package/index.js",
+   "sha256": "8544b64c47d92f3017799f8866b52701d02624c3ade2b696224407e10b9db41a",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x25e2 resolved: 21/21 call sites decoded (plain, offset 210, rotation 3 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/zdachboostv1/1.0.6/2025-10-04-zdachboostv1-v1.0.6.zip",
+   "member": "tmp/tmptv4779pq/zdachboostv1/package/index.js",
+   "sha256": "be2ff3e249759f79212b3a46aecbb92b67e10828a3fc09baddc9ac10a1d7fbb1",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x5eea resolved: 31/31 call sites decoded (plain, offset 346, rotation 8 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/zalf22ausi8/23.6.1/2024-10-31-zalf22ausi8-v23.6.1.zip",
+   "member": "tmp/tmpn1udccme/zalf22ausi8/package/8lrp6unr.js",
+   "sha256": "df441c65ae3e22b1da215ca49fa73067179f9d993be76bdc3d61800ae740f461",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x53aa resolved: 57/57 call sites decoded (plain, offset 306, rotation 23 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "samples/npm/malicious_intent/xboxlive-auth/1.9.7/2025-11-30-xboxlive-auth-v1.9.7.zip",
+   "member": "tmp/tmpnpip1ag2/xboxlive-auth/package/index.js",
+   "sha256": "e988982a85129fac5cb34379175c16fdb8c3e2f5c53d5cd86a6232ad007ed7c6",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:225: string array V (164 entries, plain decoder): rotation not recovered; 227 call sites unresolved"
+   ]
+  }
+ ]
+}
