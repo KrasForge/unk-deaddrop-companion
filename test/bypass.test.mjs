@@ -61,3 +61,19 @@ function startServer(root) {
 module.exports = { startServer };`;
   assert.equal(severity(inspect(source), 'electron-run-as-node'), 'warning');
 });
+
+// Decoder shapes found by the controlled experiment (benchmark/rotation), stored
+// as .txt so the test runner never executes them: an
+// older release's self-replacing RC4 decoder, and function wrappers that declare
+// an offset object before returning.
+for (const name of ['v4-self-replacing-rc4.js.txt', 'v5-function-wrappers-calls-transform.js.txt']) {
+  test(`obfuscator shape ${name}: strings recovered by checksum`, () => {
+    const source = fs.readFileSync(new URL(`fixtures/obfuscator-shapes/${name}`, import.meta.url), 'utf8');
+    const result = inspect(source);
+    const array = result.deobfuscation[0];
+    assert.equal(array.method, 'checksum');
+    assert.equal(array.decodedSites, array.callSites);
+    const recovered = result.findings.filter(f => f.kind === 'obfuscated-string-indicator').map(f => f.detail).sort();
+    assert.deepEqual(recovered, ["https://example.invalid/setup (resolved from string array)", "require('child_process') (resolved from string array)"]);
+  });
+}

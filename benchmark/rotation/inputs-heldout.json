@@ -1,0 +1,147 @@
+{
+ "seed": 20261030,
+ "skip": 50,
+ "poolPackages": 1325,
+ "chosen": [
+  {
+   "sha256": "fc2e205f0ec18ac0805f8c10f290eb1f8371ff1600ca14fe80f227112e9155f2",
+   "package": "registry-auth-token",
+   "member": "package/index.js",
+   "bytes": 4417,
+   "distinctStrings": 20
+  },
+  {
+   "sha256": "33ffbabdfebd1bb4b93b43b797eeb390315d6743b88d0b6807451588d9cf73af",
+   "package": "spdy",
+   "member": "package/test/client-test.js",
+   "bytes": 6074,
+   "distinctStrings": 37
+  },
+  {
+   "sha256": "f607af60813032db5693d38b48c243034de3769a2aafe98628d97c93724f9632",
+   "package": "ejs",
+   "member": "package/bin/cli.js",
+   "bytes": 9276,
+   "distinctStrings": 62
+  },
+  {
+   "sha256": "05326c56002b57d9819cfa975237872ff7ebb31535d5337bbdbb81bbd5c8ba95",
+   "package": "for-each",
+   "member": "package/test/test.js",
+   "bytes": 5947,
+   "distinctStrings": 46
+  },
+  {
+   "sha256": "874fe73687280c55d2494f40418406b34c694aecc183f0dd71d82a5d00a951fa",
+   "package": "cssom",
+   "member": "package/lib/parse.js",
+   "bytes": 11889,
+   "distinctStrings": 75
+  },
+  {
+   "sha256": "8b356484f652589d861667f49863cd4469402b35cb2feec86526013494937524",
+   "package": "@isaacs/brace-expansion",
+   "member": "package/dist/commonjs/index.js",
+   "bytes": 6850,
+   "distinctStrings": 20
+  },
+  {
+   "sha256": "640d14e5719d34a4b5f1b7728cd94f383b0992a6089f3a133ecb9a349625d861",
+   "package": "node-gyp",
+   "member": "package/lib/configure.js",
+   "bytes": 11915,
+   "distinctStrings": 111
+  },
+  {
+   "sha256": "62f347403e8c89dabc4d040ee026040889d13b0f3b77648cdef102ed6cfca0bc",
+   "package": "@opentelemetry/instrumentation-pg",
+   "member": "package/dist/instrumentation.cjs",
+   "bytes": 16690,
+   "distinctStrings": 39
+  },
+  {
+   "sha256": "7d9d83163aad8bf5a13d203d0a69ad2158412428862c9e331d1c32a548c87e95",
+   "package": "vscodevim/vim",
+   "member": "extension/out/extensionBase.js",
+   "bytes": 23203,
+   "distinctStrings": 48
+  },
+  {
+   "sha256": "0a542f7139183ce55fb3a3f7e988e333f740dc62763fc14c8e8d9b5fade0ebdb",
+   "package": "vscode-icons-team/vscode-icons",
+   "member": "extension/dist/src/vscode-icons.web.bundle.js",
+   "bytes": 11444,
+   "distinctStrings": 46
+  },
+  {
+   "sha256": "6650e50d5e282bd4c32c66cabacf2d9130f65a907aea6e6a5c60dcaba0c5472a",
+   "package": "ansi-html-community",
+   "member": "package/index.js",
+   "bytes": 4262,
+   "distinctStrings": 58
+  },
+  {
+   "sha256": "98d96174dcc63ac16a1b7cb3781af2366be90090be8f5e5e551b82ce7c1405a3",
+   "package": "redhat/vscode-quarkus",
+   "member": "extension/gulpfile.js",
+   "bytes": 3673,
+   "distinctStrings": 34
+  },
+  {
+   "sha256": "8afb435dc03c1ad41a61908924b54f67e45115febcde31ae41eeedff3d7d68b0",
+   "package": "nodemon",
+   "member": "package/lib/config/exec.js",
+   "bytes": 7124,
+   "distinctStrings": 27
+  },
+  {
+   "sha256": "29f6a650e316451c9ff6b6a867de1798f4e4e93476732a88f2e6b203cef190ff",
+   "package": "Toaock/vscode-css-custom-properties",
+   "member": "extension/node_modules/source-map-resolve/index.js",
+   "bytes": 9750,
+   "distinctStrings": 23
+  },
+  {
+   "sha256": "cf3d2c5410eae9a2a0a41555919fca838fdc1f0bede6268cc76809531b320f65",
+   "package": "@opentelemetry/instrumentation-mongodb",
+   "member": "package/dist/instrumentation.cjs",
+   "bytes": 23677,
+   "distinctStrings": 46
+  },
+  {
+   "sha256": "ae65d53f994f6caaa8bba35b190ef5ba209a2bc9d8dff86a45b0b68fa0700a86",
+   "package": "eslint-visitor-keys",
+   "member": "package/dist/eslint-visitor-keys.cjs",
+   "bytes": 5663,
+   "distinctStrings": 54
+  },
+  {
+   "sha256": "ee32dd204d631aa3c9640fad95716a500c37ad46df91229c6a757e0a7f8ed878",
+   "package": "cosmiconfig",
+   "member": "package/dist/defaults.js",
+   "bytes": 3442,
+   "distinctStrings": 29
+  },
+  {
+   "sha256": "7fc10290a13a31e876d9196cf3cdc508aa99066a701161c6dffc630d576e04fb",
+   "package": "unicode-match-property-value-ecmascript",
+   "member": "package/data/mappings.js",
+   "bytes": 21329,
+   "distinctStrings": 429
+  },
+  {
+   "sha256": "576aaec1b663a41e427ae18525414500ad5f5f4a0b9aaca7db84ff612a54d010",
+   "package": "deep-equal",
+   "member": "package/index.js",
+   "bytes": 13335,
+   "distinctStrings": 38
+  },
+  {
+   "sha256": "09ea3ec4d9f55ed2425c068b2f85f0dec73882e0ef69bcab7843a949177c8876",
+   "package": "bplist-parser",
+   "member": "package/dist/index.cjs",
+   "bytes": 13060,
+   "distinctStrings": 37
+  }
+ ]
+}

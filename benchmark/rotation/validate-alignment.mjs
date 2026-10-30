@@ -21,9 +21,9 @@ function sequence(code) {
     if (node.type === 'Property' && !node.computed) { pending.push(node.value); continue; }
     if (node.type === 'Literal' && typeof node.value === 'string') items.push([node.start, node.value]);
     if (node.type === 'MemberExpression' && !node.computed && node.property.type === 'Identifier') items.push([node.property.start, node.property.name]);
-    // The obfuscator also hides template-literal text and class method names.
+    // The obfuscator also hides template-literal text and class method and field names.
     if (node.type === 'TemplateElement' && node.value.cooked) items.push([node.start, node.value.cooked]);
-    if (node.type === 'MethodDefinition' && !node.computed && node.key.type === 'Identifier') items.push([node.key.start, node.key.name]);
+    if ((node.type === 'MethodDefinition' || node.type === 'PropertyDefinition') && !node.computed && node.key.type === 'Identifier') items.push([node.key.start, node.key.name]);
     for (const key in node) {
       const value = node[key];
       if (Array.isArray(value)) { for (const child of value) if (child?.type) pending.push(child); }

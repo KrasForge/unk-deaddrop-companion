@@ -1,0 +1,254 @@
+{
+ "files": 143153,
+ "changes": {
+  "up": 15
+ },
+ "addedAlerts": {
+  "string-array-obfuscation:warning": 15
+ },
+ "packagesRaisedTo": {
+  "warning": 2
+ },
+ "samples": [
+  {
+   "direction": "up",
+   "package": "WallabyJs/console-ninja",
+   "member": "extension/out/runtimeHook/tracer.js",
+   "sha256": "9be86a7dcde28156c457f367564411de2958c8ca82aac2279087fdd8b547c927",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x5821 resolved: 703/703 call sites decoded (plain, offset 191, rotation 176 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "WallabyJs/console-ninja",
+   "member": "extension/out/runtimeHook/networkLoggingHandler.js",
+   "sha256": "91d7a5f27e78fc535524980a46ac38b5b1c543886aca3565ed2c650a895e9e85",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x3fdf resolved: 795/795 call sites decoded (plain, offset 257, rotation 83 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "WallabyJs/console-ninja",
+   "member": "extension/out/runtimeHook/errorHandler.js",
+   "sha256": "7d979358579aed095744c791d23149c58cdbedb807bb3fc50ac09c552b4e4736",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x4ec4 resolved: 220/220 call sites decoded (plain, offset 393, rotation 117 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "WallabyJs/console-ninja",
+   "member": "extension/out/uninstall/index.js",
+   "sha256": "f7113ca342da1699de81a6615dacaad7910e4d598c78cf4b6b1223edc21a09ac",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x3432 resolved: 6422/6422 call sites decoded (plain, offset 436, rotation 135 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "WallabyJs/console-ninja",
+   "member": "extension/out/host-worker/index.js",
+   "sha256": "2d48a660214715d5a2431ef00825e712a6c6d6d962e5528cd5d31d43b10c160b",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x5057 resolved: 3225/3225 call sites decoded (plain, offset 316, rotation 126 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "WallabyJs/console-ninja",
+   "member": "extension/out/mcpServer/index.js",
+   "sha256": "00ff7106e0bedca1a4135285ae61145931065cabf0712667660c25e24689e6e2",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x3445 resolved: 9742/9742 call sites decoded (plain, offset 324, rotation 389 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "WallabyJs/console-ninja",
+   "member": "extension/out/extension/index.js",
+   "sha256": "4c6c893e82f3917d4d66cf3d926467421513779c3a4aae01ebe4291a5e46d62d",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x46da resolved: 18503/18503 call sites decoded (plain, offset 403, rotation 140 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "WallabyJs/console-ninja",
+   "member": "extension/out/buildHook/index.js",
+   "sha256": "afe12f131ef2be01db83381999ddec25b24acfbfecf448b061c1d24285d2d78f",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array _0x15cd resolved: 65245/65245 call sites decoded (plain, offset 288, rotation 298 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "WallabyJs/console-ninja",
+   "member": "extension/out/ui/assets/index-00fmG6Vq.js",
+   "sha256": "04a202450c2cf6799688d9d431a8780fd69213d9e76b668ca96fae48ba88e83e",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:2: string array _0x5b8a resolved: 117212/117212 call sites decoded (plain, offset 147, rotation 499 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "ZencoderAI/zencoder",
+   "member": "extension/out/568.js",
+   "sha256": "035efc177a6f4efe98d2bf90216210171777e488ca9e46deeb8e85e9f4c59cb6",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a2_0x1436 resolved: 35/35 call sites decoded (plain, offset 416, rotation 5 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "ZencoderAI/zencoder",
+   "member": "extension/out/917.js",
+   "sha256": "f366c2ad25f21b4942ed12e0acc39149d41080ec8bf99f579868ad6051937655",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a3_0x3484 resolved: 27/27 call sites decoded (plain, offset 361, rotation 13 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "ZencoderAI/zencoder",
+   "member": "extension/out/408.js",
+   "sha256": "f86fe7d5822ea34b6ba355e2ccb777a5921a84ffed203054b263d2322a39424c",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a6_0x3e35 resolved: 28/28 call sites decoded (plain, offset 244, rotation 7 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "ZencoderAI/zencoder",
+   "member": "extension/out/454.js",
+   "sha256": "bb36d5b4b3c0e2ae5599847871862615b02721d6b644923e45e3f51722666a05",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a4_0x37ed resolved: 32/32 call sites decoded (plain, offset 343, rotation 21 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "ZencoderAI/zencoder",
+   "member": "extension/out/349.js",
+   "sha256": "4d9aa06bd11271abe09329a782a7d7d099410bea1d765f916be3c28902f834d2",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a5_0x121d resolved: 32/32 call sites decoded (plain, offset 187, rotation 10 by checksum)"
+   ]
+  },
+  {
+   "direction": "up",
+   "package": "ZencoderAI/zencoder",
+   "member": "extension/out/indexer.worker.js",
+   "sha256": "835c3e0fdac2c134a2698326e2d3b1f762cec8d9a859a3a8b015fbcc96a37527",
+   "before": [],
+   "after": [
+    [
+     "string-array-obfuscation",
+     "warning"
+    ]
+   ],
+   "details": [
+    "string-array-obfuscation:warning:1: string array a1_0x4332 resolved: 2056/2056 call sites decoded (plain, offset 235, rotation 457 by checksum)"
+   ]
+  }
+ ]
+}
