@@ -1,7 +1,7 @@
 // Static recovery of obfuscator.io-style string arrays. The decoder variants
 // (plain, base64, RC4) are reimplemented here; the input's own decoder code is
 // only inspected to identify the variant, offset and alphabet.
-import { NO, Evaluator, ArraySource, isFunction } from './evaluate.mjs';
+import { NO, Evaluator, ArraySource, isFunction, returnedExpression, PARENT } from './evaluate.mjs';
 
 const MIN_ARRAY = 5;
 const MAX_SITES = 200000;
@@ -63,34 +63,56 @@ function referencesName(root, name) {
   return found;
 }
 
-function decoderShape(fn, evaluator) {
-  let offset;
-  let alphabet;
-  let has256 = false;
+// The offset a function subtracts from its first parameter (`i = i - OFFSET`
+// or `i -= OFFSET`), if any.
+function rebasing(fn, evaluator) {
   const first = fn.params[0]?.type === 'Identifier' ? fn.params[0].name : undefined;
   if (!first) return undefined;
+  let offset;
   walk(fn.body, node => {
-    if (node.type === 'AssignmentExpression' && node.left.type === 'Identifier' && node.left.name === first) {
-      let amount;
-      if (node.operator === '-=') amount = node.right;
-      else if (node.operator === '=' && node.right.type === 'BinaryExpression' && node.right.operator === '-' &&
-        node.right.left.type === 'Identifier' && node.right.left.name === first) amount = node.right.right;
-      if (amount) {
-        const value = evaluator.evaluate(amount);
-        if (typeof value === 'number' && Number.isInteger(value)) offset = value;
-      }
+    if (node.type !== 'AssignmentExpression' || node.left.type !== 'Identifier' || node.left.name !== first) return;
+    let amount;
+    if (node.operator === '-=') amount = node.right;
+    else if (node.operator === '=' && node.right.type === 'BinaryExpression' && node.right.operator === '-' &&
+      node.right.left.type === 'Identifier' && node.right.left.name === first) amount = node.right.right;
+    if (amount) {
+      const value = evaluator.evaluate(amount);
+      if (typeof value === 'number' && Number.isInteger(value)) offset = value;
     }
+  });
+  return offset;
+}
+
+function decoderShape(fn, evaluator) {
+  let alphabet;
+  let has256 = false;
+  walk(fn.body, node => {
     if (node.type === 'Literal' && typeof node.value === 'string' && node.value.length === 65 &&
         /^[A-Za-z0-9+/=]+$/.test(node.value) && new Set(node.value).size === 65) alphabet = node.value;
     if (node.type === 'Literal' && node.value === 256) has256 = true;
   });
   // obfuscator.io decoders always rebase the index (`i = i - OFFSET`, even when
   // OFFSET is 0). Without it this is an ordinary lookup table, not a decoder.
+  let indexer = fn;
+  let offset = rebasing(fn, evaluator);
+  if (offset === undefined) {
+    // Older releases emit a self-replacing decoder, `D = function (i, k) { i = i - OFFSET; ... }`
+    // inside D, so the rebasing and the key parameter belong to the inner function.
+    const name = fn.id?.name ?? (fn[PARENT]?.type === 'VariableDeclarator' && fn[PARENT].id.type === 'Identifier' ? fn[PARENT].id.name : undefined);
+    walk(fn.body, node => {
+      if (offset !== undefined) return false;
+      if (node.type === 'AssignmentExpression' && node.operator === '=' && node.left.type === 'Identifier' &&
+          node.left.name === name && node.right.type === 'FunctionExpression') {
+        const inner = rebasing(node.right, evaluator);
+        if (inner !== undefined) { offset = inner; indexer = node.right; }
+      }
+    });
+  }
   if (offset === undefined) return undefined;
   // Numeric constants are often split into expressions, so the RC4 S-box size
   // is a hint only; rotation solving confirms the variant.
-  const second = fn.params[1]?.type === 'Identifier' ? fn.params[1].name : undefined;
-  const keyUsed = second !== undefined && referencesName(fn.body, second);
+  const second = indexer.params[1]?.type === 'Identifier' ? indexer.params[1].name : undefined;
+  const keyUsed = second !== undefined && referencesName(indexer.body, second);
   const variants = !alphabet ? ['plain'] : keyUsed ? (has256 ? ['rc4', 'base64'] : ['rc4', 'base64']) : ['base64'];
   return { offset, alphabet, variant: variants[0], variants };
 }
@@ -313,8 +335,7 @@ export function deobfuscate(ast, scopes, order) {
     reaches.set(fn, undefined);
     let result;
     if (depth < 8) {
-      let body = fn.body;
-      if (body?.type === 'BlockStatement' && body.body.length === 1 && body.body[0].type === 'ReturnStatement') body = body.body[0].argument;
+      const body = returnedExpression(fn);
       if (body?.type === 'CallExpression' && body.callee.type === 'Identifier') {
         const target = functionOf(scopes.lookup(body.callee.name, body.callee));
         if (target) result = reachedDecoder(target, depth + 1);

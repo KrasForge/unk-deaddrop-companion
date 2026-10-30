@@ -1,15 +1,15 @@
 // Obfuscate each benign input under a grid of javascript-obfuscator string-array
 // options. Only the string-array transforms are enabled, so every string the
 // obfuscator hides has a known original. Nothing is executed.
-// Usage: node generate.mjs LABEL OBFUSCATOR_PACKAGE_DIR
+// Usage: node generate.mjs LABEL OBFUSCATOR_PACKAGE_DIR [INPUTS_MANIFEST]
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 
-const [label, packageDir] = process.argv.slice(2);
+const [label, packageDir, inputManifest = 'inputs.json'] = process.argv.slice(2);
 const require = createRequire(`${packageDir}/`);
 const JavaScriptObfuscator = require('javascript-obfuscator');
 const version = require('javascript-obfuscator/package.json').version;
-const inputs = JSON.parse(fs.readFileSync('inputs.json')).chosen;
+const inputs = JSON.parse(fs.readFileSync(inputManifest)).chosen;
 const grid = [];
 for (const encoding of ['none', 'base64', 'rc4'])
   for (const rotate of [true, false])
@@ -47,5 +47,5 @@ for (const [ci, c] of grid.entries()) {
     samples.push(record);
   }
 }
-fs.writeFileSync(`samples-${label}.json`, JSON.stringify({ obfuscator: `javascript-obfuscator@${version}`, grid, samples }, null, 1));
+fs.writeFileSync(`samples-${label}.json`, JSON.stringify({ obfuscator: `javascript-obfuscator@${version}`, inputs: inputManifest, grid, samples }, null, 1));
 console.log(label, version, grid.length, samples.length, samples.filter(s => s.error).length);

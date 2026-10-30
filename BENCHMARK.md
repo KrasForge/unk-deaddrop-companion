@@ -122,6 +122,17 @@ The hardened engine (`202f56f2…`, see `CHANGELOG.md`) was then rescanned again
 | Tier 3 (41,359) | 0 new errors; detected samples from 62 to 64 |
 | Throughput, calibration, 4 in-process workers | 281 files/s (frozen: 264) |
 
+**Decoder coverage (revised engine, `ba4d1468…`).** The controlled experiment in `rotation/` showed two decoder shapes the hardened engine did not recognise. Both were fixed, and every corpus was rescanned (`mitigation/revised/`, diffed against the frozen and hardened results):
+
+| Check | Revised engine, compared with hardened |
+| --- | --- |
+| Bypass fixtures, artifacts | unchanged: 22 of 23, 14 of 14 |
+| Calibration | 15 more files warn (2 commercial extensions), all checksum-solved and fully decoded; 0 new errors |
+| Tier 1 | 19 more files warn (4 outside calibration, 3 extensions); 0 new errors |
+| Tier 2 | 917 more files warn (5 packages), all fully decoded string arrays; 0 new errors; newly decoded strings screened, none malicious |
+| Tier 3 | detected samples 64 → 128 (`t3samples.py`), none at error |
+| Controlled experiment | recall 99.8% on 5.9.0 and 4.1.1; 99.7% on a held-out set of five releases; 0 of 3,265,560 decoded sites misplaced |
+
 A first version of the hardening raised an error on a benign extension that relaunches its own runtime as a detached helper server; the rule was narrowed before these runs (see `docs/rules.md`). The fixtures were written together with the fixes, so these results record regression coverage, not robustness against an adaptive adversary.
 
 ## Limitations
