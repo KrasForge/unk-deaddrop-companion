@@ -2,7 +2,7 @@
 
 Static JavaScript analysis and 33 experimental YARA detections for defensive analysis of developer-targeting lures. The investigation discusses behaviors reported in the wider Contagious Interview cluster tracked by MITRE ATT&CK as [G1052](https://attack.mitre.org/groups/G1052/). Similarities do not establish that UNK_DeadDrop and G1052 share an operator or identity.
 
-Start with the [twelve-part research series](https://krasforge.github.io/UNK_DeadDrop/) and its [preprint PDF](https://krasforge.github.io/UNK_DeadDrop/downloads/UNK_DeadDrop-Preprint.pdf). The preprint is published on Zenodo under CC BY 4.0: [record DOI](https://doi.org/10.5281/zenodo.23696198) · [concept DOI](https://doi.org/10.5281/zenodo.23652297).
+Start with the [research series](https://krasforge.github.io/UNK_DeadDrop/) and the [campaign preprint PDF](https://krasforge.github.io/UNK_DeadDrop/downloads/UNK_DeadDrop-Preprint.pdf), published on Zenodo under CC BY 4.0 ([latest record](https://doi.org/10.5281/zenodo.23823077), [concept DOI](https://doi.org/10.5281/zenodo.23652297)). The companion also supports the [scanner paper](https://doi.org/10.5281/zenodo.23823715).
 
 This repository is the versioned source for the experimental YARA suite and the parse-only scanner. The scanner's package versions, evaluation scope, and known limits are documented below. Findings and infrastructure status remain bounded by the investigation evidence and dates described in the preprint.
 
@@ -25,7 +25,7 @@ This public repository contains zero live malware payloads or active credentials
 
 ## Use the scanner
 
-`unk-scanner` 0.2.0 is published on [npm](https://www.npmjs.com/package/unk-scanner) and [PyPI](https://pypi.org/project/unk-scanner/0.2.0/) (`npm install -g unk-scanner --ignore-scripts` or `python -m pip install unk-scanner`; both need Node.js 22+). It recovers obfuscator.io string arrays and reports ClickFix clipboard command substitution and Electron `ELECTRON_RUN_AS_NODE` launches with context-dependent severity. It also writes SARIF for code scanning and parses each file in an isolated process. Start with the [user guide](docs/unk-scanner.md); see also the [npm package README](packages/unk-scanner/README.md), the [rule reference](docs/rules.md), the [CI guide](docs/ci.md) and the [design notes](docs/tool-design.md).
+`unk-scanner` 0.2.0 is published on [npm](https://www.npmjs.com/package/unk-scanner) and [PyPI](https://pypi.org/project/unk-scanner/0.2.0/) (`npm install -g unk-scanner --ignore-scripts` or `python -m pip install unk-scanner`; both need Node.js 22+). This repository includes subsequent scanner changes that have not yet been released to either registry. The published version recovers obfuscator.io string arrays and reports ClickFix clipboard command substitution and Electron `ELECTRON_RUN_AS_NODE` launches with context-dependent severity. It also writes SARIF for code scanning and parses each file in an isolated process. Start with the [user guide](docs/unk-scanner.md); see also the [npm package README](packages/unk-scanner/README.md), the [rule reference](docs/rules.md), the [CI guide](docs/ci.md) and the [design notes](docs/tool-design.md).
 
 From a checkout:
 
