@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased: scanner 0.3.0
+## 2.2.0 - 2026-10-31
+
+This companion archive adds the scanner's TypeScript and JSX parsing, bypass-hardening work, and controlled rotation benchmark. The npm and PyPI releases remain at 0.2.0; the newer scanner changes in this archive have not been published to either registry.
 
 - Parse TypeScript and JSX: when Acorn rejects a file, `@babel/parser` 8.0.8 (pinned) parses it in AST-only mode with the TypeScript and/or JSX plugin chosen by file extension and emits ESTree, so all rules apply unchanged. Reports carry a `parser` field. TypeScript-only wrapper nodes (`as`, `satisfies`, non-null) are transparent to evaluation and member resolution.
 - Directory scans include `.jsx`, `.ts`, `.mts`, `.cts` and `.tsx`, skipping `.d.ts` declarations.

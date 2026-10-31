@@ -7,11 +7,11 @@ authors:
     given-names: Ilja
     affiliation: Independent researcher
     orcid: "https://orcid.org/0009-0007-1039-5930"
-version: 2.1.0
-date-released: 2026-10-28
+version: 2.2.0
+date-released: 2026-10-31
 license: MIT
 repository-code: "https://github.com/KrasForge/unk-deaddrop-companion"
-abstract: "Defensive research companion for the UNK_DeadDrop artifact study. Includes a parse-only JavaScript AST scanner distributed through npm and PyPI, inert boundary fixtures, and 33 experimental YARA file-content rules in 28 files. Every YARA rule matched retained case artifacts in a read-only replay; a small local software baseline produced no hits. Authentic endpoint logs were unavailable, so Sigma event rules are not included. The available corpus does not establish production precision or recall, execution, collection, attribution, or current infrastructure status."
+abstract: "Defensive research companion for the UNK_DeadDrop artifact study. Includes a parse-only JavaScript AST scanner, inert boundary fixtures, and 33 experimental YARA file-content rules in 28 files. Scanner 0.2.0 is published on npm and PyPI; this archive contains newer scanner source changes that have not yet been released to those registries. Every YARA rule matched retained case artifacts in a read-only replay; a small local software baseline produced no hits. Authentic endpoint logs were unavailable, so Sigma event rules are not included. The available corpus does not establish production precision or recall, execution, collection, attribution, or current infrastructure status."
 keywords:
   - malware analysis
   - detection engineering
@@ -24,5 +24,13 @@ references:
         given-names: Ilja
     title: "UNK_DeadDrop: An Artifact-Based Study of Recruitment Malware, Credential Collection, and Operator Infrastructure"
     year: 2026
-    doi: "10.5281/zenodo.23696198"
-    url: "https://doi.org/10.5281/zenodo.23696198"
+    doi: "10.5281/zenodo.23652297"
+    url: "https://doi.org/10.5281/zenodo.23652297"
+  - type: preprint
+    authors:
+      - family-names: Krasnjanski
+        given-names: Ilja
+    title: "Static AST-Based Triage of Socially-Engineered Developer Lures: Proving Obfuscator Rotations Without Execution"
+    year: 2026
+    doi: "10.5281/zenodo.23823715"
+    url: "https://doi.org/10.5281/zenodo.23823715"
